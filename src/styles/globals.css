@@ -1,70 +1,169 @@
 :root {
-  --max-width: 1100px;
-  --border-radius: 12px;
-  --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
-    'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
-    'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
+  /* Colors: */
+  --background: #F8FAFD;
+  --light-green: #64B900;
+  --extra-light-blue: #F5F8FB;
+  --red: #EB1C23;
+  --yellow: #FAAF00;
+  --green: #27AE60;
+  --extra-dark-gray: #4C4C4C;
+  --dark-gray: #999999;
+  --gray: #C4C4C4;
+  --light-gray: #E0E0E0;
+  --extra-light-gray: #F5F5F5;
+  --white: #FFFFFF;
+  --black: #2B3445;
+  --secondary: #FADF06;
+  --primary: #17468F;
+  --hover-color: #143E7D;
+  --dark-blue: #27325E;
+  --unnamed-color-181c24: #181C24;
+  --unnamed-color-221f1f: #221F1F;
+  --unnamed-color-1d1d1b: #1D1D1B;
 
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-
-  --primary-glow: conic-gradient(
-    from 180deg at 50% 50%,
-    #16abff33 0deg,
-    #0885ff33 55deg,
-    #54d6ff33 120deg,
-    #0071ff33 160deg,
-    transparent 360deg
-  );
-  --secondary-glow: radial-gradient(
-    rgba(255, 255, 255, 1),
-    rgba(255, 255, 255, 0)
-  );
-
-  --tile-start-rgb: 239, 245, 249;
-  --tile-end-rgb: 228, 232, 233;
-  --tile-border: conic-gradient(
-    #00000080,
-    #00000040,
-    #00000030,
-    #00000020,
-    #00000010,
-    #00000010,
-    #00000080
-  );
-
-  --callout-rgb: 238, 240, 241;
-  --callout-border-rgb: 172, 175, 176;
-  --card-rgb: 180, 185, 188;
-  --card-border-rgb: 131, 134, 135;
+  /* Font/text values */
+  --unnamed-font-family-poppins: Poppins;
+  --unnamed-font-family-fira-sans: Fira Sans;
+  --unnamed-font-style-normal: normal;
+  --unnamed-font-weight-600: 600px;
+  --unnamed-font-weight-normal: normal;
+  --unnamed-font-weight-medium: medium;
+  --unnamed-font-size-14: 14px;
+  --unnamed-font-size-15: 15px;
+  --unnamed-font-size-16: 16px;
+  --unnamed-font-size-18: 18px;
+  --unnamed-font-size-20: 20px;
+  --unnamed-character-spacing-0: 0px;
+  --unnamed-character-spacing-0-36: 0.36px;
+  --unnamed-character-spacing-0-4: 0.4px;
+  --unnamed-line-spacing-14: 14px;
+  --unnamed-line-spacing-17: 17px;
+  --unnamed-line-spacing-21: 21px;
+  --unnamed-line-spacing-23: 23px;
+  --unnamed-line-spacing-24: 24px;
+  --unnamed-line-spacing-25: 25px;
 }
 
-@media (prefers-color-scheme: dark) {
+/* Character Styles */
+.unnamed-character-style-1 {
+  font-family: var(--unnamed-font-family-poppins);
+  font-style: var(--unnamed-font-style-normal);
+  font-weight: var(--unnamed-font-weight-600);
+  font-size: var(--unnamed-font-size-18);
+  line-height: var(--unnamed-line-spacing-24);
+  letter-spacing: var(--unnamed-character-spacing-0-36);
+  color: var(--unnamed-color-1d1d1b);
+}
+
+.unnamed-character-style-2 {
+  font-family: var(--unnamed-font-family-poppins);
+  font-style: var(--unnamed-font-style-normal);
+  font-weight: var(--unnamed-font-weight-600);
+  font-size: var(--unnamed-font-size-16);
+  line-height: var(--unnamed-line-spacing-25);
+  letter-spacing: var(--unnamed-character-spacing-0);
+  color: var(--unnamed-color-221f1f);
+}
+
+.unnamed-character-style-3 {
+  font-family: var(--unnamed-font-family-poppins);
+  font-style: var(--unnamed-font-style-normal);
+  font-weight: var(--unnamed-font-weight-600);
+  font-size: var(--unnamed-font-size-15);
+  line-height: var(--unnamed-line-spacing-23);
+  letter-spacing: var(--unnamed-character-spacing-0);
+  color: var(--primary);
+}
+
+.unnamed-character-style-4 {
+  font-family: var(--unnamed-font-family-poppins);
+  font-style: var(--unnamed-font-style-normal);
+  font-weight: var(--unnamed-font-weight-600);
+  font-size: var(--unnamed-font-size-20);
+  line-height: var(--unnamed-line-spacing-24);
+  letter-spacing: var(--unnamed-character-spacing-0-4);
+  color: var(--unnamed-color-1d1d1b);
+}
+
+.unnamed-character-style-5 {
+  font-family: var(--unnamed-font-family-poppins);
+  font-style: var(--unnamed-font-style-normal);
+  font-weight: var(--unnamed-font-weight-normal);
+  font-size: var(--unnamed-font-size-18);
+  line-height: var(--unnamed-line-spacing-14);
+  letter-spacing: var(--unnamed-character-spacing-0);
+  color: var(--unnamed-color-181c24);
+}
+
+.unnamed-character-style-6 {
+  font-family: var(--unnamed-font-family-poppins);
+  font-style: var(--unnamed-font-style-normal);
+  font-weight: var(--unnamed-font-weight-normal);
+  font-size: var(--unnamed-font-size-16);
+  line-height: var(--unnamed-line-spacing-25);
+  letter-spacing: var(--unnamed-character-spacing-0);
+  color: var(--unnamed-color-221f1f);
+}
+
+.unnamed-character-style-7 {
+  font-family: var(--unnamed-font-family-poppins);
+  font-style: var(--unnamed-font-style-normal);
+  font-weight: var(--unnamed-font-weight-normal);
+  font-size: var(--unnamed-font-size-14);
+  line-height: var(--unnamed-line-spacing-21);
+  letter-spacing: var(--unnamed-character-spacing-0);
+  color: var(--unnamed-color-221f1f);
+}
+
+.unnamed-character-style-8 {
+  font-family: var(--unnamed-font-family-fira-sans);
+  font-style: var(--unnamed-font-style-normal);
+  font-weight: var(--unnamed-font-weight-medium);
+  font-size: var(--unnamed-font-size-14);
+  line-height: var(--unnamed-line-spacing-17);
+  letter-spacing: var(--unnamed-character-spacing-0);
+  color: var(--unnamed-color-221f1f);
+}
+
+.unnamed-character-style-9 {
+  font-family: var(--unnamed-font-family-fira-sans);
+  font-style: var(--unnamed-font-style-normal);
+  font-weight: var(--unnamed-font-weight-normal);
+  font-size: var(--unnamed-font-size-14);
+  line-height: var(--unnamed-line-spacing-17);
+  letter-spacing: var(--unnamed-character-spacing-0);
+  color: var(--unnamed-color-221f1f);
+}
+
+
+@media only screen and (max-width: 896px) {
+  .img {
+    width: 115px;
+    height: 23px;
+  }
+}
+
+/* @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
 
     --primary-glow: radial-gradient(rgba(1, 65, 255, 0.4), rgba(1, 65, 255, 0));
-    --secondary-glow: linear-gradient(
-      to bottom right,
-      rgba(1, 65, 255, 0),
-      rgba(1, 65, 255, 0),
-      rgba(1, 65, 255, 0.3)
-    );
+    --secondary-glow: linear-gradient(to bottom right,
+        rgba(1, 65, 255, 0),
+        rgba(1, 65, 255, 0),
+        rgba(1, 65, 255, 0.3));
 
     --tile-start-rgb: 2, 13, 46;
     --tile-end-rgb: 2, 5, 19;
-    --tile-border: conic-gradient(
-      #ffffff80,
-      #ffffff40,
-      #ffffff30,
-      #ffffff20,
-      #ffffff10,
-      #ffffff10,
-      #ffffff80
-    );
+    --tile-border: conic-gradient(#ffffff80,
+        #ffffff40,
+        #ffffff30,
+        #ffffff20,
+        #ffffff10,
+        #ffffff10,
+        #ffffff80);
 
     --callout-rgb: 20, 20, 20;
     --callout-border-rgb: 108, 108, 108;
@@ -87,12 +186,9 @@ body {
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
+  background: linear-gradient(to bottom,
       transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
 }
 
 a {
@@ -104,4 +200,4 @@ a {
   html {
     color-scheme: dark;
   }
-}
+} */
