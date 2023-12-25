@@ -19,7 +19,7 @@ const Footer = () => {
                 p={5}
                 mt={3}
                 alignItems={"center"} justifyContent={"center"} container gap={4}>
-                <Typography variant="h4" color="#27325E">
+                <Typography maxWidth={250} variant="h4" color="#27325E">
                     Join the Omniadis family
                 </Typography>
                 <Divider sx={{ display: { xs: 'none', md: 'flex' }, borderBottomWidth: '78px' }} orientation="vertical" color='#C4C4C4'></Divider>
@@ -27,7 +27,17 @@ const Footer = () => {
                     Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
                 </Typography>
                 <TextField
-                    sx={{ xs: "30px", md: "100px" }}
+                    sx={{
+                        ".css-o9k5xi-MuiInputBase-root-MuiOutlinedInput-root ": {
+                            pr: 0,
+                            borderTopRightRadius: 22,
+                            borderTopLeftRadius:5,
+                            borderBottomLeftRadius:5,
+                            borderBottomRightRadius: 22
+                        },
+                        width:447,
+                        backgroundColor: '#FFFFFF'
+                    }}
                     label="your email address.." size='small'
                     InputProps={{
                         endAdornment: (
@@ -39,7 +49,7 @@ const Footer = () => {
                 >
                 </TextField>
             </Grid>
-            <Grid container p={{ md: 15, xs: 5 }} gap={2} >
+            <Grid container mt={10} py={{md:10}} px={{ md: 20, xs: 5 }} gap={2} >
                 <Grid pl={1.5} md={12}>
                     <Image width={205} height={40} src={logoImage} />
                 </Grid>

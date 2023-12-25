@@ -60,24 +60,28 @@ const Orders = () => {
                                             </Typography>
                                         </Grid>
                                         <Grid md={12} xs={12}>
-                                            <Accordion expanded={expanded === `panel${item.id}`} onChange={handleChange(`panel${item.id}`)}>
+                                            <Accordion sx={{
+                                               ".css-1elwnq4-MuiPaper-root-MuiAccordion-root:first-of-type":{backgroundColor:'red',border:"2px solid #E0E0E0",boxShadow:0},
+                                            ".css-1elwnq4-MuiPaper-root-MuiAccordion-root:first-of-type":{borderRadius:20},
+
+                                            }}  expanded={expanded === `panel${item.id}`} onChange={handleChange(`panel${item.id}`)}>
                                                 <AccordionSummary
                                                     expandIcon={<ChevronRightIcon />}
                                                     aria-controls={`panel${item.id}-content`}
                                                     id={`panel${item.id}-header`}
                                                 >
-                                                    <Grid container m={2} gap={1} sx={{ alignItems: 'center', justifyContent: 'space-between' }}>
-                                                            <AvatarGroup sx={{
-                                                                visibility: visibility && id === `panel${item.id}` ? "hidden" : "visible",
-                                                                '.MuiAvatar-root': { width: '40px', height: '40px', fontSize: 15 },
-                                                                ".avatar3": { zIndex: 3, display: { xs: 'none', md: 'block' } },
-                                                                ".avatar2": { zIndex: 2, marginRight: '-10px' },
-                                                                ".avatar1": { zIndex: 1, marginRight: '-10px' },
-                                                            }} max={3}>
-                                                                <Avatar className='avatar1' alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-                                                                <Avatar className='avatar2' alt="Travis Howard" src="/static/images/avatar/2.jpg" />
-                                                                <Avatar className='avatar3' alt="Cindy Baker" src="/static/images/avatar/3.jpg" />
-                                                            </AvatarGroup>
+                                                    <Grid container m={0.1} p={0.5} gap={1} sx={{ alignItems: 'center', justifyContent: 'space-between' }}>
+                                                        <AvatarGroup sx={{
+                                                            visibility: visibility && id === `panel${item.id}` ? "hidden" : "visible",
+                                                            '.MuiAvatar-root': { width: '30px', height: '30px', fontSize: 15 },
+                                                            ".avatar3": { zIndex: 3, display: { xs: 'none', md: 'block' } },
+                                                            ".avatar2": { zIndex: 2, marginRight: '-5px' },
+                                                            ".avatar1": { zIndex: 1, marginRight: '-5px' },
+                                                        }} max={3}>
+                                                            <Avatar className='avatar1' alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+                                                            <Avatar className='avatar2' alt="Travis Howard" src="/static/images/avatar/2.jpg" />
+                                                            <Avatar className='avatar3' alt="Cindy Baker" src="/static/images/avatar/3.jpg" />
+                                                        </AvatarGroup>
                                                         <Grid order={{ md: 1, xs: 1 }}>
                                                             <Typography sx={{ display: { xs: 'none', md: 'block' }, color: '#C4C4C4', fontSize: '12px' }}>Order no</Typography>
                                                             <Typography sx={{ color: '#2B3445', fontSize: '14px' }}>{item.number}</Typography>

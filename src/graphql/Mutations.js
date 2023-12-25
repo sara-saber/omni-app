@@ -102,9 +102,9 @@ mutation requestPassword ($email:String!){
 `
 
 export const CHANGE_PASSWORD = gql`
-mutation changePassword($cuurentPassword:String!,$newPassword:String!){
- changeCustomerPassword(currentPassword: $cuurentPassword, newPassword: $newPassword) {
-    email
-  }
-}
+mutation changePassword($currentPassword:String!,$newPassword:String!){
+  changeCustomerPassword(currentPassword: $currentPassword, newPassword: $newPassword) {
+     email
+   }
+ }
 `

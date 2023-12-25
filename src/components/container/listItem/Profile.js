@@ -1,7 +1,7 @@
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { useEffect, useState } from 'react';
-import { Button, Snackbar, Alert, Typography, Switch, FormControlLabel, TextField } from '@mui/material';
+import { Button, Snackbar, Alert, Typography, Switch, FormControlLabel, TextField, MenuItem } from '@mui/material';
 import { useMutation, useQuery } from '@apollo/client';
 
 import { Get_Customer_Info } from '@/graphql/Query';
@@ -20,15 +20,19 @@ const Profile = () => {
 
     }
 
-    const [customerInfo, setCustomerInfo] = useState(
-        {
-            firstname: data?.customer.firstname,
-            lastname: data?.customer.lastname,
-            email: data?.customer.email,
-            date_of_birth: data?.customer.date_of_birth
+    const [customerInfo, setCustomerInfo] = useState()
 
+    useEffect(() => {
+        if (data && data.customer) {
+            const { firstname, lastname, email, date_of_birth } = data.customer;
+            setCustomerInfo({
+                firstname,
+                lastname,
+                email,
+                date_of_birth
+            });
         }
-    )
+    }, [data]);
 
     const [createCustomerInfo, { data: updatedData }] = useMutation(Post_Update_Customer)
     const handleChange = (e) => {
@@ -39,8 +43,11 @@ const Profile = () => {
         }))
     }
     const updateCustomerInfo = () => {
-        console.log(customerInfo);
+        // console.log(customerInfo);
         createCustomerInfo({ variables: { Customerinfo: customerInfo }, onCompleted: (setOpen(true)) })
+        setTimeout(() => {
+            router.push('profile-information')
+        }, 500)
     }
     function handleClick() {
         setLoading(true);
@@ -62,14 +69,16 @@ const Profile = () => {
                     <Typography variant="h1" fontSize="20px">Profile Information</Typography>
                     <TextField
                         fullWidth
-                        id="outlined-controlled"
                         label="Language"
-                        value="language"
+                        defaultValue="English"
                         select
-                    />
+                    >
+                        <MenuItem>
+                            English
+                        </MenuItem>
+                    </TextField>
                     <TextField
                         fullWidth
-                        id="outlined-controlled"
                         label="First name"
                         value={customerInfo?.firstname}
                         name='firstname'
@@ -78,9 +87,6 @@ const Profile = () => {
                             shrink: true,
                         }}
                     />
-
-
-
                     <TextField
                         value={customerInfo?.lastname}
                         fullWidth
@@ -100,7 +106,7 @@ const Profile = () => {
                         label="Email"
                         type='email'
                         name='email'
-                        onChange={handleChange}
+                        onChange={e => handleChange(e)}
                         InputLabelProps={{
                             shrink: true,
                         }}
@@ -128,7 +134,7 @@ const Profile = () => {
                         />
                     </Grid>
                     <Grid container justifyContent={"space-between"}>
-                        <Button type='submit' sx={{ fontSize: 11, width: '103px', borderRadius: "22px", backgroundColor: "#143E7D", color: "#fff" }}>update</Button>
+                        <Button variant='contained' type='submit' sx={{ fontSize: 11, width: '103px', borderRadius: "22px", backgroundColor: "#143E7D", color: "#fff" }}>update</Button>
                         <Button onClick={() => router.push("change-password")} sx={{ fontSize: 11, borderRadius: "22px", border: 'solid 1px black', backgroundColor: "white", color: "black" }}>Change Password</Button>
                         <Button sx={{ fontSize: 11, borderRadius: "22px", border: 'solid 1px black', backgroundColor: "white", color: "black" }}>Change email</Button>
                     </Grid>

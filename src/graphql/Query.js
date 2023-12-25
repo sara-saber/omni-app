@@ -1,8 +1,39 @@
 import { gql } from "@apollo/client";
 
+export const Get_Products = gql`
 
+query getProducts
+{
+  products(
+    search: ""
+    filter: {}
+    pageSize: 20
+    currentPage: 2
+    sort: {}
+  ) {
+    
+    items {
+      stock_status
+      id
+      name
+      sku
+      brand
+      image{
+        url
+        thumbnail_url
+      }
+      small_image{
+        thumbnail_url
+      }
+      
+    }
+  
+    total_count
+  }
+}
+`
 
-export const Get_Categories=gql`
+export const Get_Categories = gql`
 query getCategories{
   categories(filters: {}, pageSize:6, currentPage: 1) {
     items {

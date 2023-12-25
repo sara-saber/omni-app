@@ -14,12 +14,13 @@ import { Stack, InputAdornment, Grid, ListItemIcon, MenuItem, Menu, Typography, 
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { useQuery } from '@apollo/client';
-import { Get_Categories } from '@/graphql/Query';
+import { Get_Categories, Get_Customer } from '@/graphql/Query';
 import logoImage from "../../images/logo1.png"
 import Image from 'next/image';
 
 const Header = () => {
     const { data: categoryData, loading: categoryLoading } = useQuery(Get_Categories)
+    const { data } = useQuery(Get_Customer)
     const [navItems, setNav] = useState()
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
@@ -44,7 +45,7 @@ const Header = () => {
                     WITH PURCHASE OVER CHF 35 BEFORE TAXES; CONNECT TO SEE YOUR PERSONAL BENEFITS
                 </Typography>
             </Box>
-            <Grid pl={{md:7,xs:0}} alignItems={"center"} mt={4} container gap={1} justifyContent={'space-between'}>
+            <Grid pl={{ md: 7, xs: 0 }} alignItems={"center"} mt={4} container gap={1} justifyContent={'space-between'}>
                 <Button sx={{ display: { xs: 'block', md: 'none' } }} >
                     <MenuIcon fontSize='large' />
                 </Button>
@@ -88,7 +89,8 @@ const Header = () => {
                     }}
                         onMouseDown={(e) => handleClose(e)}
                         onMouseOver={(e) => handleClick(e)} startIcon={<PermIdentityOutlinedIcon />}>
-                        sign in
+                        {data?.customer ? data?.customer.firstname : "Sign In"
+                        }
                     </Button>
 
                 </Box>
@@ -109,53 +111,60 @@ const Header = () => {
                 </Box>
 
             </Grid>
-            <Menu
-                anchorEl={anchorEl}
-                id="account-menu"
-                open={open}
-                onClose={handleClose}
-                onClick={handleClose}
-                transformOrigin={{ horizontal: 'right', vertical: 'top' }}
-                anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
-            >
-                <MenuItem onClick={() => (handleClose, router.push('/my-account/dashboard'))}>
-                    <ListItemIcon>
-                        <SpaceDashboardOutlinedIcon fontSize="small" />
-                    </ListItemIcon>
-                    My Dashboard
-                </MenuItem>
-                <MenuItem onClick={() => (handleClose, router.push('/my-account/orders'))}>
-                    <ListItemIcon>
-                        <ShoppingBagOutlinedIcon fontSize="small" />
-                    </ListItemIcon>
-                    My Orders
-                </MenuItem>
-                <MenuItem onClick={() => (handleClose, router.push('/my-account/addresses'))}>
-                    <ListItemIcon>
-                        <FmdGoodIcon fontSize="small" />
-                    </ListItemIcon>
-                    Addresses
-                </MenuItem>
-                <MenuItem onClick={() => (handleClose, router.push('/my-account/wishlist'))}>
-                    <ListItemIcon>
-                        <FavoriteBorderIcon fontSize="small" />
-                    </ListItemIcon>
-                    My Wishlist
-                </MenuItem>
-                <MenuItem onClick={() => (handleClose, router.push('/my-account/profile-information'))}>
-                    <ListItemIcon>
-                        <PermIdentityIcon fontSize="small" />
-                    </ListItemIcon>
-                    Profile Information
-                </MenuItem>
-                <Divider />
-                <MenuItem onClick={() => (handleClose, router.push('/my-account/logout'))}>
-                    <ListItemIcon>
-                        <LogoutIcon fontSize="small" />
-                    </ListItemIcon>
-                    Logout
-                </MenuItem>
-            </Menu>
+
+
+            {data?.customer ?
+                <Menu
+                    anchorEl={anchorEl}
+                    id="account-menu"
+                    open={open}
+                    onClose={handleClose}
+                    onClick={handleClose}
+                    transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+                    anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+                >
+                    <MenuItem onClick={() => (handleClose, router.push('/my-account/dashboard'))}>
+                        <ListItemIcon>
+                            <SpaceDashboardOutlinedIcon fontSize="small" />
+                        </ListItemIcon>
+                        My Dashboard
+                    </MenuItem>
+                    <MenuItem onClick={() => (handleClose, router.push('/my-account/orders'))}>
+                        <ListItemIcon>
+                            <ShoppingBagOutlinedIcon fontSize="small" />
+                        </ListItemIcon>
+                        My Orders
+                    </MenuItem>
+                    <MenuItem onClick={() => (handleClose, router.push('/my-account/addresses'))}>
+                        <ListItemIcon>
+                            <FmdGoodIcon fontSize="small" />
+                        </ListItemIcon>
+                        Addresses
+                    </MenuItem>
+                    <MenuItem onClick={() => (handleClose, router.push('/my-account/wishlist'))}>
+                        <ListItemIcon>
+                            <FavoriteBorderIcon fontSize="small" />
+                        </ListItemIcon>
+                        My Wishlist
+                    </MenuItem>
+                    <MenuItem onClick={() => (handleClose, router.push('/my-account/profile-information'))}>
+                        <ListItemIcon>
+                            <PermIdentityIcon fontSize="small" />
+                        </ListItemIcon>
+                        Profile Information
+                    </MenuItem>
+                    <Divider />
+                    <MenuItem onClick={() => (handleClose, router.push('/my-account/logout'))}>
+                        <ListItemIcon>
+                            <LogoutIcon fontSize="small" />
+                        </ListItemIcon>
+                        Logout
+                    </MenuItem>
+                </Menu>
+                :
+                <></>
+            }
+
             <Stack pl={7} sx={{ mt: '30px', display: { xs: 'none', md: 'flex' } }}
                 direction='row'
                 divider={<Divider orientation="vertical" flexItem />}

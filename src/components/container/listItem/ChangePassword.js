@@ -1,4 +1,4 @@
-import { Button, Grid, InputAdornment, TextField, Typography } from "@mui/material";
+import { Snackbar, Alert, Button, Grid, InputAdornment, TextField, Typography } from "@mui/material";
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import { useMutation } from "@apollo/client";
 import { useState } from "react";
@@ -12,10 +12,12 @@ const ChangePassword = () => {
     const [confirmPassword, setConfirmPassword] = useState()
     const [passwordError, setError] = useState(false)
     const [showPassword, setShowPassword] = useState(false)
+    const [openSnackbar, setOpen] = useState(false)
+
     const [id, setId] = useState()
     const router = useRouter()
     const handleConfirm = () => {
-        console.log(confirmPassword, newPassword);
+        // console.log(confirmPassword, newPassword);
         confirmPassword !== newPassword ?
             setError(false) :
             setError(true)
@@ -24,15 +26,22 @@ const ChangePassword = () => {
         setId(value)
         setShowPassword(!showPassword)
     }
+    const handleClose = () => {
+        setTimeout(() => {
+            setOpen(false)
+        }, 100)
+
+    }
     const changePassword = (e) => {
         e.preventDefault()
-        console.log(currentPassword, newPassword);
+        console.log(currentPassword + " " + newPassword);
         confirmPassword === newPassword ?
             password({
                 variables: {
                     currentPassword: currentPassword, newPassword: newPassword
-                }
-            })
+                },
+                onCompleted: (setOpen(true))
+            }).then(router.push("profile-information"))
             :
             setError(true)
     }
@@ -45,8 +54,9 @@ const ChangePassword = () => {
                 <TextField
                     fullWidth
                     label="current Password"
-                    type={showPassword && id==='item1' ? 'text' : 'password'}
-                    onChange={(e) => (setNewPassword(e.target.value))}
+                    value={currentPassword}
+                    type={showPassword && id === 'item1' ? 'text' : 'password'}
+                    onChange={(e) => (setCurrentPassword(e.target.value))}
                     InputProps={{
                         endAdornment: (
                             <InputAdornment position="start">
@@ -64,9 +74,8 @@ const ChangePassword = () => {
                 <TextField
                     fullWidth
                     error={passwordError}
-                    id="outlined-controlled"
                     label="new Password"
-                    type={showPassword && id==='item2' ? 'text' : 'password'}
+                    type={showPassword && id === 'item2' ? 'text' : 'password'}
                     onChange={(e) => (setNewPassword(e.target.value), handleConfirm())}
                     InputProps={{
                         endAdornment: (
@@ -85,9 +94,8 @@ const ChangePassword = () => {
                 <TextField
                     fullWidth
                     error={passwordError}
-                    id="outlined-controlled"
                     label="confirm new password"
-                    type={showPassword && id==='item3' ? 'text' : 'password'}
+                    type={showPassword && id === 'item3' ? 'text' : 'password'}
                     // color={passwordError ? 'success' : ''}
                     onChange={(e) => (setConfirmPassword(e.target.value), handleConfirm())}
                     InputProps={{
@@ -115,7 +123,13 @@ const ChangePassword = () => {
 
 
             </Grid>
+            <Snackbar onClose={handleClose} anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }} open={openSnackbar} autoHideDuration={1000} >
+                <Alert severity="success" sx={{ width: '100%' }}>
+                    your Information was updated!
+                </Alert>
+            </Snackbar>
         </form>
+
     );
 }
 

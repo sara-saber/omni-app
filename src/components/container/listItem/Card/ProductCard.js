@@ -7,7 +7,7 @@ import Image from 'next/image';
 const ProductCard = (props) => {
     const stockStatus = useState(props?.product.stock_status)
     return (
-        <Card key={props.product} sx={{ width: { md: "259px", xs: "150px" }, height: "451px", p: 3 }}>
+        <Card key={props?.product} sx={{ width: { md: "259px", xs: "150px" }, height: "451px", p: 3 }}>
             {console.log(props?.product)}
             <Grid md={12} container justifyContent={"center"}>
                 <img
