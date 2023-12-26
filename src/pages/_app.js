@@ -5,6 +5,19 @@ import { ApolloClient, createHttpLink, InMemoryCache, ApolloLink, ApolloProvider
 import { setContext } from '@apollo/client/link/context';
 import { Box, Container } from '@mui/material'
 import { PHASE_PRODUCTION_BUILD } from 'next/dist/shared/lib/constants'
+import { Poppins, Roboto, Fira_Sans } from '@next/font/google'
+const fira_sans = Fira_Sans({
+  subsets: ['latin'],
+  weight: '600',
+})
+// const roboto = Roboto({
+//   subsets: ['latin'],
+//   weight: ['400', '700'],
+// })
+const popins = Poppins({
+  subsets: ['latin'],
+  weight: ['300'],
+})
 export default function App({ Component, pageProps }) {
 
   const ssrMode = typeof window === "undefined"
@@ -20,7 +33,7 @@ export default function App({ Component, pageProps }) {
       window.location.origin + "/api/graphql"
 
   const httpLink = createHttpLink({
-    uri:  graphqlUri
+    uri: graphqlUri
   });
   const authLink = setContext((_, { headers }) => {
     const token = localStorage.getItem('token');
@@ -41,11 +54,13 @@ export default function App({ Component, pageProps }) {
 
   return (
     <ApolloProvider client={client} >
-      <Container maxWidth="xl">
+      <main className={popins.className} >
         <Header />
-        <Component {...pageProps} />
+        <Container maxWidth="xl">
+          <Component {...pageProps} />
+        </Container>
         <Footer />
-      </Container>
+      </main>
     </ApolloProvider>
   )
 

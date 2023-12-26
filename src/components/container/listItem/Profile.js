@@ -23,8 +23,8 @@ const Profile = () => {
     const [customerInfo, setCustomerInfo] = useState()
 
     useEffect(() => {
-        if (data && data.customer) {
-            const { firstname, lastname, email, date_of_birth } = data.customer;
+        if (data && data?.customer) {
+            const { firstname, lastname, email, date_of_birth } = data?.customer;
             setCustomerInfo({
                 firstname,
                 lastname,
@@ -64,8 +64,24 @@ const Profile = () => {
             {dataLoading ?
                 console.log("is loading")
                 :
-                <Grid md={5} container gap={2}>
-                    {console.log(data.customer)}
+                <Grid md={5} container gap={2}
+                    sx={{
+                        '.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input':{
+                            padding:1.4
+                        }
+                        ,
+                        '.css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input': {
+                            padding: 1.4
+
+
+                        },
+                        '.css-md26zr-MuiInputBase-root-MuiOutlinedInput-root': {
+                            borderRadius: '6px'
+                        },
+
+                    }}
+                >
+                    {console.log(data?.customer)}
                     <Typography variant="h1" fontSize="20px">Profile Information</Typography>
                     <TextField
                         fullWidth
@@ -126,17 +142,49 @@ const Profile = () => {
                     <Grid container alignItems={"center"} justifyContent={"space-between"}>
                         <Typography>Subscribe to our newletter</Typography>
                         <Switch
-                            sx={{ width: 50 }}
+                            sx={{
+                                ".css-5ryogn-MuiButtonBase-root-MuiSwitch-switchBase.Mui-checked ": {
+                                    color: "#17468F"
+                                },
+                                width: 50
+                            }}
                             size='medium'
                             checked={loading}
                             onChange={() => setLoading(!loading)}
-                            color="primary"
                         />
                     </Grid>
                     <Grid container justifyContent={"space-between"}>
-                        <Button variant='contained' type='submit' sx={{ fontSize: 11, width: '103px', borderRadius: "22px", backgroundColor: "#143E7D", color: "#fff" }}>update</Button>
-                        <Button onClick={() => router.push("change-password")} sx={{ fontSize: 11, borderRadius: "22px", border: 'solid 1px black', backgroundColor: "white", color: "black" }}>Change Password</Button>
-                        <Button sx={{ fontSize: 11, borderRadius: "22px", border: 'solid 1px black', backgroundColor: "white", color: "black" }}>Change email</Button>
+                        <Button variant='contained' type='submit' sx={{
+                            '&:hover': {
+                                backgroundColor: '#27325E'
+                            },
+                            textTransform: 'none',
+                            height: '40px',
+                            fontSize: 13, width: '113px', borderRadius: "22px", backgroundColor: "#143E7D", color: "#fff"
+                        }}>Update</Button>
+                        <Button onClick={() => router.push("change-password")}
+                            sx={{
+                                '&:hover': {
+                                    backgroundColor: '#143E7D',
+                                    color: '#FFFFFF'
+                                },
+                                textTransform: 'none',
+                                width: '156px',
+                                height: '40px',
+                                fontSize: 13,
+                                borderRadius: "22px", border: 'solid 1px black', backgroundColor: "white", color: "black"
+                            }}
+                        >Change Password</Button>
+                        <Button onClick={() => router.push("change-email")} sx={{
+                            '&:hover': {
+                                backgroundColor: '#143E7D',
+                                color: '#FFFFFF'
+                            },
+                            textTransform: 'none',
+                            width: '100px',
+                            height: '40px',
+                            fontSize: 11, borderRadius: "22px", border: 'solid 1px black', backgroundColor: "white", color: "black"
+                        }}>Change email</Button>
                     </Grid>
                     <Snackbar onClose={handleClose} anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }} open={openSnackbar} autoHideDuration={1000} >
                         <Alert severity="success" sx={{ width: '100%' }}>

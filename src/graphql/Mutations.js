@@ -108,3 +108,12 @@ mutation changePassword($currentPassword:String!,$newPassword:String!){
    }
  }
 `
+export const CHANGE_EMAILL=gql`
+mutation changeEmail($Email:String!,$Password:String!){
+  updateCustomerEmail(email: $Email, password: $Password) {
+     customer {
+     id
+      }
+  }
+}
+`

@@ -1,25 +1,20 @@
 
-import { Sheet } from "@mui/joy";
-import * as React from 'react';
 import { Button, Box, TextField, List, ListItem, Divider, Grid, Link, Typography, InputAdornment } from "@mui/material";
 import FacebookRoundedIcon from '@mui/icons-material/FacebookRounded';
 import logoImage from "../../images/logo2.png"
 import Image from "next/image";
+import { useState } from "react";
 const Footer = () => {
-    const [color, setColor] = React.useState('primary');
+    const [color, setColor] = useState('primary');
     return (
-        <Sheet
-            variant="solid"
-            sx={{
-                ...(color !== 'neutral' && {
-                    bgcolor: color === 'primary' ? '#27325E' : undefined,
-                })
-            }}>
-            <Grid backgroundColor="#F8FAFD"
-                p={5}
+        <Grid>
+            <Grid
+                px={{ md: '160px', xs: 0 }}
+                backgroundColor="#F8FAFD"
+                p={3}
                 mt={3}
-                alignItems={"center"} justifyContent={"center"} container gap={4}>
-                <Typography maxWidth={250} variant="h4" color="#27325E">
+                alignItems={"center"} container gap={11}>
+                <Typography maxWidth={274} variant="h4" fontWeight={700} color="var(--dark-blue)">
                     Join the Omniadis family
                 </Typography>
                 <Divider sx={{ display: { xs: 'none', md: 'flex' }, borderBottomWidth: '78px' }} orientation="vertical" color='#C4C4C4'></Divider>
@@ -31,11 +26,11 @@ const Footer = () => {
                         ".css-o9k5xi-MuiInputBase-root-MuiOutlinedInput-root ": {
                             pr: 0,
                             borderTopRightRadius: 22,
-                            borderTopLeftRadius:5,
-                            borderBottomLeftRadius:5,
+                            borderTopLeftRadius: 5,
+                            borderBottomLeftRadius: 5,
                             borderBottomRightRadius: 22
                         },
-                        width:447,
+                        width: 447,
                         backgroundColor: '#FFFFFF'
                     }}
                     label="your email address.." size='small'
@@ -49,7 +44,13 @@ const Footer = () => {
                 >
                 </TextField>
             </Grid>
-            <Grid container mt={10} py={{md:10}} px={{ md: 20, xs: 5 }} gap={2} >
+            <Grid
+                sx={{
+                    '.css-1p823my-MuiListItem-root': { color: '#fff' },
+                    '.css-19fvvo5-MuiGrid-root': { color: '#fff' },
+                    '.css-1252dp0-MuiListItem-root': { color: '#fff' }
+                }}
+                backgroundColor={'#27325E'} container mt={2} py={{ md: 7 }} px={{ md: 20, xs: 5 }} gap={2} >
                 <Grid pl={1.5} md={12}>
                     <Image width={205} height={40} src={logoImage} />
                 </Grid>
@@ -59,7 +60,7 @@ const Footer = () => {
                     </ListItem>
                 </Grid>
                 <Grid md={2} xs={5}>
-                    <List >
+                    <List>
                         <ListItem>
                             Alimentaire
                         </ListItem>
@@ -102,7 +103,7 @@ const Footer = () => {
                 </Grid>
                 <Grid md={2} xs={12}>
                     <List>
-                        <Typography>SOCIAL MEDIA</Typography>
+                        <Typography color={'#fff'}>SOCIAL MEDIA</Typography>
                         <ListItem justifyContent="space-between">
                             <FacebookRoundedIcon />
                             <FacebookRoundedIcon />
@@ -110,7 +111,7 @@ const Footer = () => {
                     </List>
 
                 </Grid>
-                <Grid md={12} xs={10}>
+                <Grid mt={{ md: 8, xs: 0 }} md={12} xs={10}>
                     <Divider color="#fff" sx={{ my: 2 }} />
                 </Grid>
                 <Grid container gap={5} justifyContent={"center"} md={12} xs={12}>
@@ -129,12 +130,12 @@ const Footer = () => {
                     </Link>
                 </Grid>
                 <Grid m={0} textAlign={"center"} md={12} xs={12} >
-                    <Typography sx={{ fontSize: "14px" }} textAlign="center">
+                    <Typography color={'#fff'} sx={{ fontSize: "14px" }} textAlign="center">
                         Copyright 2023 © Omniadis. Inc. All rights reserved.
                     </Typography>
                 </Grid>
             </Grid>
-        </Sheet >
+        </Grid>
     );
 }
 

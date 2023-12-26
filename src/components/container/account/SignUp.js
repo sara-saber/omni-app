@@ -1,8 +1,4 @@
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Typography from '@mui/joy/Typography';
-import Button from '@mui/joy/Button';
-import { Grid, MenuItem, TextField } from '@mui/material';
+import { Checkbox, Typography, Grid, MenuItem, TextField, Button } from '@mui/material';
 import InputAdornment from '@mui/material/InputAdornment';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import { use, useEffect, useState } from 'react';
@@ -74,8 +70,27 @@ const SignUp = () => {
             e.preventDefault()
             createNewCustomer()
         }}>
-            <Grid container gap={2} justifyContent={'center'}>
-                <Grid md={12}>
+
+            <Grid container md={12} xs={12} gap={2}
+                sx={{
+                    '.css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input': {
+                        padding: 1.5
+                    },
+                    '.css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root': {
+                        width: '100'
+                    },
+                    '.css-nxo287-MuiInputBase-input-MuiOutlinedInput-input': {
+                        padding: 1.5
+                    },
+                    '.css-1d3z3hw-MuiOutlinedInput-notchedOutline': {
+                        borderRadius: '6px'
+                    },
+                    '.css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root': {
+                        fontSize: '0.9rem'
+                    }
+                }}
+            >
+                <Grid fullWidth>
                     <Typography level="text-sm">You are looking for the best products in order to make a better version of yourself.</Typography>
                 </Grid>
                 <TextField
@@ -84,20 +99,33 @@ const SignUp = () => {
                     }}
                     fullWidth
                     required
+                    select
                     id="outlined-controlled"
-                    label="First Name"
-                    name='firstname'
-                    onChange={handleChange}
+                    label="Language"
                 />
 
-                <TextField
-                    fullWidth
-                    id="outlined-controlled"
-                    label="Last Name"
-                    name="lastname"
-                    onChange={handleChange}
-                />
+                <Grid container gap={{ md: 1, xs: 0.3 }} md={12}>
+                    <Grid md={5.89} xs={5.9}>
+                        <TextField
+                            fullWidth
+                            required
+                            id="outlined-controlled"
+                            label="First Name"
+                            name='firstname'
+                            onChange={handleChange}
+                        />
+                    </Grid>
+                    <Grid md={5.89} xs={5.9}>
+                        <TextField
+                            fullWidth
+                            id="outlined-controlled"
+                            label="Last Name"
+                            name="lastname"
+                            onChange={handleChange}
+                        />
+                    </Grid>
 
+                </Grid>
                 <TextField
                     fullWidth
                     id="outlined-controlled"
@@ -139,27 +167,30 @@ const SignUp = () => {
                     id="outlined-controlled"
                     label="Address line 2 (optional)"
                 />
-                <Grid md={5.6}>
-                    <TextField
-                        required
-                        name='city'
-                        onChange={handleChange}
-                        id="outlined-controlled"
-                        label="City"
-                    />
 
-                </Grid>
-                <Grid md={5.9}>
+                <Grid container gap={{ md: 1, xs: 0.3 }} md={12}>
+                    <Grid md={5.89} xs={5.9}>
+                        <TextField
+                            fullWidth
+                            required
+                            name='city'
+                            onChange={handleChange}
+                            id="outlined-controlled"
+                            label="City"
+                        />
+                    </Grid>
+                    <Grid md={5.89} xs={5.9}>
+                        <TextField
+                            fullWidth
+                            required
+                            id="outlined-controlled"
+                            label="zip Code"
+                            name='postcode'
+                            onChange={handleChange}
+                            type='number'
+                        />
 
-                    <TextField
-                        required
-                        id="outlined-controlled"
-                        label="zip Code"
-                        name='postcode'
-                        onChange={handleChange}
-                        type='number'
-                    />
-
+                    </Grid>
                 </Grid>
 
                 <TextField
@@ -219,25 +250,22 @@ const SignUp = () => {
 
 
                 />
-                {/* <Grid >
-                    <Checkbox defaultChecked />
-                    <Typography>
+                <Grid container >
+                    <Checkbox sx={{ alignItems: "start" }} defaultChecked />
+                    <Typography className='unnamed-character-style-9 ' pt={1} maxWidth={400}>
                         By selecting Create account, you are confirming that you have read and agree to eec.inc Terms of Use and Privacy Policy.
                     </Typography>
-                </Grid> */}
-                <Grid container alignItems={'center'} gap={2}>
-
-                    <FormControlLabel
-                        control={<Checkbox defaultChecked />}
-
-                        label="By selecting Create account, you are confirming that you have read and agree to eec.inc Terms of Use and Privacy Policy." />
-
-                    <FormControlLabel
-                        control={<Checkbox defaultChecked />}
-                        label="Subscribe to our newsletter and receive promotions based on products added to my cart." />
-
                 </Grid>
-                <Button fullWidth type='submit' sx={{ height: 50, borderRadius: "25px", backgroundColor: "#143E7D" }}>Create account</Button>
+
+                <Grid container alignContent={"center"} justifyContent={"space-between"} >
+                    <Checkbox defaultChecked></Checkbox>
+                    <Typography className='unnamed-character-style-9 ' pt={2} width={400}>
+                        Subscribe to our newsletter and receive promotions based on products added to my cart.   </Typography>
+                </Grid>
+                <Button variant="contained" fullWidth type='submit' sx={{
+                    textTransform: 'none',
+                    height: 50, borderRadius: "25px", backgroundColor: '#17468F'
+                }}>Create account</Button>
 
             </Grid>
         </form >

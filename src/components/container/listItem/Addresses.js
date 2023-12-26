@@ -1,12 +1,12 @@
-import Grid from '@mui/material/Grid';
-import Card from '@mui/joy/Card';
+
 import ModeEditOutlineOutlinedIcon from '@mui/icons-material/ModeEditOutlineOutlined';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
-import {Typography, Button, Link } from '@mui/material';
+import { Card, Grid, Typography, Button, Link, Box } from '@mui/material';
 import { useEffect, useState } from 'react';
 import SideBarDrawer from './Drawer/SidebarDrawer';
 import { useQuery } from '@apollo/client';
 import { Get_Customer_Addresses } from '@/graphql/Query';
+import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 
 
 const Addresses = () => {
@@ -20,10 +20,8 @@ const Addresses = () => {
         <Grid container gap={2} >
             {/* <SideBarDrawer openDrawer={openDrawer} ></SideBarDrawer> */}
             {console.log(data?.customer?.addresses)}
-            <Grid md={6}>
+            <Grid container justifyContent={'space-between'} md={12}>
                 <Typography>Addresses</Typography>
-            </Grid>
-            <Grid textAlign='end' md={5} xs={12}>
                 <Button
                     sx={{
                         borderRadius: '22px',
@@ -37,10 +35,37 @@ const Addresses = () => {
                     add new addresses
                 </Button>
             </Grid>
-           
-            {data?.customer.addresses.map((item) => (
-                <Grid md={12} xs={12}>
-                    <Card key={item.id}>
+
+            <Grid container gap={1} md={12}>
+                <Box width={371} backgroundColor='#F8FAFD' py={1} px={3} border='2px solid #E0E0E0' borderRadius={2}>
+                    <Typography>
+                        {data?.customer?.addresses[0].firstname}  {data?.customer?.addresses[0].lastname}
+                    </Typography>
+                    <Typography level="title-md" >
+                        {data?.customer?.addresses[0].street[0]}
+                    </Typography>
+                    <Grid container justifyContent={'space-between'}>
+                        <Typography level="title-lg">Data Detailsefault shipping</Typography>
+                        <EditOutlinedIcon></EditOutlinedIcon>
+                    </Grid>
+                </Box>
+                <Box width={371} backgroundColor='#F8FAFD' py={1} px={3} border='2px solid #E0E0E0' borderRadius={2}>
+                    <Typography>
+                        {data?.customer?.addresses[0].firstname}  {data?.customer?.addresses[0].lastname}
+                    </Typography>
+                    <Typography level="title-md" >
+                        {data?.customer?.addresses[0].street[0]}
+                    </Typography>
+                    <Grid container justifyContent={'space-between'}>
+                        <Typography level="title-lg">Data Detailsefault shipping</Typography>
+                        <EditOutlinedIcon></EditOutlinedIcon>
+                    </Grid>
+                </Box>
+            </Grid>
+
+            <Grid md={12}>
+                {data?.customer.addresses.map((item) => (
+                    <Box py={1} px={6} border='2px solid #E0E0E0' borderRadius={2}>
                         <Grid container alignItems='center'>
                             <Grid md={3}>
                                 <Typography level="title-md" fontSize={16}>{item?.firstname}</Typography>
@@ -51,8 +76,8 @@ const Addresses = () => {
                             <Grid md={3}>
                                 <Typography level="title-lg" fontSize={16}>{item.postcode}</Typography>
                             </Grid>
-                            <Grid md={3}>
-                                <Link pl={2}>
+                            <Grid textAlign={'right'} md={3}>
+                                <Link  pl={2}>
                                     <ModeEditOutlineOutlinedIcon />
                                 </Link>
                                 <Link color='#EB1C23' pl={2}>
@@ -60,9 +85,9 @@ const Addresses = () => {
                                 </Link>
                             </Grid>
                         </Grid>
-                    </Card>
-                </Grid>
-            ))}
+                    </Box>
+                ))}
+            </Grid>
             <SideBarDrawer customer={data?.customer} SideBarDrawer drawer={drawer} setDrawer={setDrawer}  ></SideBarDrawer>
         </Grid >
 

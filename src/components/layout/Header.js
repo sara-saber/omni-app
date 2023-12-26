@@ -45,12 +45,12 @@ const Header = () => {
                     WITH PURCHASE OVER CHF 35 BEFORE TAXES; CONNECT TO SEE YOUR PERSONAL BENEFITS
                 </Typography>
             </Box>
-            <Grid pl={{ md: 7, xs: 0 }} alignItems={"center"} mt={4} container gap={1} justifyContent={'space-between'}>
+            <Grid px={{ md: '90px', xs: 0 }} alignItems={"center"} mt={4} container gap={1} justifyContent={'space-between'}>
                 <Button sx={{ display: { xs: 'block', md: 'none' } }} >
                     <MenuIcon fontSize='large' />
                 </Button>
-                <Image className='img' width={200} height={40} src={logoImage} />
-                <TextField label="search" size='small' fullwidth sx={{ display: { xs: 'none', md: 'flex' }, width: { md: '589px', xs: '100px' } }}
+                <Image onClick={()=>{router.push('dashboard')}} className='img' width={200} height={40} src={logoImage} />
+                <TextField  label="search" size='small' fullwidth sx={{ display: { xs: 'none', md: 'flex' }, width: { md: '589px', xs: '100px' } }}
                     InputProps={{
                         endAdornment: (
                             <InputAdornment position="start">
@@ -60,12 +60,14 @@ const Header = () => {
                     }}
                 >
                 </TextField>
-                <Box justifyContent='space-between' sx={{ display: { xs: 'none', md: 'block' } }}>
+                <Box  justifyContent='space-between' sx={{ display: { xs: 'none', md: 'block' } }}>
                     <Button sx={{
                         '&:hover': {
                             backgroundColor: '#fff',
                             boxShadow: 'none',
                         },
+                        textTransform: 'none',
+                        font:'normal 15px/24px',
                         color: '#2B3445'
                     }} startIcon={<CompareArrowsOutlinedIcon />}>
                         Compare
@@ -76,7 +78,9 @@ const Header = () => {
                             backgroundColor: '#fff',
                             boxShadow: 'none',
                         },
-                        ml: '20px', color: '#2B3445'
+                        textTransform: 'none',
+                        ml: '10px', color: '#2B3445',
+                        font:'normal 15px/24px'
                     }} startIcon={<LocalMallOutlinedIcon />}>
                         Cart
                     </Button>
@@ -85,7 +89,8 @@ const Header = () => {
                         '&:hover': {
                             backgroundColor: '#fff',
                             boxShadow: 'none',
-                        }, ml: '20px', color: '#2B3445'
+                        }, ml: '10px', color: '#2B3445', textTransform: 'none',
+                        font:'normal 15px/24px'
                     }}
                         onMouseDown={(e) => handleClose(e)}
                         onMouseOver={(e) => handleClick(e)} startIcon={<PermIdentityOutlinedIcon />}>
@@ -147,9 +152,9 @@ const Header = () => {
                         </ListItemIcon>
                         My Wishlist
                     </MenuItem>
-                    <MenuItem onClick={() => (handleClose, router.push('/my-account/profile-information'))}>
+                    <MenuItem  onClick={() => (handleClose, router.push('/my-account/profile-information'))}>
                         <ListItemIcon>
-                            <PermIdentityIcon fontSize="small" />
+                            <PermIdentityIcon  />
                         </ListItemIcon>
                         Profile Information
                     </MenuItem>
@@ -165,16 +170,18 @@ const Header = () => {
                 <></>
             }
 
-            <Stack pl={7} sx={{ mt: '30px', display: { xs: 'none', md: 'flex' } }}
+            <Stack px={{ md: '90px', xs: 0 }} sx={{ mt: '30px', display: { xs: 'none', md: 'flex' } }}
                 direction='row'
                 divider={<Divider orientation="vertical" flexItem />}
                 spacing={2}>
                 {categoryData?.categories.items && categoryData?.categories.items.map((item) => (
-                    <Button bor key={item} sx={{
+                    <Button letterSpacing={'var(--unnamed-character-spacing-0)'} key={item} sx={{
                         '&:hover': {
                             backgroundColor: '#fff',
                             boxShadow: 'none',
-                        }, height: '21px', color: '#2B3445'
+                        }, height: '21px', color: '#2B3445',
+                        font: 'normal normal normal 15px/23px Poppins',
+                        textTransform: 'none'
                     }} endIcon={item.children_count > 0 ? <KeyboardArrowDownOutlinedIcon /> : <></>}>
                         {item.name}
                     </Button>

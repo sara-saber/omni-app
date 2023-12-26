@@ -12,6 +12,7 @@ import { useEffect, useState } from "react";
 import { useQuery } from "@apollo/client";
 import { Get_Customer } from "@/graphql/Query";
 import ChangePassword from "@/components/container/listItem/ChangePassword";
+import ChangeEmail from "@/components/container/listItem/ChangeEmail";
 const ContainerPage = () => {
     const [customer, setCustomer] = useState()
     const router = useRouter()
@@ -41,6 +42,9 @@ const ContainerPage = () => {
             break;
         case "change-password":
             contentToRender = <ChangePassword />;
+            break;
+        case "change-email":
+            contentToRender = <ChangeEmail/>;
             break;
         case "logout":
             logout()

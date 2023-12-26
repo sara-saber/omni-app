@@ -22,9 +22,16 @@ const ChangePassword = () => {
             setError(false) :
             setError(true)
     }
-    const handlePasswordIcon = (value) => {
-        setId(value)
-        setShowPassword(!showPassword)
+    const handlePasswordIcon = (id, value) => {
+        if (value === showPassword) {
+            // console.log(showPassword)
+        }
+        else {
+            setShowPassword(!showPassword)
+            setId(id)
+            // console.log(value);
+            // console.log(showPassword)
+        }
     }
     const handleClose = () => {
         setTimeout(() => {
@@ -62,9 +69,9 @@ const ChangePassword = () => {
                             <InputAdornment position="start">
                                 {
                                     showPassword && id === "item1" ?
-                                        <VisibilityOutlinedIcon onClick={() => handlePasswordIcon('item1')} />
+                                        <VisibilityOutlinedIcon onClick={() => handlePasswordIcon('item1', false)} />
                                         :
-                                        <VisibilityOffIcon onClick={() => handlePasswordIcon('item1')} />
+                                        <VisibilityOffIcon onClick={() => handlePasswordIcon('item1', true)} />
                                 }
 
                             </InputAdornment>
@@ -82,9 +89,9 @@ const ChangePassword = () => {
                             <InputAdornment position="start">
                                 {
                                     showPassword && id === "item2" ?
-                                        <VisibilityOutlinedIcon onClick={() => handlePasswordIcon('item2')} />
+                                        <VisibilityOutlinedIcon onClick={() => handlePasswordIcon('item2', false)} />
                                         :
-                                        <VisibilityOffIcon onClick={() => handlePasswordIcon('item2')} />
+                                        <VisibilityOffIcon onClick={() => handlePasswordIcon('item2', true)} />
                                 }
 
                             </InputAdornment>
@@ -98,14 +105,15 @@ const ChangePassword = () => {
                     type={showPassword && id === 'item3' ? 'text' : 'password'}
                     // color={passwordError ? 'success' : ''}
                     onChange={(e) => (setConfirmPassword(e.target.value), handleConfirm())}
+                    sd={(console.log(id), console.log(showPassword))}
                     InputProps={{
                         endAdornment: (
                             <InputAdornment position="start">
                                 {
                                     showPassword && id === "item3" ?
-                                        <VisibilityOutlinedIcon onClick={() => handlePasswordIcon('item3')} />
+                                        <VisibilityOutlinedIcon onClick={() => handlePasswordIcon('item3', false)} />
                                         :
-                                        <VisibilityOffIcon onClick={() => handlePasswordIcon('item3')} />
+                                        <VisibilityOffIcon onClick={() => handlePasswordIcon('item3', true)} />
                                 }
 
                             </InputAdornment>
@@ -116,7 +124,12 @@ const ChangePassword = () => {
                     <Button sx={{ borderRadius: 22, backgroundColor: "#17468F" }} type="submit" variant="contained">
                         update
                     </Button>
-                    <Button onClick={() => router.push("/my-account/profile-information")} sx={{ borderRadius: 22, borderColor: "#17468F", color: '#17468F' }} variant="outlined">
+                    <Button type="button" onClick={() => router.push("/my-account/profile-information")} sx={{ 
+                         '&:hover': {
+                            backgroundColor: '#143E7D',
+                            color: '#FFFFFF'
+                        },
+                        borderRadius: 22, borderColor: "#17468F", color: '#17468F' }} variant="outlined">
                         cancel
                     </Button>
                 </Grid>

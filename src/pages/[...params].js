@@ -30,9 +30,9 @@ const Account = () => {
             <Box
                 sx={{
                     backgroundColor: { xs: 'white' },
-                    width: { md: '530px', xs: '100%' },
+                    width: { md: 530, xs: '100%' },
                     my: { md: 10, xs: 1 },
-                    mx: { md: '25%', xs: 0 },
+                    pb:5,
                     borderRadius: { md: 'sm', xs: '0' },
                     border: { md: "2px solid #1111" },
                     height: 'auto'
@@ -47,7 +47,8 @@ const Account = () => {
                                 <Button
                                     fullWidth
                                     sx={{ height: 61, fontSize: "16px", textTransform: "capitalize", color: "#17468F", fontWeight: "54px" }}
-                                    onClick={() => router.push("/signin")}>
+                                    onClick={() => router.push("/signin")}
+                                    textTransform='none'>
                                     Sign In
                                 </Button>
                             </Grid>
@@ -57,13 +58,14 @@ const Account = () => {
                                     sx={{ height: 61, fontSize: "16px", textTransform: "capitalize", color: "#4C4C4C", fontWeight: "54px" }}
                                     variant="soft"
                                     onClick={() => router.push("/signup")}
+                                    textTransform='none'
                                 >
                                     Create account
                                 </Button>
                             </Grid></>
 
                     }
-                    <Grid container md={12} m={{ md: 5, xs: 0 }} justifyContent={"center"}>
+                    <Grid  md={12}  ml={{ md: 4, xs: 0 }}  mt={{ md: 2, xs: 1 }}  mr={{ md: 4, xs:0 }} >
 
                         {contentToRender}
                     </Grid>
