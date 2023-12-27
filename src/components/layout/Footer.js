@@ -50,7 +50,7 @@ const Footer = () => {
                     '.css-19fvvo5-MuiGrid-root': { color: '#fff' },
                     '.css-1252dp0-MuiListItem-root': { color: '#fff' }
                 }}
-                backgroundColor={'#27325E'} container mt={2} py={{ md: 7 }} px={{ md: 20, xs: 5 }} gap={2} >
+                backgroundColor={'#27325E'} container mt={2} py={{ md: 7,xs:5 }} px={{ md: 20, xs: 2 }} gap={2} >
                 <Grid pl={1.5} md={12}>
                     <Image width={205} height={40} src={logoImage} />
                 </Grid>
@@ -111,7 +111,7 @@ const Footer = () => {
                     </List>
 
                 </Grid>
-                <Grid mt={{ md: 8, xs: 0 }} md={12} xs={10}>
+                <Grid mt={{ md: 8, xs: 0 }} md={12} xs={12}>
                     <Divider color="#fff" sx={{ my: 2 }} />
                 </Grid>
                 <Grid container gap={5} justifyContent={"center"} md={12} xs={12}>
@@ -129,7 +129,7 @@ const Footer = () => {
                         Career
                     </Link>
                 </Grid>
-                <Grid m={0} textAlign={"center"} md={12} xs={12} >
+                <Grid m={{md:0,xs:3}} textAlign={"center"} md={12} xs={12} >
                     <Typography color={'#fff'} sx={{ fontSize: "14px" }} textAlign="center">
                         Copyright 2023 © Omniadis. Inc. All rights reserved.
                     </Typography>
