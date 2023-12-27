@@ -8,13 +8,8 @@ const Footer = () => {
     const [color, setColor] = useState('primary');
     return (
         <Grid>
-            <Grid
-                px={{ md: '160px', xs: 0 }}
-                backgroundColor="#F8FAFD"
-                p={3}
-                mt={3}
-                alignItems={"center"} container gap={11}>
-                <Typography maxWidth={274} variant="h4" fontWeight={700} color="var(--dark-blue)">
+            <Grid container py={{md:3,xs:2}} px={{md:20 ,xs:10}} backgroundColor="#F8FAFD" gap={5} alignItems={"center"} justifyContent={"space-between"} md={12} xs={12}>
+                <Typography maxWidth={{ md: 274, xs: '100%' }} variant="h4" fontWeight={700} color="var(--dark-blue)">
                     Join the Omniadis family
                 </Typography>
                 <Divider sx={{ display: { xs: 'none', md: 'flex' }, borderBottomWidth: '78px' }} orientation="vertical" color='#C4C4C4'></Divider>
@@ -50,7 +45,7 @@ const Footer = () => {
                     '.css-19fvvo5-MuiGrid-root': { color: '#fff' },
                     '.css-1252dp0-MuiListItem-root': { color: '#fff' }
                 }}
-                backgroundColor={'#27325E'} container mt={2} py={{ md: 7,xs:5 }} px={{ md: 20, xs: 2 }} gap={2} >
+                backgroundColor={'#27325E'} container mt={2} py={{ md: 7, xs: 5 }} px={{ md: 20, xs: 2 }} gap={{ md: 3, xs: 2 }} >
                 <Grid pl={1.5} md={12}>
                     <Image width={205} height={40} src={logoImage} />
                 </Grid>
@@ -101,7 +96,7 @@ const Footer = () => {
                         </ListItem>
                     </List>
                 </Grid>
-                <Grid md={2} xs={12}>
+                <Grid md={2} xs={5}>
                     <List>
                         <Typography color={'#fff'}>SOCIAL MEDIA</Typography>
                         <ListItem justifyContent="space-between">
@@ -129,7 +124,7 @@ const Footer = () => {
                         Career
                     </Link>
                 </Grid>
-                <Grid m={{md:0,xs:3}} textAlign={"center"} md={12} xs={12} >
+                <Grid m={{ md: 0, xs: 3 }} textAlign={"center"} md={12} xs={12} >
                     <Typography color={'#fff'} sx={{ fontSize: "14px" }} textAlign="center">
                         Copyright 2023 © Omniadis. Inc. All rights reserved.
                     </Typography>
