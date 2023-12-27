@@ -10,6 +10,7 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
 import SpaceDashboardOutlinedIcon from '@mui/icons-material/SpaceDashboardOutlined';
 import MenuIcon from '@mui/icons-material/Menu';
+import LocalShippingOutlinedIcon from '@mui/icons-material/LocalShippingOutlined';
 import { Stack, InputAdornment, Grid, ListItemIcon, MenuItem, Menu, Typography, Box, Button, Divider, TextField } from '@mui/material';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
@@ -37,11 +38,12 @@ const Header = () => {
             sx={{
                 backgroundColor: '#FFFFFF', borderBottom: '1px solid #C4C4C4', pb: '16.5px'
             }}>
-            <Box sx={{ display: { xs: 'none', md: 'flex' }, backgroundColor: '#F5F8FB' }} gap={2} justifyContent={'center'}>
-                <Typography color="#17468F" fontSize='14px'>
+            <Box sx={{ display: { xs: 'none', md: 'flex' }, backgroundColor: '#F5F8FB' }} gap={2} justifyContent={'center'} alignItems={'center'}>
+                <Typography color="#17468F" fontSize='12px'>
                     FREE SHIPPING AVAILABLE
                 </Typography>
-                <Typography color='#2B3445' fontSize='13px'>
+                <LocalShippingOutlinedIcon sx={{color:'#17468F'}}/>
+                <Typography color='#2B3445' fontSize='12px'>
                     WITH PURCHASE OVER CHF 35 BEFORE TAXES; CONNECT TO SEE YOUR PERSONAL BENEFITS
                 </Typography>
             </Box>

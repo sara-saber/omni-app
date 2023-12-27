@@ -1,4 +1,4 @@
-import {Typography,IconButton, Box, Grid } from '@mui/material';
+import { Typography, IconButton, Box, Grid } from '@mui/material';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
 import NavigateNextOutlinedIcon from '@mui/icons-material/NavigateNextOutlined';
@@ -24,11 +24,7 @@ const Dashboard = () => {
                 <Box width={250} backgroundColor='#F8FAFD' py={1} px={3} border='1px solid #E0E0E0' borderRadius={2}>
                     <Grid container alignItems={'center'} justifyContent={'space-between'} >
                         <Typography level="title-md" fontSize={16}>My Orders</Typography>
-                        <IconButton
-                            color="primary"
-                        >
-                            <LocalMallOutlinedIcon sx={{ width: 38, height: 35 }} />
-                        </IconButton>
+                        <LocalMallOutlinedIcon sx={{ width: 38, height: 35, color: '#17468F' }} />
                     </Grid>
                     <Typography level="title-lg" fontSize={40}>{data?.customer.orders.total_count}</Typography>
                     <Grid container alignItems={'center'} justifyContent={'space-between'} >
@@ -47,13 +43,9 @@ const Dashboard = () => {
                 <Box width={250} backgroundColor='#F8FAFD' py={1} px={3} border='1px solid #E0E0E0' borderRadius={2}>
                     <Grid container alignItems={'center'} justifyContent={'space-between'} >
                         <Typography level="title-md" fontSize={16}>Wishlist</Typography>
-                        <IconButton
-                            variant="plain"
-                            color="primary"
-                            size="sm"
-                        >
-                            <FavoriteBorderIcon sx={{ width: 38, height: 35 }} />
-                        </IconButton>
+
+                        <FavoriteBorderIcon sx={{ width: 38, height: 35, color: '#17468F' }} />
+
                     </Grid>
                     <Typography level="title-lg" fontSize={40}>{data?.customer?.wishlist?.items_count}</Typography>
                     <Grid container alignItems={'center'} justifyContent={'space-between'} >
