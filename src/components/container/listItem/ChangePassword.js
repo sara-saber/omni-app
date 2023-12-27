@@ -14,24 +14,16 @@ const ChangePassword = () => {
     const [showPassword, setShowPassword] = useState(false)
     const [openSnackbar, setOpen] = useState(false)
 
-    const [id, setId] = useState()
+    const [txtId, settxtId] = useState()
     const router = useRouter()
     const handleConfirm = () => {
-        // console.log(confirmPassword, newPassword);
         confirmPassword !== newPassword ?
             setError(false) :
             setError(true)
     }
-    const handlePasswordIcon = (id, value) => {
-        if (value === showPassword) {
-            // console.log(showPassword)
-        }
-        else {
-            setShowPassword(!showPassword)
-            setId(id)
-            // console.log(value);
-            // console.log(showPassword)
-        }
+    const handlePasswordIcon = (e,value) => {
+        settxtId(e.target.id)
+        setShowPassword(value)
     }
     const handleClose = () => {
         setTimeout(() => {
@@ -62,16 +54,16 @@ const ChangePassword = () => {
                     fullWidth
                     label="current Password"
                     value={currentPassword}
-                    type={showPassword && id === 'item1' ? 'text' : 'password'}
+                    type={(showPassword && (txtId === 'item1')) ? 'text' : 'password'}
                     onChange={(e) => (setCurrentPassword(e.target.value))}
                     InputProps={{
                         endAdornment: (
                             <InputAdornment position="start">
                                 {
-                                    showPassword && id === "item1" ?
-                                        <VisibilityOutlinedIcon onClick={() => handlePasswordIcon('item1', false)} />
+                                    (showPassword && (txtId === "item1")) ?
+                                        <VisibilityOutlinedIcon id="item1" onClick={(e) => (handlePasswordIcon(e,false))} />
                                         :
-                                        <VisibilityOffIcon onClick={() => handlePasswordIcon('item1', true)} />
+                                        <VisibilityOffIcon id="item1" onClick={(e) => (handlePasswordIcon(e,true))} />
                                 }
 
                             </InputAdornment>
@@ -82,16 +74,16 @@ const ChangePassword = () => {
                     fullWidth
                     error={passwordError}
                     label="new Password"
-                    type={showPassword && id === 'item2' ? 'text' : 'password'}
+                    type={(showPassword && (txtId === 'item2')) ? 'text' : 'password'}
                     onChange={(e) => (setNewPassword(e.target.value), handleConfirm())}
                     InputProps={{
                         endAdornment: (
                             <InputAdornment position="start">
                                 {
-                                    showPassword && id === "item2" ?
-                                        <VisibilityOutlinedIcon onClick={() => handlePasswordIcon('item2', false)} />
+                                   ( showPassword && (txtId === "item2")) ?
+                                        <VisibilityOutlinedIcon id='item2' onClick={(e) => (handlePasswordIcon(e,false))}/>
                                         :
-                                        <VisibilityOffIcon onClick={() => handlePasswordIcon('item2', true)} />
+                                        <VisibilityOffIcon id='item2' onClick={(e) => (handlePasswordIcon(e,true))} />
                                 }
 
                             </InputAdornment>
@@ -102,18 +94,18 @@ const ChangePassword = () => {
                     fullWidth
                     error={passwordError}
                     label="confirm new password"
-                    type={showPassword && id === 'item3' ? 'text' : 'password'}
+                    type={(showPassword && (txtId === 'item3') )? 'text' : 'password'}
                     // color={passwordError ? 'success' : ''}
                     onChange={(e) => (setConfirmPassword(e.target.value), handleConfirm())}
-                    sd={(console.log(id), console.log(showPassword))}
+
                     InputProps={{
                         endAdornment: (
                             <InputAdornment position="start">
                                 {
-                                    showPassword && id === "item3" ?
-                                        <VisibilityOutlinedIcon onClick={() => handlePasswordIcon('item3', false)} />
+                                   ( showPassword && (txtId === "item3" ))?
+                                        <VisibilityOutlinedIcon id='item3' onClick={(e) => (handlePasswordIcon(e,false))}/>
                                         :
-                                        <VisibilityOffIcon onClick={() => handlePasswordIcon('item3', true)} />
+                                        <VisibilityOffIcon id='item3' onClick={(e) => (handlePasswordIcon(e,true))}/>
                                 }
 
                             </InputAdornment>
@@ -124,12 +116,13 @@ const ChangePassword = () => {
                     <Button sx={{ borderRadius: 22, backgroundColor: "#17468F" }} type="submit" variant="contained">
                         update
                     </Button>
-                    <Button type="button" onClick={() => router.push("/my-account/profile-information")} sx={{ 
-                         '&:hover': {
+                    <Button type="button" onClick={() => router.push("/my-account/profile-information")} sx={{
+                        '&:hover': {
                             backgroundColor: '#143E7D',
                             color: '#FFFFFF'
                         },
-                        borderRadius: 22, borderColor: "#17468F", color: '#17468F' }} variant="outlined">
+                        borderRadius: 22, borderColor: "#17468F", color: '#17468F'
+                    }} variant="outlined">
                         cancel
                     </Button>
                 </Grid>
