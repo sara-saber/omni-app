@@ -107,7 +107,7 @@ const Menu = () => {
                         }
                     }}
                     selected={selectedIndex === 5}
-                    onClick={() => router.push('/my-account/logout')}
+                    onClick={() =>( localStorage.clear(), router.push('/account/login'))}
                 >
                     <ListItemIcon>
                         <LogoutIcon />

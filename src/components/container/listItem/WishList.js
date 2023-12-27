@@ -10,9 +10,11 @@ const WishList = () => {
     const { data, loading: wishlistLoading } = useQuery(Get_Cutomer_Wishlist)
     const products = ['Casino', 'MONOPRIX BIO', 'Casino'];
     return (
-        <>
-            <Typography>wishList</Typography>
-            <Grid container gap={4}>
+        <Grid>
+           <Grid md={12}>
+           <Typography fontSize={20}>WishList</Typography>
+           </Grid>
+            <Grid pt={2} container gap={4}>
                 {wishlistLoading ?
                     <Grid sx={{ pt: 0.5 }}>
                         <Skeleton width='600px' height={20} />
@@ -29,7 +31,7 @@ const WishList = () => {
 
                 }
             </Grid >
-        </>
+        </Grid>
 
     );
 }

@@ -103,7 +103,7 @@ const Footer = () => {
                 <Grid mt={{ md: 8, xs: 0 }} md={12} xs={12}>
                     <Divider color="#fff" sx={{ my: 2 }} />
                 </Grid>
-                <Grid sx={{ color:'#fff'}} container gap={5} justifyContent={"center"} md={12} xs={12}>
+                <Grid sx={{ color:'#fff'}} container gap={{md:5,xs:2}} justifyContent={"center"} md={12} xs={12}>
                     <Link href="#" color="inherit">Terms and Conditions</Link>
                     <Link sx={{ fontSize: '14px' }} href="#" color="inherit">
                         Sécurity and confidentialit

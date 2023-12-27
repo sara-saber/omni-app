@@ -27,7 +27,7 @@ const ForgetPassword = () => {
                 >
                 </TextField>
                 <Button type="submt" sx={{ borderRadius: 25, backgroundColor: '#17468F' }} fullWidth variant="contained"> submit</Button>
-                <Typography sx={{ textDecoration: "underline" }} onClick={() => router.push("/login")}  >Sign in instead</Typography>
+                <Typography sx={{ textDecoration: "underline" }} onClick={() => router.push("/account/login")}  >Sign in instead</Typography>
             </Grid>
         </form>
 

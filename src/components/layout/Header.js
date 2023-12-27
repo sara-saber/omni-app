@@ -26,6 +26,9 @@ const Header = () => {
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
     const router = useRouter()
+    useEffect(()=>{
+        localStorage.setItem('category',categoryData)
+    },categoryData)
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -89,7 +92,9 @@ const Header = () => {
                         Cart
                     </Button>
 
-                    <Button sx={{
+                    <Button
+                    onClick={()=>router.push('/account/login')}
+                    sx={{
                         '&:hover': {
                             backgroundColor: '#fff',
                             boxShadow: 'none',

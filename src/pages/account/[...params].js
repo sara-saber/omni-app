@@ -27,9 +27,6 @@ const Account = () => {
         case "resetpassword":
             contentToRender = <ForgetPassword />
             break
-        default:
-            contentToRender = <SignIn />
-            break
 
     }
     return (
@@ -55,7 +52,7 @@ const Account = () => {
                                     id='btn1'
                                     fullWidth
                                     sx={{ height: 61, backgroundColor: btnId === 'btn1' ? bgColor:'#FFFF' , fontSize: "16px", textTransform: "capitalize", color: btnId==="btn1"?textColor:"#17468F", fontWeight: "54px" }}
-                                    onClick={(e) => (router.push("/signin"),handleButton(e), setbgColor("#F5F5F5"),setTextColor("#4C4C4C")  )}
+                                    onClick={(e) => (router.push("/account/login"),handleButton(e), setbgColor("#F5F5F5"),setTextColor("#4C4C4C")  )}
                                     textTransform='none'>
                                     Sign In
                                 </Button>
@@ -66,7 +63,7 @@ const Account = () => {
                                     id='btn2'
                                     sx={{ height: 61, backgroundColor: btnId === 'btn2' ? bgColor : '#FFFF', fontSize: "16px", textTransform: "capitalize", color: btnId==='btn2'?textColor:'#17468F', fontWeight: "54px" }}
                                     variant="soft"
-                                    onClick={(e) => (router.push("/signup"),handleButton(e), setbgColor("#F5F5F5"),setTextColor("#4C4C4C") )}
+                                    onClick={(e) => (router.push("/account/signup"),handleButton(e), setbgColor("#F5F5F5"),setTextColor("#4C4C4C") )}
                                     textTransform='none'
                                 >
                                     Create account

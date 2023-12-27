@@ -38,7 +38,7 @@ const SignIn = () => {
         const newToken = data.data?.generateCustomerToken?.token
         if (newToken) {
             localStorage.setItem('token', newToken)
-            router.push('my-account/dashboard')
+            router.push('/my-account/dashboard')
         }
 
     }
@@ -121,7 +121,7 @@ const SignIn = () => {
 </FormGroup> */}
 
                         <Typography
-                            onClick={() => router.push("/resetpassword")}
+                            onClick={() => router.push("/account/resetpassword")}
                             fontSize="sm"
                             fontWeight={500}
                         >
