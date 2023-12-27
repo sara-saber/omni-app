@@ -8,7 +8,7 @@ const Footer = () => {
     const [color, setColor] = useState('primary');
     return (
         <Grid>
-            <Grid container py={{md:3,xs:2}} px={{md:20 ,xs:10}} backgroundColor="#F8FAFD" gap={5} alignItems={"center"} justifyContent={"space-between"} md={12} xs={12}>
+            <Grid container py={{md:3,xs:2}} px={{md:20 ,xs:3}} backgroundColor="#F8FAFD" gap={5} alignItems={"center"} justifyContent={"space-between"} md={12} xs={12}>
                 <Typography maxWidth={{ md: 274, xs: '100%' }} variant="h4" fontWeight={700} color="var(--dark-blue)">
                     Join the Omniadis family
                 </Typography>
