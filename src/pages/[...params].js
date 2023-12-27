@@ -3,10 +3,17 @@ import SignUp from "@/components/container/account/SignUp";
 import { useRouter } from "next/router";
 import { Grid, Button, Box } from '@mui/material';
 import ForgetPassword from "@/components/container/account/ForgetPassword";
+import { useState } from "react";
 
 const Account = () => {
     const router = useRouter()
     const { params = [] } = router.query
+    const [bgColor, setbgColor] = useState('#F5F5F5')
+    const [textColor, setTextColor] = useState('#4C4C4C')
+    const [btnId, setbtnId] = useState('btn1')
+    const handleButton = (e) => {
+        setbtnId(e.target.id)
+    }
     let contentToRender;
     switch (params[0]) {
         case "login":
@@ -32,7 +39,7 @@ const Account = () => {
                     backgroundColor: { xs: 'white' },
                     width: { md: 530, xs: '100%' },
                     my: { md: 10, xs: 1 },
-                    pb:5,
+                    pb: 5,
                     borderRadius: { md: 'sm', xs: '0' },
                     border: { md: "2px solid #1111" },
                     height: 'auto'
@@ -45,9 +52,10 @@ const Account = () => {
                         <>
                             <Grid xs={6}>
                                 <Button
+                                    id='btn1'
                                     fullWidth
-                                    sx={{ height: 61, fontSize: "16px", textTransform: "capitalize", color: "#17468F", fontWeight: "54px" }}
-                                    onClick={() => router.push("/signin")}
+                                    sx={{ height: 61, backgroundColor: btnId === 'btn1' ? bgColor:'#FFFF' , fontSize: "16px", textTransform: "capitalize", color: btnId==="btn1"?textColor:"#17468F", fontWeight: "54px" }}
+                                    onClick={(e) => (router.push("/signin"),handleButton(e), setbgColor("#F5F5F5"),setTextColor("#4C4C4C")  )}
                                     textTransform='none'>
                                     Sign In
                                 </Button>
@@ -55,9 +63,10 @@ const Account = () => {
                             <Grid xs={6}>
                                 <Button
                                     fullWidth
-                                    sx={{ height: 61, fontSize: "16px", textTransform: "capitalize", color: "#4C4C4C", fontWeight: "54px" }}
+                                    id='btn2'
+                                    sx={{ height: 61, backgroundColor: btnId === 'btn2' ? bgColor : '#FFFF', fontSize: "16px", textTransform: "capitalize", color: btnId==='btn2'?textColor:'#17468F', fontWeight: "54px" }}
                                     variant="soft"
-                                    onClick={() => router.push("/signup")}
+                                    onClick={(e) => (router.push("/signup"),handleButton(e), setbgColor("#F5F5F5"),setTextColor("#4C4C4C") )}
                                     textTransform='none'
                                 >
                                     Create account
@@ -65,7 +74,7 @@ const Account = () => {
                             </Grid></>
 
                     }
-                    <Grid  md={12}  ml={{ md: 4, xs: 0 }}  mt={{ md: 2, xs: 1 }}  mr={{ md: 4, xs:0 }} >
+                    <Grid md={12} ml={{ md: 4, xs: 0 }} mt={{ md: 2, xs: 1 }} mr={{ md: 4, xs: 0 }} >
 
                         {contentToRender}
                     </Grid>

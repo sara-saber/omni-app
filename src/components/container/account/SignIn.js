@@ -108,7 +108,6 @@ const SignIn = () => {
                         />
                     </Grid>
                     <Button fullWidth type='submit' sx={{ mt: 2 /* margin top */, height: "50px", borderRadius: "25px", backgroundColor: "#143E7D" }}>Sign in</Button>
-
                     <Grid container justifyContent='space-between' pt={1} alignItems={'center'}>
                         <Box display={'flex'} width={200} alignItems={'center'}>
                             <Checkbox sx={{ borderColor: "#B7B7B7" }}></Checkbox>
