@@ -251,21 +251,32 @@ const SignUp = () => {
 
                 />
                 <Grid container >
-                    <Checkbox sx={{ alignItems: "start" }} defaultChecked />
-                    <Typography className='unnamed-character-style-9 ' pt={1} maxWidth={400}>
-                        By selecting Create account, you are confirming that you have read and agree to eec.inc Terms of Use and Privacy Policy.
-                    </Typography>
+                    <Grid md={1} xs={1}>
+                        <Checkbox sx={{ alignItems: "start" }} defaultChecked />
+                    </Grid>
+                    <Grid md={10.9} xs={11}>
+                        <Typography className='unnamed-character-style-9 ' pt={1} >
+                            By selecting Create account, you are confirming that you have read and agree to eec.inc Terms of Use and Privacy Policy.
+                        </Typography>
+                    </Grid>
                 </Grid>
 
-                <Grid container alignContent={"center"} justifyContent={"space-between"} >
-                    <Checkbox defaultChecked></Checkbox>
-                    <Typography className='unnamed-character-style-9 ' pt={2} width={400}>
-                        Subscribe to our newsletter and receive promotions based on products added to my cart.   </Typography>
+                <Grid container >
+                    <Grid md={1} xs={1}>
+                        <Checkbox sx={{ alignItems: "start" }} defaultChecked></Checkbox>
+                    </Grid>
+                    <Grid md={10.9} xs={11}>
+                        <Typography className='unnamed-character-style-9 ' pt={1} >
+                            Subscribe to our newsletter and receive promotions based on products added to my cart.   </Typography>
+                    </Grid>
                 </Grid>
-                <Button variant="contained" fullWidth type='submit' sx={{
-                    textTransform: 'none',
-                    height: 50, borderRadius: "25px", backgroundColor: '#17468F'
-                }}>Create account</Button>
+
+                <Grid md={12} xs={12} >
+                    <Button variant="contained" fullWidth type='submit' sx={{
+                        textTransform: 'none',
+                        height: 50, borderRadius: "25px", backgroundColor: '#17468F'
+                    }}>Create account</Button>
+                </Grid>
 
             </Grid>
         </form >

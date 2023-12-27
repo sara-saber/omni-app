@@ -5,7 +5,6 @@ import NavigateNextOutlinedIcon from '@mui/icons-material/NavigateNextOutlined';
 import { useRouter } from 'next/router';
 import { useQuery } from '@apollo/client';
 import { GET_DASHBOARD } from '@/graphql/Query';
-import { Skeleton } from '@mui/material';
 
 const Dashboard = () => {
     const router = useRouter()

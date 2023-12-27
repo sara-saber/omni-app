@@ -44,95 +44,94 @@ const SignIn = () => {
     }
 
     return (
-        <Grid container md={12} xs={12} gap={1}>
-            <Grid fullWidth>
-                <Typography  sx={{
+        <Grid container gap={1}>
+            <Grid md={12} xs={12}>
+                <Typography sx={{
                     color: 'var(--black)',
                     fontWeight: '750'
                 }} >
                     Welcome to Omniadis
                 </Typography>
             </Grid>
-            <Grid md={12}>
-
+            <Grid md={12} xs={12}>
                 <Typography fontWeight={550}>Sign in with email & password!</Typography>
             </Grid>
-            <Grid fullWidth></Grid>
-            <form width="100%" onSubmit={e =>
+            <form fullWidth onSubmit={e =>
                 Signin(e)
             }>
+                <Grid container gap={1}>
+                    <Grid container md={12} xs={12} gap={2}
 
-                <Grid container  md={12} xs={12} gap={2}
-
-                    sx={{
-                        '.css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input': {
-                            padding: 1.5
-                        },
-                        '.css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root': {
-                            width: '100'
-                        },
-                        '.css-nxo287-MuiInputBase-input-MuiOutlinedInput-input': {
-                            padding: 1.5
-                        },
-                        '.css-1d3z3hw-MuiOutlinedInput-notchedOutline': {
-                            borderRadius: '6px'
-                        },
-                        '.css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root': {
-                            fontSize: '0.9rem'
-                        }
-                    }}
-                >
-                    <TextField
-                        fullWidth
-                        id="outlined-controlled"
-                        label="Email"
-                        type='email'
-                        onChange={e => setEmail(e.target.value)}
-
-                    />
-                    <TextField
-                        fullWidth
-                        id="outlined-controlled"
-                        label="Password"
-                        type={showPassword ? "text" : "password"}
-                        onChange={e => setPassword(e.target.value)}
-                        InputProps={{
-                            endAdornment: (
-                                <InputAdornment position="start">
-                                    {
-                                        showPassword ?
-                                            <VisibilityOutlinedIcon onClick={handlePasswordIcon} />
-                                            :
-                                            <VisibilityOffIcon onClick={handlePasswordIcon} />}
-                                </InputAdornment>
-                            ),
+                        sx={{
+                            '.css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input': {
+                                padding: 1.5
+                            },
+                            '.css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root': {
+                                width: '100'
+                            },
+                            '.css-nxo287-MuiInputBase-input-MuiOutlinedInput-input': {
+                                padding: 1.5
+                            },
+                            '.css-1d3z3hw-MuiOutlinedInput-notchedOutline': {
+                                borderRadius: '6px'
+                            },
+                            '.css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root': {
+                                fontSize: '0.9rem'
+                            }
                         }}
-                    />
-                </Grid>
-                <Button fullWidth type='submit' sx={{ mt: 2 /* margin top */, height: "50px", borderRadius: "25px", backgroundColor: "#143E7D" }}>Sign in</Button>
-
-                <Grid container justifyContent='space-between' pt={2} alignItems={'center'}>
-                    <Box display={'flex'} width={200} alignItems={'center'}>
-                        <Checkbox sx={{ borderColor: "#B7B7B7" }}></Checkbox>
-                        <Typography fontWeight={400}> Remember me</Typography>
-                    </Box>
-                    {/* <FormGroup>
-                        <FormControlLabel
-                          
-                            control={<Checkbox />}
-                            label="Remember me" />
-                    </FormGroup> */}
-
-                    <Typography
-                        onClick={() => router.push("/resetpassword")}
-                        fontSize="sm"
-                        fontWeight={500}
                     >
-                        Forget Password
-                    </Typography>
-                </Grid>
+                        <TextField
+                            fullWidth
+                            id="outlined-controlled"
+                            label="Email"
+                            type='email'
+                            onChange={e => setEmail(e.target.value)}
 
-            </form >
+                        />
+                        <TextField
+                            fullWidth
+                            id="outlined-controlled"
+                            label="Password"
+                            type={showPassword ? "text" : "password"}
+                            onChange={e => setPassword(e.target.value)}
+                            InputProps={{
+                                endAdornment: (
+                                    <InputAdornment position="start">
+                                        {
+                                            showPassword ?
+                                                <VisibilityOutlinedIcon onClick={handlePasswordIcon} />
+                                                :
+                                                <VisibilityOffIcon onClick={handlePasswordIcon} />}
+                                    </InputAdornment>
+                                ),
+                            }}
+                        />
+                    </Grid>
+                    <Button fullWidth type='submit' sx={{ mt: 2 /* margin top */, height: "50px", borderRadius: "25px", backgroundColor: "#143E7D" }}>Sign in</Button>
+
+                    <Grid container justifyContent='space-between' pt={1} alignItems={'center'}>
+                        <Box display={'flex'} width={200} alignItems={'center'}>
+                            <Checkbox sx={{ borderColor: "#B7B7B7" }}></Checkbox>
+                            <Typography fontWeight={400}> Remember me</Typography>
+                        </Box>
+                        {/* <FormGroup>
+<FormControlLabel
+  
+    control={<Checkbox />}
+    label="Remember me" />
+</FormGroup> */}
+
+                        <Typography
+                            onClick={() => router.push("/resetpassword")}
+                            fontSize="sm"
+                            fontWeight={500}
+                        >
+                            Forget Password
+                        </Typography>
+                    </Grid>
+                </Grid>
+            </form>
+
         </Grid>
 
 

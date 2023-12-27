@@ -42,7 +42,7 @@ const Header = () => {
                 <Typography color="#17468F" fontSize='12px'>
                     FREE SHIPPING AVAILABLE
                 </Typography>
-                <LocalShippingOutlinedIcon sx={{color:'#17468F'}}/>
+                <LocalShippingOutlinedIcon sx={{ color: '#17468F' }} />
                 <Typography color='#2B3445' fontSize='12px'>
                     WITH PURCHASE OVER CHF 35 BEFORE TAXES; CONNECT TO SEE YOUR PERSONAL BENEFITS
                 </Typography>
@@ -51,25 +51,27 @@ const Header = () => {
                 <Button sx={{ display: { xs: 'block', md: 'none' } }} >
                     <MenuIcon fontSize='large' />
                 </Button>
-                <Image onClick={()=>{router.push('dashboard')}} className='img' width={200} height={40} src={logoImage} />
-                <TextField  label="search" size='small' fullwidth sx={{ display: { xs: 'none', md: 'flex' }, width: { md: '589px', xs: '100px' } }}
-                    InputProps={{
-                        endAdornment: (
-                            <InputAdornment position="start">
-                                <SearchIcon />
-                            </InputAdornment>
-                        ),
-                    }}
-                >
-                </TextField>
-                <Box  justifyContent='space-between' sx={{ display: { xs: 'none', md: 'block' } }}>
+                <Image onClick={() => { router.push('dashboard') }} className='img' width={200} height={40} src={logoImage} />
+                <Grid md={4}>
+                    <TextField label="search" size='small' sx={{ display: { xs: 'none', md: 'flex' }}}
+                        InputProps={{
+                            endAdornment: (
+                                <InputAdornment position="start">
+                                    <SearchIcon />
+                                </InputAdornment>
+                            ),
+                        }}
+                    >
+                    </TextField>
+                </Grid>
+                <Box justifyContent='space-between' sx={{ display: { xs: 'none', md: 'block' } }}>
                     <Button sx={{
                         '&:hover': {
                             backgroundColor: '#fff',
                             boxShadow: 'none',
                         },
                         textTransform: 'none',
-                        font:'normal 15px/24px',
+                        font: 'normal 15px/24px',
                         color: '#2B3445'
                     }} startIcon={<CompareArrowsOutlinedIcon />}>
                         Compare
@@ -82,7 +84,7 @@ const Header = () => {
                         },
                         textTransform: 'none',
                         ml: '10px', color: '#2B3445',
-                        font:'normal 15px/24px'
+                        font: 'normal 15px/24px'
                     }} startIcon={<LocalMallOutlinedIcon />}>
                         Cart
                     </Button>
@@ -92,7 +94,7 @@ const Header = () => {
                             backgroundColor: '#fff',
                             boxShadow: 'none',
                         }, ml: '10px', color: '#2B3445', textTransform: 'none',
-                        font:'normal 15px/24px'
+                        font: 'normal 15px/24px'
                     }}
                         onMouseDown={(e) => handleClose(e)}
                         onMouseOver={(e) => handleClick(e)} startIcon={<PermIdentityOutlinedIcon />}>
@@ -116,7 +118,6 @@ const Header = () => {
                     </Button>
 
                 </Box>
-
             </Grid>
 
 
@@ -154,9 +155,9 @@ const Header = () => {
                         </ListItemIcon>
                         My Wishlist
                     </MenuItem>
-                    <MenuItem  onClick={() => (handleClose, router.push('/my-account/profile-information'))}>
+                    <MenuItem onClick={() => (handleClose, router.push('/my-account/profile-information'))}>
                         <ListItemIcon>
-                            <PermIdentityIcon  />
+                            <PermIdentityIcon />
                         </ListItemIcon>
                         Profile Information
                     </MenuItem>
