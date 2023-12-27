@@ -16,8 +16,8 @@ const ForgetPassword = () => {
 
     return (
         <form onSubmit={e => submit(e)}>
-            <Grid container gap={2}>
-                <Typography>Forgot your password</Typography>
+            <Grid container gap={3} >
+                <Typography fontWeight={600}>Forgot your password</Typography>
                 <Typography >Enter your email address below and we will send you instructions to reset your password.</Typography>
                 <TextField fullWidth
                     required
@@ -26,8 +26,11 @@ const ForgetPassword = () => {
                     id="outlined-basic"
                 >
                 </TextField>
-                <Button type="submt" sx={{ borderRadius: 25, backgroundColor: '#17468F' }} fullWidth variant="contained"> submit</Button>
-                <Typography sx={{ textDecoration: "underline" }} onClick={() => router.push("/account/login")}  >Sign in instead</Typography>
+                <Grid md={12}> <Button type="submt" sx={{ height:'50px',textTransform: 'none', borderRadius: 25, backgroundColor: '#17468F' }} fullWidth variant="contained"> Submit</Button>
+                </Grid>
+                <Grid md={12} container justifyContent={"center"}>
+                    <Typography sx={{ textDecoration: "underline" }} onClick={() => router.push("/account/login")}  >Sign in instead</Typography>
+                </Grid>
             </Grid>
         </form>
 

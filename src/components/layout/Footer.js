@@ -92,10 +92,14 @@ const Footer = () => {
                 </Grid>
                 <Grid md={2} xs={5}  sx={{ color:'#fff'}}>
                     <List>
-                    <ListItem sx={{fontWeight:2}}>SOCIAL MEDIA</ListItem>
+                    <ListItem fontWeight={700}>SOCIAL MEDIA</ListItem>
                         <ListItem justifyContent="space-between">
+                            <Grid>
                             <FacebookRoundedIcon sx={{ color:'#fff'}} />
+                            </Grid>
+                            <Grid>
                             <FacebookRoundedIcon sx={{ color:'#fff'}} />
+                            </Grid>
                         </ListItem>
                     </List>
 

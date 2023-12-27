@@ -66,8 +66,8 @@ const Profile = () => {
                 :
                 <Grid md={5} container gap={2}
                     sx={{
-                        '.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input':{
-                            padding:1.4
+                        '.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input': {
+                            padding: 1.4
                         }
                         ,
                         '.css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input': {
@@ -153,38 +153,46 @@ const Profile = () => {
                             onChange={() => setLoading(!loading)}
                         />
                     </Grid>
-                    <Grid container justifyContent={"space-between"}>
-                        <Button variant='contained' type='submit' sx={{
-                            '&:hover': {
-                                backgroundColor: '#27325E'
-                            },
-                            textTransform: 'none',
-                            height: '40px',
-                            fontSize: 13, width: '113px', borderRadius: "22px", backgroundColor: "#143E7D", color: "#fff"
-                        }}>Update</Button>
-                        <Button onClick={() => router.push("change-password")}
-                            sx={{
+                    <Grid container gap={1} justifyContent={{ md: "space-between", sx: 'flex-start' }}>
+                        <Grid md={2} xs={12}>
+                            <Button variant='contained' type='submit' sx={{
+                                '&:hover': {
+                                    backgroundColor: '#27325E'
+                                },
+                                textTransform: 'none',
+                                height: '40px',
+                                fontSize: 13, width: {md:'113px',xs:'100%'}, borderRadius: "22px", backgroundColor: "#143E7D", color: "#fff"
+                            }}>Update</Button>
+                        </Grid>
+                        <Grid md={3}>
+                            <Button onClick={() => router.push("change-password")}
+
+                                sx={{
+                                    display: { md: "inline", xs: 'none' },
+                                    '&:hover': {
+                                        backgroundColor: '#143E7D',
+                                        color: '#FFFFFF'
+                                    },
+                                    textTransform: 'none',
+                                    width: '156px',
+                                    height: '40px',
+                                    fontSize: 13,
+                                    borderRadius: "22px", border: 'solid 1px black', backgroundColor: "white", color: "black"
+                                }}
+                            >Change Password</Button>
+                        </Grid>
+                        <Grid md={3} xs={12}>
+                            <Button onClick={() => router.push("change-email")} sx={{
                                 '&:hover': {
                                     backgroundColor: '#143E7D',
                                     color: '#FFFFFF'
                                 },
                                 textTransform: 'none',
-                                width: '156px',
+                                width: {md:'100px',xs:'100%'},
                                 height: '40px',
-                                fontSize: 13,
-                                borderRadius: "22px", border: 'solid 1px black', backgroundColor: "white", color: "black"
-                            }}
-                        >Change Password</Button>
-                        <Button onClick={() => router.push("change-email")} sx={{
-                            '&:hover': {
-                                backgroundColor: '#143E7D',
-                                color: '#FFFFFF'
-                            },
-                            textTransform: 'none',
-                            width: '100px',
-                            height: '40px',
-                            fontSize: 11, borderRadius: "22px", border: 'solid 1px black', backgroundColor: "white", color: "black"
-                        }}>Change email</Button>
+                                fontSize: 11, borderRadius: "22px", border: 'solid 1px black', backgroundColor: "white", color: "black"
+                            }}>Change email</Button>
+                        </Grid>
                     </Grid>
                     <Snackbar onClose={handleClose} anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }} open={openSnackbar} autoHideDuration={1000} >
                         <Alert severity="success" sx={{ width: '100%' }}>

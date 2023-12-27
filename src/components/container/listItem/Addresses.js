@@ -20,50 +20,47 @@ const Addresses = () => {
         <Grid container gap={2} >
             {/* <SideBarDrawer openDrawer={openDrawer} ></SideBarDrawer> */}
             {console.log(data?.customer?.addresses)}
-            <Grid container justifyContent={'space-between'} md={12}>
+            <Grid order={{ md: 1, xs: 1 }} md={5.95} xs={12}>
                 <Typography>Addresses</Typography>
+            </Grid>
+            <Grid order={{ md: 1, xs: 1 }} md={5.95} xs={12}>
+                <Typography>Addresses</Typography>
+            </Grid>
+            <Grid order={{ md: 2, xs: 3 }} md={5.59} xs={12} display={{ md: 'flex', xs: 'block' }} justifyContent={{ md: 'flex-end', xs: 'center' }}>
                 <Button
                     sx={{
                         borderRadius: '22px',
-                        maxWidth: '183px',
+                        width: { md: '183px', xs: '100%' },
                         maxHeight: '68px',
                         backgroundColor: '#fff',
                         color: 'black',
-                        border: '1px solid #2B3445 '
+                        border: '1px solid #2B3445',
+                        textTransform:'none'
                     }}
+                    
                 >
                     add new addresses
                 </Button>
             </Grid>
 
-            <Grid container gap={1} md={12}>
-                <Box width={371} backgroundColor='#F8FAFD' py={1} px={3} border='2px solid #E0E0E0' borderRadius={2}>
-                    <Typography>
-                        {data?.customer?.addresses[0].firstname}  {data?.customer?.addresses[0].lastname}
-                    </Typography>
-                    <Typography level="title-md" >
-                        {data?.customer?.addresses[0].street[0]}
-                    </Typography>
-                    <Grid container justifyContent={'space-between'}>
-                        <Typography level="title-lg">Data Detailsefault shipping</Typography>
-                        <EditOutlinedIcon></EditOutlinedIcon>
-                    </Grid>
-                </Box>
-                <Box width={371} backgroundColor='#F8FAFD' py={1} px={3} border='2px solid #E0E0E0' borderRadius={2}>
-                    <Typography>
-                        {data?.customer?.addresses[0].firstname}  {data?.customer?.addresses[0].lastname}
-                    </Typography>
-                    <Typography level="title-md" >
-                        {data?.customer?.addresses[0].street[0]}
-                    </Typography>
-                    <Grid container justifyContent={'space-between'}>
-                        <Typography level="title-lg">Data Detailsefault shipping</Typography>
-                        <EditOutlinedIcon></EditOutlinedIcon>
-                    </Grid>
-                </Box>
+            <Grid order={{ md: 3, xs: 2 }} container gap={1} md={12} xs={12}>
+                <Grid md={6} xs={12}>
+                    <Box width={{ md: 370, xs: 345 }} backgroundColor='#F8FAFD' py={1} px={3} border='2px solid #E0E0E0' borderRadius={2}>
+                        <Typography >
+                            {data?.customer?.addresses[0].firstname}  {data?.customer?.addresses[0].lastname}
+                        </Typography>
+                        <Typography pt={1} level="title-md" >
+                            {data?.customer?.addresses[0].street[0]}
+                        </Typography>
+                        <Grid pt={1} container justifyContent={'space-between'}>
+                            <Typography level="title-lg">Data Detailsefault shipping</Typography>
+                            <EditOutlinedIcon></EditOutlinedIcon>
+                        </Grid>
+                    </Box>
+                </Grid>
             </Grid>
 
-            <Grid md={12}>
+            <Grid order={{ md: 4 }} md={12} sx={{ display: { md: 'block', xs: 'none' } }} >
                 {data?.customer.addresses.map((item) => (
                     <Box py={1} px={6} border='2px solid #E0E0E0' borderRadius={2}>
                         <Grid container alignItems='center'>
@@ -77,7 +74,7 @@ const Addresses = () => {
                                 <Typography level="title-lg" fontSize={16}>{item.postcode}</Typography>
                             </Grid>
                             <Grid textAlign={'right'} md={3}>
-                                <Link  pl={2}>
+                                <Link pl={2}>
                                     <ModeEditOutlineOutlinedIcon />
                                 </Link>
                                 <Link color='#EB1C23' pl={2}>

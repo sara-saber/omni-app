@@ -126,7 +126,7 @@ const SignUp = () => {
                     </Grid>
 
                 </Grid>
-                <TextField
+                {/* <TextField
                     fullWidth
                     id="outlined-controlled"
                     label="Country"
@@ -135,7 +135,7 @@ const SignUp = () => {
                     onChange={handleChange}
                 >
 
-                </TextField>
+                </TextField> */}
 
                 <TextField
                     fullWidth
@@ -273,6 +273,9 @@ const SignUp = () => {
 
                 <Grid md={12} xs={12} >
                     <Button variant="contained" fullWidth type='submit' sx={{
+                         '&:hover':{
+                            backgroundColor:'#17468F'
+                        },
                         textTransform: 'none',
                         height: 50, borderRadius: "25px", backgroundColor: '#17468F'
                     }}>Create account</Button>

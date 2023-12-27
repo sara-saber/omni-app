@@ -28,10 +28,20 @@ const Orders = () => {
 
     return (
         <Box>
-            <Grid md={12} xs={3}>
-                <Typography justifyContent={{ xs: 'center', md: 'flex-start' }} pb={2} >
-                    My orders
-                </Typography>
+            <Grid md={12} xs={12} container gap={2} alignItemst={"center"}>
+                <Grid sx={{ display: { md: 'none', xs: 'flex' } }} xs={4}>
+                    <Avatar>
+                        <KeyboardBackspaceIcon />
+                    </Avatar>
+                </Grid>
+                <Grid xs={6}>
+                    <Typography fontSize={20} fontWeight={700} justifyContent={{ xs: 'center', md: 'flex-start' }} pb={2}  >
+                        My orders
+                    </Typography>
+                </Grid>
+                <Grid>
+                    <Divider />
+                </Grid>
             </Grid>
             {/* {console.log(data)}
             {console.log(data?.customer?.orders?.items)} */}
@@ -46,11 +56,6 @@ const Orders = () => {
                             data?.customer.orders.items.map
                                 ((item) => (
                                     <>
-                                        <Grid sx={{ display: { md: 'none', xs: 'flex' } }} xs={3}  >
-                                            <Avatar>
-                                                <KeyboardBackspaceIcon />
-                                            </Avatar>
-                                        </Grid>
                                         <Grid sx={{ display: { md: 'none', xs: 'flex' } }} md={12} xs={12}>
                                             <Divider fullwidth color='#C4C4C4' sx={{ borderBottomWidth: '1px' }} orientation='horizontal' />
                                         </Grid>
@@ -61,10 +66,10 @@ const Orders = () => {
                                         </Grid>
                                         <Grid md={12} xs={12}>
                                             <Accordion sx={{
-                                               ".css-1elwnq4-MuiPaper-root-MuiAccordion-root:first-of-type":{backgroundColor:'red',border:"2px solid #E0E0E0",boxShadow:0},
-                                            ".css-1elwnq4-MuiPaper-root-MuiAccordion-root:first-of-type":{borderRadius:20},
+                                                ".css-1elwnq4-MuiPaper-root-MuiAccordion-root:first-of-type": { backgroundColor: 'red', border: "2px solid #E0E0E0", boxShadow: 0 },
+                                                ".css-1elwnq4-MuiPaper-root-MuiAccordion-root:first-of-type": { borderRadius: 20 },
 
-                                            }}  expanded={expanded === `panel${item.id}`} onChange={handleChange(`panel${item.id}`)}>
+                                            }} expanded={expanded === `panel${item.id}`} onChange={handleChange(`panel${item.id}`)}>
                                                 <AccordionSummary
                                                     expandIcon={<ChevronRightIcon />}
                                                     aria-controls={`panel${item.id}-content`}

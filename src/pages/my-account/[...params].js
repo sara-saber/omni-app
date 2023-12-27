@@ -58,8 +58,8 @@ const ContainerPage = () => {
         <Box sx={{ minHeight: "800px", mt: { xs: '15px', md: '51px' }, marginBottom: 'auto' }}>
             <div className='MuiGrid-root'>
                 <Grid alignContent={"center"} container gap={1}  >
-                    <Grid xs={12} md={12} order={{ md: 1, xs: 1 }}>
-                        <Typography>Hi,{data?.customer.firstname}</Typography>
+                    <Grid sx={{display:{md:'inline',xs:'none'}}} xs={12} md={12} order={{ md: 1, xs: 1 }}>
+                        <Typography fontWeight={600}>Hi,{data?.customer.firstname}</Typography>
                     </Grid>
                     <Grid xs={12} md={3} order={{ md: 2, xs: 3 }}>
                         <Menu />
