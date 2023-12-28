@@ -93,17 +93,6 @@ const SignUp = () => {
                 <Grid fullWidth>
                     <Typography level="text-sm">You are looking for the best products in order to make a better version of yourself.</Typography>
                 </Grid>
-                <TextField
-                    sx={{
-                        borderRadius: "6px"
-                    }}
-                    fullWidth
-                    required
-                    select
-                    id="outlined-controlled"
-                    label="Language"
-                />
-
                 <Grid container gap={{ md: 1, xs: 0.3 }} md={12}>
                     <Grid md={5.89} xs={5.9}>
                         <TextField
@@ -250,31 +239,47 @@ const SignUp = () => {
 
 
                 />
-                <Grid container >
+                <Grid container alignItems={"flex-start"} sx={{
+                    '.css-1fi1jt2-MuiButtonBase-root-MuiCheckbox-root': {
+                        padding: 0
+                    },
+                    '.css-i4bv87-MuiSvgIcon-root':{
+                        color:'#B7B7B7',
+                        fill:'#17468F'
+                    }
+                    
+                }}>
                     <Grid md={1} xs={1}>
-                        <Checkbox sx={{ alignItems: "start" }} defaultChecked />
+                        <Checkbox sx={{ alignItems: "start" }} />
                     </Grid>
                     <Grid md={10.9} xs={11}>
-                        <Typography className='unnamed-character-style-9 ' pt={1} >
+                        <Typography fontSize={13} >
                             By selecting Create account, you are confirming that you have read and agree to eec.inc Terms of Use and Privacy Policy.
                         </Typography>
                     </Grid>
                 </Grid>
 
-                <Grid container >
+                <Grid container alignItems={"flex-start"} sx={{
+                    '.css-1fi1jt2-MuiButtonBase-root-MuiCheckbox-root': {
+                        padding: 0
+                    },
+                    '.css-i4bv87-MuiSvgIcon-root':{
+                        color:'#B7B7B7'
+                    }
+                }}>
                     <Grid md={1} xs={1}>
-                        <Checkbox sx={{ alignItems: "start" }} defaultChecked></Checkbox>
+                        <Checkbox p={0} sx={{ alignItems: "start" }} ></Checkbox>
                     </Grid>
                     <Grid md={10.9} xs={11}>
-                        <Typography className='unnamed-character-style-9 ' pt={1} >
+                        <Typography fontSize={13}>
                             Subscribe to our newsletter and receive promotions based on products added to my cart.   </Typography>
                     </Grid>
                 </Grid>
 
-                <Grid md={12} xs={12} >
+                <Grid pt={2} md={12} xs={12} >
                     <Button variant="contained" fullWidth type='submit' sx={{
-                         '&:hover':{
-                            backgroundColor:'#17468F'
+                        '&:hover': {
+                            backgroundColor: '#17468F'
                         },
                         textTransform: 'none',
                         height: 50, borderRadius: "25px", backgroundColor: '#17468F'

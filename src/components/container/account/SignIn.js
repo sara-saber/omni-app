@@ -108,22 +108,24 @@ const SignIn = () => {
                         />
                     </Grid>
                     <Button fullWidth type='submit' sx={{
-                        '&:hover':{
-                            backgroundColor:'#17468F'
+                        '&:hover': {
+                            backgroundColor: '#17468F'
                         },
-                        mt: 2 /* margin top */, height: "50px", borderRadius: "25px", backgroundColor: "#143E7D" }}>Sign in</Button>
+                        mt: 2 /* margin top */, height: "50px", borderRadius: "25px", backgroundColor: "#143E7D"
+                    }}>Sign in</Button>
                     <Grid container justifyContent='space-between' pt={1} alignItems={'center'}>
                         <Box display={'flex'} width={200} alignItems={'center'}>
                             <Checkbox sx={{ borderColor: "#B7B7B7" }}></Checkbox>
                             <Typography fontWeight={400}> Remember me</Typography>
                         </Box>
-                        <Typography
-                            onClick={() => router.push("/account/resetpassword")}
-                            fontSize="sm"
+                        <Link
+                        color='#2B3445'
+                            href='/account/resetpassword'
+                            fontSize={'14px'}
                             fontWeight={500}
                         >
                             Forget Password
-                        </Typography>
+                        </Link>
                     </Grid>
                 </Grid>
             </form>

@@ -58,12 +58,12 @@ const OrderDetails = (props) => {
                             {props?.DataDetails.status}</Typography>
                     </Grid>
 
-                    <Button sx={{ backgroundColor: 'white', width: 175 }} variant="outlined" startIcon={<LocalShippingOutlinedIcon />}>Shipment(s)</Button>
-                    <Button sx={{ backgroundColor: 'white', width: 175 }} variant="outlined" startIcon={<DescriptionOutlinedIcon />}>Invoice(s)</Button>
+                    <Button sx={{ backgroundColor: 'white',color:'#2B3445',borderColor:'#2B3445', width: 175 }} variant="outlined" startIcon={<LocalShippingOutlinedIcon />}>Shipment(s)</Button>
+                    <Button sx={{ backgroundColor: 'white',color:'#2B3445',borderColor:'#2B3445', width: 175 }} variant="outlined" startIcon={<DescriptionOutlinedIcon />}>Invoice(s)</Button>
                     <Grid md={12}>
                         <Divider />
                     </Grid>
-                    <Button sx={{ maxWidth: '175px' }} variant="text" startIcon={<PictureAsPdfOutlinedIcon />}>Download PDF</Button>
+                    <Button sx={{fontWeight:700, maxWidth: '175px',color:'#2B3445',textTransform:'none',fontSize:16 }} variant="text" startIcon={<PictureAsPdfOutlinedIcon />}>Download PDF</Button>
 
 
                 </Grid>
@@ -90,10 +90,10 @@ const OrderDetails = (props) => {
                             {props?.DataDetails.billing_address.street[0]} {props?.DataDetails.billing_address.street[1]}  {props?.DataDetails.billing_address.region} {props?.DataDetails.billing_address.city}
                         </Typography>
                         <Box display='flex' maxWidth='250px' mt='32px' justifyContent='space-between'>
-                            <Link color='#2B3445'>
+                            <Link  href='#' color='#2B3445'>
                                 Sales agreement
                             </Link>
-                            <Link color='#2B3445'>
+                            <Link href='#' color='#2B3445'>
                                 Return Policy
                             </Link>
                         </Box>
@@ -114,9 +114,10 @@ const OrderDetails = (props) => {
                                     <Typography color='red'>Discount</Typography>
                                 </Grid>
                                 <Grid md={5} xs={5}>
-                                    <Typography pb='12px'>{props?.DataDetails.total.subtotal.value}</Typography>
+                                    <Typography fontWeight={600} pb='12px'>${props?.DataDetails.total.subtotal.value}</Typography>
                                     {/* <Typography pb='12px'>{props?.DataDetails.total.shipping_handling.total_shipping.value}</Typography> */}
-                                    <Typography pb='12px'>-</Typography>
+                                    <Typography fontWeight={600} pb='12px'>-</Typography>
+                                    <Typography fontWeight={600} pb='12px'>-</Typography>
                                     <Typography color='red'>{props?.DataDetails.total.shipping_handling.discounts.amount}</Typography>
                                 </Grid>
                             </Grid>
@@ -127,7 +128,7 @@ const OrderDetails = (props) => {
 
                                 </Grid>
                                 <Grid xs={5}>
-                                    <Typography>$140.00</Typography>
+                                    <Typography fontWeight={600}>${props?.DataDetails.total.subtotal.value}</Typography>
 
                                 </Grid>
                             </Grid>

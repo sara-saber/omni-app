@@ -4,9 +4,11 @@ import { useQuery } from "@apollo/client";
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import ProductCard from "./Card/ProductCard";
 import { Get_Cutomer_Wishlist } from "@/graphql/Query";
+import { useState } from "react";
 
 
 const WishList = () => {
+    const router=useState()
     const { data, loading: wishlistLoading } = useQuery(Get_Cutomer_Wishlist)
     const products = ['Casino', 'MONOPRIX BIO', 'Casino'];
     return (
@@ -15,7 +17,7 @@ const WishList = () => {
            <Grid md={12} xs={12} container gap={2} alignItemst={"center"}>
                 <Grid sx={{ display: { md: 'none', xs: 'flex' } }} xs={4}>
                     <Avatar>
-                        <KeyboardBackspaceIcon />
+                        <KeyboardBackspaceIcon onClick={()=>router.push('my-account')} />
                     </Avatar>
                 </Grid>
                 <Grid xs={6}>
@@ -23,7 +25,7 @@ const WishList = () => {
                        WishList
                     </Typography>
                 </Grid>
-                <Grid>
+                <Grid display={{md:'none',xs:'block'}} xs={12}>
                     <Divider/>
                 </Grid>
             </Grid>
@@ -36,7 +38,7 @@ const WishList = () => {
                         <Skeleton width='520px' height={20} />
                     </Grid>
                     :
-                    <Grid md={12} gap={2} container>
+                    <Grid md={12} gap={{md:3,xs:1}} container>
                         {data?.customer && data?.customer.wishlist?.items?.map((item) => (
 
                             <ProductCard product={item?.product} />

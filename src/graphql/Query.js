@@ -127,7 +127,7 @@ query getOrderDetails
           subtotal{value},
           shipping_handling{
           discounts{
-          amount{currency}}
+          amount{currency}},
           taxes{amount{value}},
           discounts{amount{value}}},
           total_shipping{value}

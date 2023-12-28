@@ -22,8 +22,7 @@
   --unnamed-color-1d1d1b: #1D1D1B;
 
   /* Font/text values */
-  --unnamed-font-family-poppins: Poppins;
-  --unnamed-font-family-fira-sans: Fira Sans;
+
   --unnamed-font-style-normal: normal;
   --unnamed-font-weight-600: 600px;
   --unnamed-font-weight-normal: normal;
@@ -42,12 +41,11 @@
   --unnamed-line-spacing-23: 23px;
   --unnamed-line-spacing-24: 24px;
   --unnamed-line-spacing-25: 25px;
-  
+
 }
 
 /* Character Styles */
 .unnamed-character-style-1 {
-  font-family: var(--unnamed-font-family-poppins);
   font-style: var(--unnamed-font-style-normal);
   font-weight: var(--unnamed-font-weight-600);
   font-size: var(--unnamed-font-size-18);
@@ -57,7 +55,6 @@
 }
 
 .unnamed-character-style-2 {
-  font-family: var(--unnamed-font-family-poppins);
   font-style: var(--unnamed-font-style-normal);
   font-weight: var(--unnamed-font-weight-600);
   font-size: var(--unnamed-font-size-16);
@@ -67,7 +64,6 @@
 }
 
 .unnamed-character-style-3 {
-  font-family: var(--unnamed-font-family-poppins);
   font-style: var(--unnamed-font-style-normal);
   font-weight: var(--unnamed-font-weight-600);
   font-size: var(--unnamed-font-size-15);
@@ -77,7 +73,6 @@
 }
 
 .unnamed-character-style-4 {
-  font-family: var(--unnamed-font-family-poppins);
   font-style: var(--unnamed-font-style-normal);
   font-weight: var(--unnamed-font-weight-600);
   font-size: var(--unnamed-font-size-20);
@@ -87,7 +82,6 @@
 }
 
 .unnamed-character-style-5 {
-  font-family: var(--unnamed-font-family-poppins);
   font-style: var(--unnamed-font-style-normal);
   font-weight: var(--unnamed-font-weight-normal);
   font-size: var(--unnamed-font-size-18);
@@ -97,7 +91,6 @@
 }
 
 .unnamed-character-style-6 {
-  font-family: var(--unnamed-font-family-poppins);
   font-style: var(--unnamed-font-style-normal);
   font-weight: var(--unnamed-font-weight-normal);
   font-size: var(--unnamed-font-size-16);
@@ -107,7 +100,6 @@
 }
 
 .unnamed-character-style-7 {
-  font-family: var(--unnamed-font-family-poppins);
   font-style: var(--unnamed-font-style-normal);
   font-weight: var(--unnamed-font-weight-normal);
   font-size: var(--unnamed-font-size-14);
@@ -117,7 +109,6 @@
 }
 
 .unnamed-character-style-8 {
-  font-family: var(--unnamed-font-family-fira-sans);
   font-style: var(--unnamed-font-style-normal);
   font-weight: var(--unnamed-font-weight-medium);
   font-size: var(--unnamed-font-size-14);
@@ -127,7 +118,6 @@
 }
 
 .unnamed-character-style-9 {
-  font-family: var(--unnamed-font-family-fira-sans);
   font-style: var(--unnamed-font-style-normal);
   font-weight: var(--unnamed-font-weight-normal);
   font-size: var(--unnamed-font-size-14);
@@ -136,13 +126,22 @@
   color: var(--unnamed-color-221f1f);
 }
 
+body {
+  margin: 0;
+}
 
 @media only screen and (max-width: 896px) {
   .img {
     width: 115px;
     height: 23px;
   }
+
+  .productImg {
+    width: 164px;
+    height: 164px;
+  }
 }
+
 
 /* @media (prefers-color-scheme: dark) {
   :root {

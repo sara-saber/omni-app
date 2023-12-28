@@ -12,14 +12,14 @@ const Dashboard = () => {
 
     return (
 
-        <Grid container gap={2} md={8}>
+        <Grid container gap={2} md={8} >
             <Grid md={12}>
-                <Typography fontWeight={600}>My dashboard</Typography>
+                <Typography pl={{md:0,xs:3}}  fontWeight={600}>My dashboard</Typography>
             </Grid>
-            <Typography sx={{ letterSpacing: '0px', color: '#2B3445', opacity: 1 }}>
+            <Typography pl={{md:0,xs:3}}  sx={{ letterSpacing: '0px', color: '#2B3445', opacity: 1 }}>
                 From your Profile Dashboard you have the ability to view a snapshot of your Profile and update your account information. Select a link below to view or edit information.
             </Typography>
-            <Grid container gap={2}>
+            <Grid container  justifyContent={{xs:"center",md:'space-between'}} gap={2}>
                 <Box width={250} backgroundColor='#F8FAFD' py={1} px={3} border='1px solid #E0E0E0' borderRadius={2}>
                     <Grid container alignItems={'center'} justifyContent={'space-between'} >
                         <Typography level="title-md" fontSize={16}>My Orders</Typography>

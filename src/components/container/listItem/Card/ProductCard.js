@@ -3,37 +3,41 @@ import { Card, ImageListproductBar, Rating, Grid, Box, CardContent, CardActions,
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import { Skeleton } from '@mui/material';
 import { useState } from 'react';
-import Image from 'next/image';
 const ProductCard = (props) => {
     const stockStatus = useState(props?.product.stock_status)
     return (
-        <Card key={props?.product} sx={{boxShadow:{md:'0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12)',xs:'none'}, width: { md: "259px", xs: "150px" }, height: "451px", p: 3 }}>
+        <Card key={props?.product} sx={{
+            boxShadow: { md: '0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12)', xs: 'none' },
+            maxWidth: { md: "259px", xs: "164px" }, height: {md:"451px",xs:'358px'}, p: { md: 3, xs: 0 }
+        }}>
             {console.log(props?.product)}
             <Grid md={12} container justifyContent={"center"}>
-                <img
-                    sx={{ width: { md: '254px', xs: '150px' } }}
-                    width={"204px"}
-                    height={"254px"}
+                <img className='productImg'
+                    style={{ objectFit: 'contain' }}
+                    width="204px"
+                    height="254px"
                     loading="lazy"
                     src={props.product.image.url}
                 />
-                {/* <Image width={200} height={40} src={props?.product.image.url}/> */}
             </Grid>
-            <Grid container gap={{ md: 1, xs: 1.1 }} pt={2} justifyContent={"space-between"}>
-                <Typography order={{ md: 1, xs: 2 }} color={"#17468F"}>{props?.product.categories[2].name}</Typography>
-                <Stack order={{ md: 2, xs: 1 }}>
-                    <Rating
-                        name="size-small"
-                        value={3}
-                        // value={props?.rating}
-                        readOnly
-                        size="small"
-                    />
-                </Stack>
-
+            <Grid pt={{ md: 3, xs: 1 }} container justifyContent={"space-between"}>
+                <Grid xs={12} md={1}>
+                    <Typography order={{ md: 1, xs: 2 }} color={"#17468F"}>{props?.product.categories[2].name}</Typography>
+                </Grid>
+                <Grid xs={12} md={4}>
+                    <Stack order={{ md: 2, xs: 1 }}>
+                        <Rating
+                            name="size-small"
+                            value={3}
+                            // value={props?.rating}
+                            readOnly
+                            size="small"
+                        />
+                    </Stack>
+                </Grid>
             </Grid>
             <Grid pt={0.5} md={10}>
-                <Typography height={60} fontSize={14}>
+                <Typography height={60} width='100%' overflow={'hidden'} fontSize={14}>
                     {props.product.name}
                 </Typography>
             </Grid>
@@ -52,7 +56,7 @@ const ProductCard = (props) => {
                 </Box>
             </Grid>
             <Grid container pt={1} md={12} justifyContent={"center"}>
-                <Button alignItems={"center"} startIcon={<ShoppingBasketIcon />} sx={{textTransform:'none', color: '#2B3445', width: 253, height: 40, border: ' 1px solid #E0E0E0', borderRadius: '20px' }} size="small" >Add To Card</Button>
+                <Button alignItems={"center"} startIcon={<ShoppingBasketIcon />} sx={{ textTransform: 'none', color: '#2B3445', width: 253, height: 40, border: ' 1px solid #E0E0E0', borderRadius: '20px' }} size="small" >Add To Card</Button>
             </Grid>
         </Card>
     );

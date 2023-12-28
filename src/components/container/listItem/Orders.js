@@ -1,7 +1,7 @@
 import { Avatar, AvatarGroup, Grid, Button, Box, Accordion, AccordionSummary, AccordionDetails, Typography, Divider, Skeleton, CircularProgress } from '@mui/material';
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import { useEffect, useState } from 'react';
 import { useQuery } from '@apollo/client';
 import { Get_Customer_Orders, Get_Order_Details } from '@/graphql/Query';
@@ -10,20 +10,12 @@ import OrderDetails from './Order/OrderDetails';
 
 const Orders = () => {
     const [expanded, setExpanded] = useState(false);
-    const [visibility, setVisibility] = useState(false)
     const { data, loading: orderLoading } = useQuery(Get_Order_Details)
     const [id, setId] = useState()
+    const [icon,setIcon]=useState(false)
     const handleChange = (panel) => (event, isExpanded) => {
         setExpanded(isExpanded ? panel : false);
-        setVisibility(!visibility)
         setId(panel)
-
-        // setVisibility((prev) => ({
-        //     ...prev,
-        //     [id]: !prev[id]
-        // }))
-        // visibility: visibility[item.id] ? "hidden" : "visible",
-        // const stockStatus = useState(props?.product.stock_status)
     };
 
     return (
@@ -35,16 +27,14 @@ const Orders = () => {
                     </Avatar>
                 </Grid>
                 <Grid xs={6}>
-                    <Typography fontSize={20} fontWeight={700} justifyContent={{ xs: 'center', md: 'flex-start' }} pb={2}  >
-                        My orders
+                    <Typography fontSize={20} fontWeight={550} justifyContent={{ xs: 'center', md: 'flex-start' }} pb={2}  >
+                        My order
                     </Typography>
                 </Grid>
                 <Grid>
                     <Divider />
                 </Grid>
             </Grid>
-            {/* {console.log(data)}
-            {console.log(data?.customer?.orders?.items)} */}
             {
                 orderLoading ?
                     <Box alignItems={"center"} display={"flex"} justifyContent={'center'} height={200} fullwidth>
@@ -60,44 +50,56 @@ const Orders = () => {
                                             <Divider fullwidth color='#C4C4C4' sx={{ borderBottomWidth: '1px' }} orientation='horizontal' />
                                         </Grid>
                                         <Grid md={12} xs={12} fullwidth>
-                                            <Typography sx={{ height: '66px', pl: '25px', display: 'flex', alignItems: 'center', backgroundColor: '#F5F8FB' }}>
+                                            <Typography sd={console.log(item?.items)} sx={{ borderRadius: 1, height: '66px', pl: '25px', display: 'flex', alignItems: 'center', backgroundColor: '#F5F8FB' }}>
                                                 March
                                             </Typography>
                                         </Grid>
-                                        <Grid md={12} xs={12}>
-                                            <Accordion sx={{
-                                                ".css-1elwnq4-MuiPaper-root-MuiAccordion-root:first-of-type": { backgroundColor: 'red', border: "2px solid #E0E0E0", boxShadow: 0 },
-                                                ".css-1elwnq4-MuiPaper-root-MuiAccordion-root:first-of-type": { borderRadius: 20 },
-
-                                            }} expanded={expanded === `panel${item.id}`} onChange={handleChange(`panel${item.id}`)}>
+                                        <Grid sx={{
+                                            ".MuiAccordion-root": { border: "2px solid #E0E0E0", boxShadow: 0, borderRadius: 2 }
+                                        }} md={12} xs={12}>
+                                            <Accordion expanded={expanded === `panel${item.id}`} onChange={handleChange(`panel${item.id}`)}>
                                                 <AccordionSummary
-                                                    expandIcon={<ChevronRightIcon />}
+                                                    expandIcon={icon?<ExpandMoreIcon sx={{ width: '28px', height: '28px', backgroundColor: '#E0E0E0', borderRadius: 5 }} />:
+                                                    <KeyboardArrowRightIcon sx={{ width: '28px', height: '28px', backgroundColor: '#E0E0E0', borderRadius: 5 }} />}
                                                     aria-controls={`panel${item.id}-content`}
                                                     id={`panel${item.id}-header`}
                                                 >
-                                                    <Grid container m={0.1} p={0.5} gap={1} sx={{ alignItems: 'center', justifyContent: 'space-between' }}>
-                                                        <AvatarGroup sx={{
-                                                            visibility: visibility && id === `panel${item.id}` ? "hidden" : "visible",
-                                                            '.MuiAvatar-root': { width: '30px', height: '30px', fontSize: 15 },
-                                                            ".avatar3": { zIndex: 3, display: { xs: 'none', md: 'block' } },
-                                                            ".avatar2": { zIndex: 2, marginRight: '-5px' },
-                                                            ".avatar1": { zIndex: 1, marginRight: '-5px' },
-                                                        }} max={3}>
-                                                            <Avatar className='avatar1' alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+                                                    <Grid container pl={{ md: 1, xs: 0 }} justifyContent={'space-between'} alignItems={{ md: 'center' }}>
+                                                        <Grid container md={2} xs={3}>
+                                                            <AvatarGroup max={3} sx={{
+                                                                '.MuiAvatar-root': {
+                                                                    width: '40px', height: '40px',
+                                                                    fontSize: 16,
+                                                                    border: '2px solid #E0E0E0',
+                                                                    backgroundColor: '#FFFF',
+                                                                    color: '#111',
+                                                                    marginLeft: '-16px'
+                                                                },
+                                                                // ".avatar3": { zIndex: 3, display: { xs: 'none', md: 'block' } },
+                                                                // ".avatar2": { zIndex: 2, marginRight: '-5px' },
+                                                                // ".avatar1": { zIndex: 1, marginRight: '-5px' },
+                                                            }}>
+                                                                {item?.items.map((product) => (
+                                                                    <Avatar src={product.product_small_image.url} />
+                                                                ))}
+                                                                {/* <Avatar className='avatar1' alt="Remy Sharp" src={item?.items.product_small_image?.url} />
                                                             <Avatar className='avatar2' alt="Travis Howard" src="/static/images/avatar/2.jpg" />
-                                                            <Avatar className='avatar3' alt="Cindy Baker" src="/static/images/avatar/3.jpg" />
-                                                        </AvatarGroup>
-                                                        <Grid order={{ md: 1, xs: 1 }}>
-                                                            <Typography sx={{ display: { xs: 'none', md: 'block' }, color: '#C4C4C4', fontSize: '12px' }}>Order no</Typography>
-                                                            <Typography sx={{ color: '#2B3445', fontSize: '14px' }}>{item.number}</Typography>
+                                                            <Avatar className='avatar3' alt="Cindy Baker" src="/static/images/avatar/3.jpg" /> */}
+                                                            </AvatarGroup>
                                                         </Grid>
-                                                        <Grid order={{ md: 2, xs: 4 }}>
-                                                            <Typography sx={{ display: { xs: 'none', md: 'block' }, color: '#C4C4C4', fontSize: '12px' }}>Order date</Typography>
-                                                            <Typography sx={{ color: '#2B3445', fontSize: '14px' }}>{item.order_date}</Typography>
+                                                        <Grid container justifyContent={'space-between'} order={{ md: 1, xs: 1 }} md={4} xs={3}>
+                                                            <Grid md={5} xs={12} >
+                                                                <Typography sx={{ display: { xs: 'none', md: 'block' }, color: '#C4C4C4', fontSize: '12px' }}>Order no</Typography>
+                                                                <Typography fontWeight={600} sx={{ color: '#2B3445', fontSize: '14px' }}>{item.number}</Typography>
+                                                            </Grid>
+                                                            <Grid md={6} xs={12}>
+                                                                <Typography sx={{ display: { xs: 'none', md: 'block' }, color: '#C4C4C4', fontSize: '12px' }}>Order date</Typography>
+                                                                <Typography fontWeight={600} sx={{ color: '#2B3445', fontSize: '14px' }}>{item.order_date}</Typography>
+                                                            </Grid>
                                                         </Grid>
-                                                        <Grid order={{ md: 3, xs: 3 }}>
+                                                        <Grid container xs={8} justifyContent={{ md: 'center' }} md={4} order={{ md: 3, xs: 4 }}>
                                                             <Button sx={{
-                                                                visibility: visibility && id === `panel${item.id}` ? "hidden" : "visible",
+
                                                                 borderColor: item?.status == "In Progress" ? "#EB1C23" : item?.status == "Pending" ? "#ED6C02" : "#EB1C23",
                                                                 color: item?.status == "In Progress" ? "#EB1C23" : item?.status == "Pending" ? "#ED6C02" : "#EB1C23",
                                                                 padding: '5px 17px', width: 'auto', height: '30px', borderRadius: '15px', fontSize: '14px'
@@ -105,17 +107,17 @@ const Orders = () => {
                                                                 {item.status}
                                                             </Button>
                                                         </Grid>
-                                                        <Grid order={{ md: 4, xs: 2 }}>
-                                                            <Typography>
+                                                        <Grid md={1.5} xs={4} order={{ md: 4, xs: 3 }}>
+                                                            <Typography fontWeight={600} >
                                                                 {item.total.subtotal?.currency} {item?.total.subtotal.value}  </Typography>
                                                         </Grid>
                                                     </Grid>
                                                 </AccordionSummary>
-                                                <AccordionDetails >
+                                                <AccordionDetails display={{ md: 'block', xs: 'none' }} >
                                                     <OrderDetails DataDetails={item} />
                                                 </AccordionDetails>
                                             </Accordion>
-                                        </Grid>
+                                        </Grid >
                                     </>
 
                                 ))

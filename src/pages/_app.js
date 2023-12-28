@@ -6,17 +6,18 @@ import { setContext } from '@apollo/client/link/context';
 import { Box, Container } from '@mui/material'
 import { PHASE_PRODUCTION_BUILD } from 'next/dist/shared/lib/constants'
 import { Poppins, Roboto, Fira_Sans } from '@next/font/google'
-const fira_sans = Fira_Sans({
-  subsets: ['latin'],
-  weight: '600',
-})
-// const roboto = Roboto({
+// const fira_sans = Fira_Sans({
 //   subsets: ['latin'],
-//   weight: ['400', '700'],
+//   weight: '600',
 // })
+// // const roboto = Roboto({
+// //   subsets: ['latin'],
+// //   weight: ['400', '700'],
+// // })
 const popins = Poppins({
   subsets: ['latin'],
-  weight: ['300'],
+  weight: ['300', '400', '500', '600', '700', '800'],
+  variable: "--poppins"
 })
 export default function App({ Component, pageProps }) {
 
@@ -54,7 +55,20 @@ export default function App({ Component, pageProps }) {
 
   return (
     <ApolloProvider client={client} >
-      <main className={popins.className} >
+      <main  >
+        <style jsx global>
+          {
+            `
+            * {
+              font-family: ${popins.style.fontFamily} !important;
+            }
+
+            button {
+              font-family: ${popins.style.fontFamily} !important;
+            }
+            `
+          }
+        </style>
         <Header />
         <Container maxWidth="xl">
           <Component {...pageProps} />
