@@ -42,10 +42,6 @@ export default function App({ Component, pageProps }) {
       }
     }
   })
-  // const link = createHttpLink({
-  //   uri: '/graphql',
-  //   credentials: 'same-origin'
-  // })
   const client = new ApolloClient({
     connectToDevTools: true,
     link: authLink.concat(httpLink),

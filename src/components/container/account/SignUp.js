@@ -110,8 +110,8 @@ const SignUp = () => {
                     }
                     <Typography pt={3} level="text-sm">You are looking for the best products in order to make a better version of yourself.</Typography>
                 </Grid>
-                <Grid container gap={{ md: 1, xs: 0.3 }} md={12}>
-                    <Grid md={5.89} xs={5.9}>
+                <Grid container justifyContent={'space-between'} md={12}>
+                    <Grid md={5.8} xs={5.8}>
                         <TextField
                             fullWidth
                             required
@@ -121,7 +121,7 @@ const SignUp = () => {
                             onChange={handleChange}
                         />
                     </Grid>
-                    <Grid md={5.89} xs={5.9}>
+                    <Grid md={5.8} xs={5.8}>
                         <TextField
                             fullWidth
                             id="outlined-controlled"
@@ -174,8 +174,8 @@ const SignUp = () => {
                     label="Address line 2 (optional)"
                 />
 
-                <Grid container gap={{ md: 1, xs: 0.3 }} md={12}>
-                    <Grid md={5.89} xs={5.9}>
+                <Grid container justifyContent={'space-between'} >
+                    <Grid  md={5.8} xs={5.8}>
                         <TextField
                             fullWidth
                             required
@@ -185,7 +185,7 @@ const SignUp = () => {
                             label="City"
                         />
                     </Grid>
-                    <Grid md={5.89} xs={5.9}>
+                    <Grid  md={5.8} xs={5.8}>
                         <TextField
                             fullWidth
                             required
