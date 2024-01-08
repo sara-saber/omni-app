@@ -120,6 +120,12 @@ query getOrderDetails
             files{url}
           },
           shipments{
+            id
+            number
+            items{
+              product_name
+              
+            }
             files{url}
           },
           total{

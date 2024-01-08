@@ -142,7 +142,22 @@ body {
   }
 }
 
+.link{
+  color: #181C24;
+  font-weight: 600;
+  font-size: medium;
 
+}
+.passLink{
+  color: #181C24;
+  font-weight: 400;
+  font-size: medium;
+
+}
+.footerLink{
+  color: #ffffff;
+  font-size: 14px;
+}
 /* @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;

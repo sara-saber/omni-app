@@ -1,6 +1,7 @@
 import { RESET_EMAIL } from "@/graphql/Mutations";
 import { useMutation } from "@apollo/client";
-import {Link, Grid, Typography, TextField, Button } from "@mui/material";
+import { Grid, Typography, TextField, Button, colors } from "@mui/material";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
 
@@ -29,7 +30,7 @@ const ForgetPassword = () => {
                 <Grid md={12}> <Button type="submt" sx={{ height:'50px',textTransform: 'none', borderRadius: 25, backgroundColor: '#17468F' }} fullWidth variant="contained"> Submit</Button>
                 </Grid>
                 <Grid md={12} container justifyContent={"center"}>
-                    <Link fontWeight={400} fontSize={'16px'}  color={'#2B3445'} href='/account/login' >Sign in instead</Link>
+                    <Link className="link"  href='/account/login' >Sign in instead</Link>
                 </Grid>
             </Grid>
         </form>

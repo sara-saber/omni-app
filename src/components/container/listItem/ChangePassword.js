@@ -6,7 +6,7 @@ import { CHANGE_PASSWORD } from "@/graphql/Mutations";
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined'
 import { useRouter } from "next/router";
 const ChangePassword = () => {
-    const [password, { data, error }] = useMutation(CHANGE_PASSWORD)
+    const [password, { data, error:passError }] = useMutation(CHANGE_PASSWORD)
     const [currentPassword, setCurrentPassword] = useState()
     const [newPassword, setNewPassword] = useState()
     const [confirmPassword, setConfirmPassword] = useState()
@@ -50,7 +50,7 @@ const ChangePassword = () => {
                 <Typography>
                     Change Password
                 </Typography>
-                <TextField
+                <TextField 
                     fullWidth
                     label="current Password"
                     value={currentPassword}

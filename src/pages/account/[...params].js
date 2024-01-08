@@ -37,8 +37,8 @@ const Account = () => {
                     width: { md: 530, xs: '100%' },
                     my: { md: 10, xs: 1 },
                     pb: 5,
-                    borderRadius: { md: 'sm', xs: '0' },
-                    border: { md: "2px solid #1111" },
+                    borderRadius: { md: '10px', xs: '0' },
+                    border: { md: "1px solid #C6C7C8" },
                     height: 'auto'
                 }}
             >
@@ -51,7 +51,14 @@ const Account = () => {
                                 <Button
                                     id='btn1'
                                     fullWidth
-                                    sx={{ height: 61, backgroundColor: btnId === 'btn1' ? bgColor:'#FFFF' , fontSize: "16px", textTransform: "capitalize", color: btnId==="btn1"?textColor:"#17468F", fontWeight: "54px" }}
+                                    sx={{ 
+                                        borderTopLeftRadius:10,
+                                       height: 61, backgroundColor: btnId === 'btn1' ? '#FFFF':bgColor , fontSize: "16px",
+                                         textTransform: "capitalize", color: btnId==="btn1"?"#17468F":textColor,
+                                         '&:hover':{
+                                            backgroundColor:btnId === 'btn1' ? '#FFFF':bgColor
+                                         },
+                                         fontWeight: "54px" }}
                                     onClick={(e) => (router.push("/account/login"),handleButton(e), setbgColor("#F5F5F5"),setTextColor("#4C4C4C")  )}
                                     textTransform='none'>
                                     Sign In
@@ -61,7 +68,15 @@ const Account = () => {
                                 <Button
                                     fullWidth
                                     id='btn2'
-                                    sx={{ height: 61, backgroundColor: btnId === 'btn2' ? bgColor : '#FFFF', fontSize: "16px", textTransform: "capitalize", color: btnId==='btn2'?textColor:'#17468F', fontWeight: "54px" }}
+                                    sx={{ 
+                                        height: 61, backgroundColor: btnId === 'btn2' ? '#FFFF': bgColor,
+                                         fontSize: "16px", textTransform: "capitalize",
+                                         color: btnId==='btn2'?"#17468F":textColor, 
+                                         '&:hover':{
+                                            backgroundColor:btnId === 'btn2' ? '#FFFF':bgColor
+                                         },
+                                         borderTopRightRadius:10,
+                                         fontWeight: "54px" }}
                                     variant="soft"
                                     onClick={(e) => (router.push("/account/signup"),handleButton(e), setbgColor("#F5F5F5"),setTextColor("#4C4C4C") )}
                                     textTransform='none'

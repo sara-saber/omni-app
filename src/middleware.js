@@ -1,12 +1,13 @@
 import { NextResponse } from 'next/server'
 
 export function middleware(request) {
-    // const token=localStorage.getItem("token")
-    // console.log(token);
-    // console.log(cookie);
-    //  return NextResponse.redirect(new URL('/login', request.url))
+    const token = request.cookies.get('token')
+    if (request.nextUrl.pathname.startsWith('/my-account') && !token) {
+        console.log(token);
+        return NextResponse.redirect(new URL('/account/login', request.url))
+    }
+    else if (request.nextUrl.pathname.startsWith('/account') && token) {
+        return NextResponse.redirect(new URL('/my-account/dashboard', request.url))
+    }
 }
 
-export const config = {
-    // matcher: '/my-account/:path*',
-}

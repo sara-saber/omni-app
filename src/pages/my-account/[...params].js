@@ -13,6 +13,7 @@ import { useQuery } from "@apollo/client";
 import { Get_Customer } from "@/graphql/Query";
 import ChangePassword from "@/components/container/listItem/ChangePassword";
 import ChangeEmail from "@/components/container/listItem/ChangeEmail";
+import OrderDetails from "@/components/container/listItem/Order/OrderDetails";
 const ContainerPage = () => {
     const [customer, setCustomer] = useState()
     const router = useRouter()
@@ -21,8 +22,9 @@ const ContainerPage = () => {
     const { params = [] } = router.query
     let contentToRender;
     const logout = () => {
-        localStorage.removeItem('token')
-        router.push('/login')
+        document.cookie = 'token= ; path=/'
+        // localStorage.removeItem('token')
+        router.push('/account/login')
     }
     switch (params[0]) {
         case "dashboard":
@@ -44,32 +46,28 @@ const ContainerPage = () => {
             contentToRender = <ChangePassword />;
             break;
         case "change-email":
-            contentToRender = <ChangeEmail/>;
+            contentToRender = <ChangeEmail />;
             break;
-        case "logout":
-            logout()
-            break;
+        case 'order/':
+            contentToRender = <OrderDetails />
         default:
             contentToRender = <Dashboard />;
             break;
     }
 
     return (
-        <Box sx={{ minHeight: "800px", mt: { xs: '15px', md: '51px' }, marginBottom: 'auto' }}>
-            <div className='MuiGrid-root'>
-                <Grid alignContent={"center"} container gap={1}  >
-                    <Grid sx={{display:{md:'inline',xs:'none'}}} xs={12} md={12} order={{ md: 1, xs: 1 }}>
-                        <Typography fontWeight={600}>Hi,{data?.customer.firstname}</Typography>
+        <Box sx={{ minHeight: "800px", mx:{md:"50px"},mt: { xs: '15px', md: '51px' }, marginBottom: 'auto',justifyContent:'space-between'}}>
+            <Grid alignContent={"center"} container gap={{md:5,xs:0}}   >
+                <Grid xs={12} md={3} order={{ md: 2, xs: 3 }}>
+                    <Grid sx={{ display: { md: 'inline', xs: 'none' } }} xs={12} md={12} order={{ md: 1, xs: 1 }}>
+                        <Typography fontSize={20} fontWeight={700}>Hi, {data?.customer.firstname}!</Typography>
                     </Grid>
-                    <Grid xs={12} md={3} order={{ md: 2, xs: 3 }}>
-                        <Menu />
-                    </Grid>
-                    <Grid xs={12} md={8} order={{ md: 3, xs: 2 }}>
-                        {contentToRender}
-                    </Grid>
+                    <Menu />
                 </Grid>
-
-            </div>
+                <Grid  xs={12} md={8.5} order={{ md: 3, xs: 2 }}>
+                    {contentToRender}
+                </Grid>
+            </Grid>
         </Box>
     )
 }

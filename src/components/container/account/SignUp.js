@@ -13,6 +13,12 @@ const SignUp = () => {
     const [country, setCountry] = useState()
     const [regions, setRegion] = useState([])
     const [showPassword, setShowPassword] = useState(false)
+    const [snackbarState, setSnackbarState] = useState({
+        open: false,
+        vertical: 'bottom',
+        horizontal: 'center'
+    })
+    const { vertical, horizontal, open } = snackbarState
     const { data: countries, loading: isLoading, error: countries_error } = useQuery(Get_Countries)
     const [createCustomer, { data: CustomerData }] = useMutation(Post_Create_Cutomer)
     const [createCustomerAddress, { data: addressData }] = useMutation(Post_create_Addresses)
@@ -60,8 +66,9 @@ const SignUp = () => {
         // console.log(addressInput);
         createCustomer({
             variables: { Customer: customerInput }, onCompleted: (
-                createCustomerAddress({ variables: { CustomerAddress: addressInput, onCompleted: (router.push("/login")) } })
+                createCustomerAddress({ variables: { CustomerAddress: addressInput, onCompleted: (router.push("/account/login")) } })
             )
+            
         })
     }
 
@@ -91,7 +98,17 @@ const SignUp = () => {
                 }}
             >
                 <Grid fullWidth>
-                    <Typography level="text-sm">You are looking for the best products in order to make a better version of yourself.</Typography>
+                    {countries_error &&
+
+                        <Box>
+                            <Snackbar sx={{ display: 'contents' }} anchorOrigin={{ vertical, horizontal }} open={open} autoHideDuration={200}>
+                                <Alert severity="error" >
+                                    {countries_error?.message}
+                                </Alert>
+                            </Snackbar>
+                        </Box>
+                    }
+                    <Typography pt={3} level="text-sm">You are looking for the best products in order to make a better version of yourself.</Typography>
                 </Grid>
                 <Grid container gap={{ md: 1, xs: 0.3 }} md={12}>
                     <Grid md={5.89} xs={5.9}>
@@ -243,11 +260,11 @@ const SignUp = () => {
                     '.css-1fi1jt2-MuiButtonBase-root-MuiCheckbox-root': {
                         padding: 0
                     },
-                    '.css-i4bv87-MuiSvgIcon-root':{
-                        color:'#B7B7B7',
-                        fill:'#17468F'
+                    '.css-i4bv87-MuiSvgIcon-root': {
+                        color: '#B7B7B7',
+                        fill: '#17468F'
                     }
-                    
+
                 }}>
                     <Grid md={1} xs={1}>
                         <Checkbox sx={{ alignItems: "start" }} />
@@ -263,8 +280,8 @@ const SignUp = () => {
                     '.css-1fi1jt2-MuiButtonBase-root-MuiCheckbox-root': {
                         padding: 0
                     },
-                    '.css-i4bv87-MuiSvgIcon-root':{
-                        color:'#B7B7B7'
+                    '.css-i4bv87-MuiSvgIcon-root': {
+                        color: '#B7B7B7'
                     }
                 }}>
                     <Grid md={1} xs={1}>

@@ -8,11 +8,12 @@ import { useMutation, useQuery } from '@apollo/client';
 import { Get_Customer_Info } from '@/graphql/Query';
 import { Post_Update_Customer } from '@/graphql/Mutations';
 import { useRouter } from 'next/router';
+import PageName from './PageName/PageName';
 
 const Profile = () => {
     const [loading, setLoading] = useState(true)
     const [openSnackbar, setOpen] = useState(false)
-    const { data, error, loading: dataLoading } = useQuery(Get_Customer_Info)
+    const { data, error: InfoError, loading: dataLoading } = useQuery(Get_Customer_Info)
     const router = useRouter()
     const handleClose = () => {
         setTimeout(() => {
@@ -49,27 +50,16 @@ const Profile = () => {
         setTimeout(() => {
             router.push('profile-information')
         }, 500)
+        if (InfoError) {
+
+        }
     }
     function handleClick() {
         setLoading(true);
     }
     return (
-        <Grid container gap={2}>
-            <Grid md={6} xs={12} container gap={2} alignItemst={"center"}>
-                <Grid sx={{ display: { md: 'none', xs: 'flex' } }} xs={3}>
-                    <Avatar>
-                        <KeyboardBackspaceIcon onClick={() => router.push('my-account')} />
-                    </Avatar>
-                </Grid>
-                <Grid xs={6}>
-                    <Typography fontSize={20} fontWeight={700} justifyContent={{ xs: 'center', md: 'flex-start' }} pb={2}  >
-                        Profile Information
-                    </Typography>
-                </Grid>
-                <Grid display={{ md: 'none', xs: 'block' }} xs={12}>
-                    <Divider />
-                </Grid>
-            </Grid>
+        <Grid container gap={0.5}>
+            <PageName name={'Profile Information'} url={'/my-account/dashboard'} position={'center'}></PageName>
             <form onSubmit={
                 e => {
                     e.preventDefault(),
@@ -81,7 +71,7 @@ const Profile = () => {
                 {dataLoading ?
                     console.log("is loading")
                     :
-                    <Grid md={5} container gap={2}
+                    <Grid lg={6} md={9} container gap={'25px'}
                         sx={{
                             '.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input': {
                                 padding: 1.4
@@ -99,17 +89,6 @@ const Profile = () => {
                         }}
                     >
                         {console.log(data?.customer)}
-
-                        <TextField
-                            fullWidth
-                            label="Language"
-                            defaultValue="English"
-                            select
-                        >
-                            <MenuItem>
-                                English
-                            </MenuItem>
-                        </TextField>
                         <TextField
                             fullWidth
                             label="First name"
@@ -171,17 +150,18 @@ const Profile = () => {
                             />
                         </Grid>
                         <Grid container gap={1} justifyContent={{ md: "space-between", sx: 'flex-start' }}>
-                            <Grid md={2} xs={12}>
+                            <Grid md={3} xs={12}>
                                 <Button variant='contained' type='submit' sx={{
                                     '&:hover': {
                                         backgroundColor: '#27325E'
                                     },
                                     textTransform: 'none',
                                     height: '40px',
-                                    fontSize: 13, width: { md: '113px', xs: '100%' }, borderRadius: "22px", backgroundColor: "#143E7D", color: "#fff"
+                                    fontWeight: 200,
+                                    fontSize: 14, width: { md: '113px', xs: '100%' }, borderRadius: "22px", backgroundColor: "#143E7D", color: "#fff"
                                 }}>Update</Button>
                             </Grid>
-                            <Grid md={3}>
+                            <Grid md={3.2}>
                                 <Button onClick={() => router.push("change-password")}
 
                                     sx={{
@@ -193,7 +173,7 @@ const Profile = () => {
                                         textTransform: 'none',
                                         width: '156px',
                                         height: '40px',
-                                        fontSize: 13,
+                                        fontSize: 14,
                                         borderRadius: "22px", border: 'solid 1px black', backgroundColor: "white", color: "black"
                                     }}
                                 >Change Password</Button>
@@ -205,22 +185,27 @@ const Profile = () => {
                                         color: '#FFFFFF'
                                     },
                                     textTransform: 'none',
-                                    width: { md: '100px', xs: '100%' },
+                                    minWidth: { md: '125px', xs: '100%' },
                                     height: '40px',
-                                    fontSize: 11, borderRadius: "22px", border: 'solid 1px black', backgroundColor: "white", color: "black"
+                                    fontSize: 14, borderRadius: "22px", border: 'solid 1px black', backgroundColor: "white", color: "black"
                                 }}>Change email</Button>
                             </Grid>
                         </Grid>
-                        <Snackbar onClose={handleClose} anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }} open={openSnackbar} autoHideDuration={1000} >
-                            <Alert severity="success" sx={{ width: '100%' }}>
-                                your Information was updated!
-                            </Alert>
-                        </Snackbar>
+                        {
+                            !InfoError &&
+                            <Snackbar onClose={handleClose} anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }} open={openSnackbar} autoHideDuration={1000} >
+                                <Alert severity="success" sx={{ width: '100%' }}>
+                                    your Information was updated!
+                                </Alert>
+                            </Snackbar>
+                        }
 
                     </Grid>
                 }
 
             </form >
+
+
         </Grid>
 
     );

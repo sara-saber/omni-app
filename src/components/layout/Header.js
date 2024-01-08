@@ -14,22 +14,18 @@ import LocalShippingOutlinedIcon from '@mui/icons-material/LocalShippingOutlined
 import { Stack, InputAdornment, Grid, ListItemIcon, MenuItem, Menu, Typography, Box, Button, Divider, TextField } from '@mui/material';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import { useQuery } from '@apollo/client';
+import { useQuery, useReadQuery } from '@apollo/client';
 import { Get_Categories, Get_Customer } from '@/graphql/Query';
 import logoImage from "../../images/logo1.png"
 import Image from 'next/image';
 
-const Header = () => {
+const Header = (props) => {
     const { data: categoryData, loading: categoryLoading } = useQuery(Get_Categories)
     const { data } = useQuery(Get_Customer)
     const [navItems, setNav] = useState()
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
     const router = useRouter()
-    useEffect(() => {
-        localStorage.setItem('category', categoryData)
-    }, categoryData)
-
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
@@ -39,9 +35,10 @@ const Header = () => {
     return (
         <Box
             sx={{
-                backgroundColor: '#FFFFFF', borderBottom: '1px solid #C4C4C4', pb: {md:'16.5px ',xs:'10px'}
+                height:{md:182,xs:62},
+                backgroundColor: '#FFFFFF', borderBottom: '2px solid #F5F5F5', pb: {md:'1.5px ',xs:'10px'}
             }}>
-            <Box sx={{ display: { xs: 'none', md: 'flex' }, backgroundColor: '#F5F8FB' }} gap={2} justifyContent={'center'} alignItems={'center'}>
+            <Box sx={{ height:32, display: { xs: 'none', md: 'flex' }, backgroundColor: '#F5F8FB' }} gap={3} justifyContent={'center'} alignItems={'center'}>
                 <Typography color="#17468F" fontSize='12px'>
                     FREE SHIPPING AVAILABLE
                 </Typography>
@@ -50,7 +47,7 @@ const Header = () => {
                     WITH PURCHASE OVER CHF 35 BEFORE TAXES; CONNECT TO SEE YOUR PERSONAL BENEFITS
                 </Typography>
             </Box>
-            <Grid px={{ md: '90px', xs: 0 }} alignItems={"center"} mt={{md:4,xs:'12px'}} container gap={1} justifyContent={'space-between'}>
+            <Grid px={{ md: '69px', xs: 0 }} alignItems={"center"} mt={{md:4,xs:'12px'}} container columnGap={0.2} justifyContent={'space-between'}>
                 <Button sx={{
                     '.css-1waxiuw-MuiButtonBase-root-MuiButton-root': {
                         minWidth: 42
@@ -63,7 +60,7 @@ const Header = () => {
                     <MenuIcon fontSize='large' />
                 </Button>
                 <Image onClick={() => { router.push('dashboard') }} className='img' width={200} height={40} src={logoImage} />
-                <Grid md={4}>
+                <Grid md={4.5}>
                     <TextField label="search" size='small' sx={{ display: { xs: 'none', md: 'flex' } }}
                         InputProps={{
                             endAdornment: (
@@ -82,7 +79,8 @@ const Header = () => {
                             boxShadow: 'none',
                         },
                         textTransform: 'none',
-                        font: 'normal 15px/24px',
+                       fontFamily:200,
+                       fontSize:15,
                         color: '#2B3445'
                     }} startIcon={<CompareArrowsOutlinedIcon />}>
                         Compare
@@ -94,8 +92,8 @@ const Header = () => {
                             boxShadow: 'none',
                         },
                         textTransform: 'none',
+                        fontSize:15,
                         ml: '10px', color: '#2B3445',
-                        font: 'normal 15px/24px'
                     }} startIcon={<LocalMallOutlinedIcon />}>
                         Cart
                     </Button>
@@ -107,7 +105,7 @@ const Header = () => {
                                 backgroundColor: '#fff',
                                 boxShadow: 'none',
                             }, ml: '10px', color: '#2B3445', textTransform: 'none',
-                            font: 'normal 15px/24px'
+                            fontSize:15,
                         }}
                         onMouseDown={(e) => handleClose(e)}
                         onMouseOver={(e) => handleClick(e)} startIcon={<PermIdentityOutlinedIcon />}>
@@ -118,15 +116,18 @@ const Header = () => {
                 </Box>
                 <Box alignItems='center' justifyContent='space-between' sx={{
                     '.css-1e6y48t-MuiButtonBase-root-MuiButton-root': {
-                        minWidth: 42
+                        minWidth: 22
                     },
                     '.css-i4bv87-MuiSvgIcon-root': {
                         color: '#2B3445'
                     },
-
-                    display: { xs: 'flex', md: 'none' }
+                    display: { xs: 'flex', md: 'none' },
+                    '.css-1e6y48t-MuiButtonBase-root-MuiButton-root':{
+                        padding:'5%',
+                        minWidth:28
+                    }
                 }}>
-                    <Button>
+                    <Button >
                         <SearchIcon />
                     </Button>
                     <Button>
@@ -195,7 +196,7 @@ const Header = () => {
                 <></>
             }
 
-            <Stack px={{ md: '90px', xs: 0 }} sx={{ mt: '30px', display: { xs: 'none', md: 'flex' } }}
+            <Stack px={{ md: '69px', xs: 0 }} sx={{ mt: '31px',mb:'22px', display: { xs: 'none', md: 'flex' } }}
                 direction='row'
                 divider={<Divider orientation="vertical" flexItem />}
                 spacing={2}>
