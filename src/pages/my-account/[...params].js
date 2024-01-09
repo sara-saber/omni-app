@@ -8,19 +8,14 @@ import WishList from "@/components/container/listItem/WishList";
 import Profile from "@/components/container/listItem/Profile";
 import Box from '@mui/material/Box';
 import { useEffect, useState } from "react";
-
-import { useQuery } from "@apollo/client";
-import { Get_Customer } from "@/graphql/Query";
 import ChangePassword from "@/components/container/listItem/ChangePassword";
 import ChangeEmail from "@/components/container/listItem/ChangeEmail";
 import OrderDetails from "@/components/container/listItem/Order/OrderDetails";
 const ContainerPage = () => {
     const [customer, setCustomer] = useState()
     const router = useRouter()
-    const [name, setName] = useState()
-    const { data } = useQuery(Get_Customer)
     const { params = [] } = router.query
-    let contentToRender;
+    let contentToRender, menu;
     const logout = () => {
         document.cookie = 'token= ; path=/'
         // localStorage.removeItem('token')
@@ -29,6 +24,7 @@ const ContainerPage = () => {
     switch (params[0]) {
         case "dashboard":
             contentToRender = <Dashboard />;
+            // menu=<Menu/>;
             break;
         case "orders":
             contentToRender = <Order />;
@@ -56,15 +52,10 @@ const ContainerPage = () => {
     }
 
     return (
-        <Box sx={{ minHeight: "800px", mx:{md:"50px"},mt: { xs: '15px', md: '51px' }, marginBottom: 'auto',justifyContent:'space-between'}}>
-            <Grid alignContent={"center"} container gap={{md:5,xs:0}}   >
-                <Grid xs={12} md={3} order={{ md: 2, xs: 3 }}>
-                    <Grid sx={{ display: { md: 'inline', xs: 'none' } }} xs={12} md={12} order={{ md: 1, xs: 1 }}>
-                        <Typography fontSize={20} fontWeight={700}>Hi, {data?.customer.firstname}!</Typography>
-                    </Grid>
-                    <Menu />
-                </Grid>
-                <Grid  xs={12} md={8.5} order={{ md: 3, xs: 2 }}>
+        <Box sx={{ minHeight: "800px", mx: { md: "20px", lg: '50px' }, mt: { xs: '15px', md: '51px' }, marginBottom: 'auto', justifyContent: 'space-between' }}>
+            <Grid alignContent={"center"} container gap={{ md: 1, xs: 0, lg: 5 }}   >
+                {menu}
+                <Grid xs={12} md={12} lg={8.5} order={{ md: 3, xs: 2 }}>
                     {contentToRender}
                 </Grid>
             </Grid>

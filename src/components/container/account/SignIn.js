@@ -96,7 +96,7 @@ const SignIn = () => {
                             '.css-nxo287-MuiInputBase-input-MuiOutlinedInput-input': {
                                 padding: 1.5
                             },
-                            '.css-1d3z3hw-MuiOutlinedInput-notchedOutline': {
+                            '.MuiOutlinedInput-root': {
                                 borderRadius: '6px'
                             },
                             '.css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root': {

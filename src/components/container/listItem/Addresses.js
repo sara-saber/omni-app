@@ -26,7 +26,7 @@ const Addresses = () => {
             <Grid sx={{
               
             }} md={6} container gap={2} alignItemst={"center"}>
-               <PageName name={'Addresses'} position={'center'} url={'/my-account/dashboard'}>
+               <PageName  name={'Addresses'} position={'center'} url={'/my-account/dashboard'}>
             </PageName>
             </Grid>
             <Grid order={{ md: 1, xs: 2 }} md={5.59} mt={3} mb={2} xs={12} display={{ md: 'flex', xs: 'block' }} justifyContent={{ md: 'flex-end', xs: 'center' }}>
@@ -37,7 +37,7 @@ const Addresses = () => {
                         height: '50',
                         backgroundColor: '#fff',
                         color: 'black',
-                        border: '1px solid #2B3445',
+                        border: '1px solid var(--light-gray)',
                         textTransform: 'none'
                     }}
 
@@ -47,35 +47,38 @@ const Addresses = () => {
             </Grid>
             <Grid order={{ md: 2, xs: 1 }} container gap={1} md={12} xs={12}>
                 <Grid md={6} xs={12}>
-                    <Box backgroundColor='#F8FAFD' py={1} px={3} border='2px solid #E0E0E0' borderRadius={2}>
-                        <Typography >
+                    <Grid backgroundColor='#F8FAFD' py={1} px={3} border='2px solid #E0E0E0' borderRadius={2} minHeight={{xs:206,md:179}}>
+                        <Typography fontWeight={{md:500,xs:600}} >
                             {data?.customer?.addresses[0].firstname}  {data?.customer?.addresses[0].lastname}
                         </Typography>
                         <Typography pt={1} level="title-md" >
                             {data?.customer?.addresses[0].street[0]}
                         </Typography>
-                        <Grid pt={1} container justifyContent={'space-between'}>
-                            <Typography level="title-lg">Data Detailsefault shipping</Typography>
+                        <Typography pt={1} level="title-md" >
+                        {data?.customer?.addresses[0].street[0]}
+                        </Typography>
+                        <Grid  pt={1} container justifyContent={'space-between'}>
+                            <Typography fontWeight={{md:500,xs:600}} color={{md:'#17468F',xs:'black'}} level="title-lg">Default shipping</Typography>
                             <EditOutlinedIcon></EditOutlinedIcon>
                         </Grid>
-                    </Box>
+                    </Grid>
                 </Grid>
             </Grid>
 
             <Grid order={{ md: 3, xs: 3 }} md={12} xs={12} >
                 {data?.customer.addresses.map((item) => (
-                    <Box py={1} px={6} border='2px solid #E0E0E0' borderRadius={2} >
+                    <Box py={2.2} px={3.5} border='2px solid #E0E0E0' borderRadius={2} >
                         <Grid container alignItems='center' justifyContent={"space-between"}>
-                            <Grid md={3} xs={12}>
+                            <Grid md={2} xs={12}>
                                 <Typography level="title-md" fontSize={16}>{item?.firstname}</Typography>
                             </Grid>
-                            <Grid md={3} xs={12}>
+                            <Grid md={5} xs={12}>
                                 <Typography level="title-lg" fontSize={16}>{item?.street[1]} {item.street[0]}</Typography>
                             </Grid>
-                            <Grid md={3} xs={6}>
+                            <Grid  md={2} xs={5}>
                                 <Typography level="title-lg" fontSize={16}>{item.postcode}</Typography>
                             </Grid>
-                            <Grid container justifyContent={'space-between'} pl={{md:19,xs:12}} textAlign={'right'} md={3} xs={6}>
+                            <Grid md={3} container justifyContent={'space-between'} pl={{md:19,xs:12}} textAlign={'right'} xs={5}>
                                 <Link href='#' style={{color:'#4C4C4C'}} >
                                     <ModeEditOutlineOutlinedIcon />
                                 </Link>

@@ -35,10 +35,10 @@ const Header = (props) => {
     return (
         <Box
             sx={{
-                height:{md:182,xs:62},
-                backgroundColor: '#FFFFFF', borderBottom: '2px solid #F5F5F5', pb: {md:'1.5px ',xs:'10px'}
+                height: { md: 140, xs: 62 ,lg:182},
+                backgroundColor: '#FFFFFF', borderBottom: '2px solid #F5F5F5', pb: { md: '1px ', xs: '10px',lg:'1.5px' }
             }}>
-            <Box sx={{ height:32, display: { xs: 'none', md: 'flex' }, backgroundColor: '#F5F8FB' }} gap={3} justifyContent={'center'} alignItems={'center'}>
+            <Box sx={{ height: 32, display: { xs: 'none', md: 'flex' }, backgroundColor: '#F5F8FB' }} gap={3} justifyContent={'center'} alignItems={'center'}>
                 <Typography color="#17468F" fontSize='12px'>
                     FREE SHIPPING AVAILABLE
                 </Typography>
@@ -47,7 +47,7 @@ const Header = (props) => {
                     WITH PURCHASE OVER CHF 35 BEFORE TAXES; CONNECT TO SEE YOUR PERSONAL BENEFITS
                 </Typography>
             </Box>
-            <Grid px={{ md: '69px', xs: 0 }} alignItems={"center"} mt={{md:4,xs:'12px'}} container columnGap={0.2} justifyContent={'space-between'}>
+            <Grid px={{ md: '20px',lg:'69px', xs: 0 }} alignItems={"center"} mt={{ md: 2,lg:4, xs: '12px' }} container columnGap={0.2} justifyContent={'space-between'}>
                 <Button sx={{
                     '.css-1waxiuw-MuiButtonBase-root-MuiButton-root': {
                         minWidth: 42
@@ -55,12 +55,14 @@ const Header = (props) => {
                     '.css-tzssek-MuiSvgIcon-root': {
                         color: '#2B3445'
                     },
-                    display: { xs: 'block', md: 'none' }
+                    display: { xs: 'block', md: 'block',lg:'none' }
                 }} >
                     <MenuIcon fontSize='large' />
                 </Button>
-                <Image onClick={() => { router.push('dashboard') }} className='img' width={200} height={40} src={logoImage} />
-                <Grid md={4.5}>
+                <Grid md={3} xl={2}>
+                    <Image onClick={() => { router.push('dashboard') }} className='img' width={200} height={40} src={logoImage} />
+                </Grid>
+                <Grid md={5} xl={6}>
                     <TextField label="search" size='small' sx={{ display: { xs: 'none', md: 'flex' } }}
                         InputProps={{
                             endAdornment: (
@@ -72,15 +74,15 @@ const Header = (props) => {
                     >
                     </TextField>
                 </Grid>
-                <Box justifyContent='space-between' sx={{ display: { xs: 'none', md: 'block' } }}>
+                <Grid md={3} xl={3} textAlign={'end'} justifyContent='space-between' sx={{ display: { xs: 'none', md: 'block' } }}>
                     <Button sx={{
                         '&:hover': {
                             backgroundColor: '#fff',
                             boxShadow: 'none',
                         },
                         textTransform: 'none',
-                       fontFamily:200,
-                       fontSize:15,
+                        fontFamily: 200,
+                        fontSize: 15,
                         color: '#2B3445'
                     }} startIcon={<CompareArrowsOutlinedIcon />}>
                         Compare
@@ -92,7 +94,7 @@ const Header = (props) => {
                             boxShadow: 'none',
                         },
                         textTransform: 'none',
-                        fontSize:15,
+                        fontSize: 15,
                         ml: '10px', color: '#2B3445',
                     }} startIcon={<LocalMallOutlinedIcon />}>
                         Cart
@@ -105,7 +107,7 @@ const Header = (props) => {
                                 backgroundColor: '#fff',
                                 boxShadow: 'none',
                             }, ml: '10px', color: '#2B3445', textTransform: 'none',
-                            fontSize:15,
+                            fontSize: 15,
                         }}
                         onMouseDown={(e) => handleClose(e)}
                         onMouseOver={(e) => handleClick(e)} startIcon={<PermIdentityOutlinedIcon />}>
@@ -113,7 +115,7 @@ const Header = (props) => {
                         }
                     </Button>
 
-                </Box>
+                </Grid>
                 <Box alignItems='center' justifyContent='space-between' sx={{
                     '.css-1e6y48t-MuiButtonBase-root-MuiButton-root': {
                         minWidth: 22
@@ -122,9 +124,9 @@ const Header = (props) => {
                         color: '#2B3445'
                     },
                     display: { xs: 'flex', md: 'none' },
-                    '.css-1e6y48t-MuiButtonBase-root-MuiButton-root':{
-                        padding:'5%',
-                        minWidth:28
+                    '.css-1e6y48t-MuiButtonBase-root-MuiButton-root': {
+                        padding: '5%',
+                        minWidth: 28
                     }
                 }}>
                     <Button >
@@ -196,7 +198,7 @@ const Header = (props) => {
                 <></>
             }
 
-            <Stack px={{ md: '69px', xs: 0 }} sx={{ mt: '31px',mb:'22px', display: { xs: 'none', md: 'flex' } }}
+            <Stack px={{ lg: '69px', xs: 0 }} sx={{ mt: '31px', mb: '22px', display: { xs: 'none', md: 'none',lg:'flex' } }}
                 direction='row'
                 divider={<Divider orientation="vertical" flexItem />}
                 spacing={2}>

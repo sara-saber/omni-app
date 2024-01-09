@@ -2,7 +2,7 @@ import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 
 import Grid from '@mui/material/Grid';
 import { useEffect, useState } from 'react';
-import { Avatar, Divider, Button, Snackbar, Alert, Typography, Switch, FormControlLabel, TextField, MenuItem } from '@mui/material';
+import { Avatar, Divider, Button, Snackbar, Alert, Typography, Switch, FormControlLabel, TextField, MenuItem, Box, useMediaQuery } from '@mui/material';
 import { useMutation, useQuery } from '@apollo/client';
 
 import { Get_Customer_Info } from '@/graphql/Query';
@@ -14,6 +14,7 @@ const Profile = () => {
     const [loading, setLoading] = useState(true)
     const [openSnackbar, setOpen] = useState(false)
     const { data, error: InfoError, loading: dataLoading } = useQuery(Get_Customer_Info)
+    const screenSize=useMediaQuery('(max-width:768px)')
     const router = useRouter()
     const handleClose = () => {
         setTimeout(() => {
@@ -71,7 +72,7 @@ const Profile = () => {
                 {dataLoading ?
                     console.log("is loading")
                     :
-                    <Grid lg={6} md={9} container gap={'25px'}
+                    <Grid lg={6} md={12} container gap={'25px'}
                         sx={{
                             '.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input': {
                                 padding: 1.4
@@ -82,7 +83,7 @@ const Profile = () => {
 
 
                             },
-                            '.css-md26zr-MuiInputBase-root-MuiOutlinedInput-root': {
+                            '.MuiOutlinedInput-root': {
                                 borderRadius: '6px'
                             },
 
@@ -114,11 +115,11 @@ const Profile = () => {
                         <TextField
                             value={customerInfo?.email}
                             fullWidth
+                            disabled
                             id="outlined-controlled"
                             label="Email"
                             type='email'
                             name='email'
-                            onChange={e => handleChange(e)}
                             InputLabelProps={{
                                 shrink: true,
                             }}
@@ -149,7 +150,7 @@ const Profile = () => {
                                 onChange={() => setLoading(!loading)}
                             />
                         </Grid>
-                        <Grid container gap={1} justifyContent={{ md: "space-between", sx: 'flex-start' }}>
+                        <Grid container g justifyContent={{ md: "space-between", sx: 'flex-start' }}>
                             <Grid md={3} xs={12}>
                                 <Button variant='contained' type='submit' sx={{
                                     '&:hover': {
@@ -161,7 +162,7 @@ const Profile = () => {
                                     fontSize: 14, width: { md: '113px', xs: '100%' }, borderRadius: "22px", backgroundColor: "#143E7D", color: "#fff"
                                 }}>Update</Button>
                             </Grid>
-                            <Grid md={3.2}>
+                            <Grid md={9} container gap={1.3} justifyContent={'flex-end'}>
                                 <Button onClick={() => router.push("change-password")}
 
                                     sx={{
@@ -177,8 +178,20 @@ const Profile = () => {
                                         borderRadius: "22px", border: 'solid 1px black', backgroundColor: "white", color: "black"
                                     }}
                                 >Change Password</Button>
+                                <Button onClick={() => screenSize?router.push("change-email"):''} sx={{
+                                    '&:hover': {
+                                        backgroundColor: '#143E7D',
+                                        color: '#FFFFFF'
+                                    },
+                                    textTransform: 'none',
+                                    minWidth: { md: '125px', xs: '100%' },
+                                    height: '40px',
+                                    fontSize: 14, borderRadius: "22px", border: 'solid 1px black', backgroundColor: "white", color: "black"
+                                }}>Change email</Button>
+
+
                             </Grid>
-                            <Grid md={3} xs={12}>
+                            {/* <Grid md={3} xs={12}>
                                 <Button onClick={() => router.push("change-email")} sx={{
                                     '&:hover': {
                                         backgroundColor: '#143E7D',
@@ -189,7 +202,7 @@ const Profile = () => {
                                     height: '40px',
                                     fontSize: 14, borderRadius: "22px", border: 'solid 1px black', backgroundColor: "white", color: "black"
                                 }}>Change email</Button>
-                            </Grid>
+                            </Grid> */}
                         </Grid>
                         {
                             !InfoError &&

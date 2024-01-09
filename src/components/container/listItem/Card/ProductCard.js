@@ -1,9 +1,9 @@
 
 import { Card, ImageListproductBar, Rating, Grid, Box, CardContent, CardActions, IconButton, Button, Typography, Stack } from '@mui/material';
-import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import { Skeleton } from '@mui/material';
 import { useState } from 'react';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
 const ProductCard = (props) => {
     const stockStatus = useState(props?.product.stock_status)
     return (
@@ -19,9 +19,9 @@ const ProductCard = (props) => {
                     }
                 },
                 boxShadow: { md: '0px', xs: 'none' },
-                borderRadius:2,
-                border:{md:'1px solid var(--light-gray)',xs:0},
-                maxWidth: { md: "259px", xs: "164px" }, height: { md: "451px", xs: '388px' }, p: { md: 2, xs: 0 }
+                borderRadius: 2,
+                border: { md: '1px solid var(--light-gray)', xs: 0 },
+                width: {  md: "240px", xs: "164px" }, height: { md: "451px", xs: '388px' }, p: { md: 2.8, xs: 0 }
             }}>
             {console.log(props?.product)}
             <Grid md={12} conainer >
@@ -45,10 +45,10 @@ const ProductCard = (props) => {
                 </Grid> */}
             </Grid>
             <Grid pt={{ md: 3, xs: 1 }} container justifyContent={"space-between"} gap={0.3}>
-                <Grid  order={{ md: 1, xs: 2 }} xs={12} md={1}>
+                <Grid order={{ md: 1, xs: 2 }} xs={12} md={1}>
                     <Typography fontWeight={600} color={"#17468F"}>{props?.product.categories[2].name}</Typography>
                 </Grid>
-                <Grid  order={{ md: 2, xs: 1 }} xs={12} md={4}>
+                <Grid order={{ md: 2, xs: 1 }} xs={12} md={4}>
                     <Stack>
                         <Rating
                             name="size-small"
@@ -60,27 +60,29 @@ const ProductCard = (props) => {
                     </Stack>
                 </Grid>
             </Grid>
-            <Grid pt={0.5} md={10}>
+            <Grid pt={0.5} md={8}>
                 <Typography height={46} width='100%' overflow={'hidden'} fontSize={14}>
                     {props.product.name}
                 </Typography>
             </Grid>
             <Grid container pt={1} alignItems={"center"} justifyContent={"space-between"}>
-                <Typography sx={{ display: { md: "inline", xs: "none" }, textDecoration: 'line-through', fontSize: 'small' }}>
-                    {props?.product.display_tax.price_currency}
-                </Typography>
-                <Typography>
-                    {props?.product.display_tax.price_currency}
-                </Typography>
-                <Box gap={1} alignItems={"center"} display={"flex"}>
-                    <Typography sx={{ display: { md: "inline", xs: "none" } }} fontSize={12}>
+                <Box display={'flex'} alignItems={'center'} gap={1}  justifyContent={'space-between'}>
+                    <Typography color={'#C4C4C4'} sx={{ display: { md: "inline", xs: "none" }, textDecoration: 'line-through', fontSize: 'small' }}>
+                        {props?.product.display_tax.price_currency}
+                    </Typography>
+                    <Typography fontWeight={600}>
+                        {props?.product.display_tax.price_currency}
+                    </Typography>
+                </Box>
+                <Box alignItems={"center"} justifyContent={'space-between'} display={"flex"} >
+                    <Typography fontWeight={550} sx={{ display: { md: "inline", xs: "none" } }} fontSize={12}>
                         {props?.product.stock_status}
                     </Typography>
-                    <Box borderRadius={20} sx={{ ml: 1, bgcolor: stockStatus === "IN_STOCK" ? "#EB1C23" : "#27AE60" }} variant="circular" width={12} height={12} />
+                    <Box borderRadius={20} sx={{ ml: 0.5, bgcolor: stockStatus === "IN_STOCK" ? "#EB1C23" : "#27AE60" }} variant="circular" width={12} height={12} />
                 </Box>
             </Grid>
-            <Grid container pt={1} md={12} justifyContent={"center"}>
-                <Button className='addbtn' alignItems={"center"} startIcon={<ShoppingBasketIcon />} sx={{ textTransform: 'none', color: '#2B3445', width: 253, height: 40, border: ' 1px solid #E0E0E0', borderRadius: '20px' }} size="small" >Add To Card</Button>
+            <Grid container pt={1.5} md={12} justifyContent={"center"}>
+                <Button className='addbtn' alignItems={"center"} startIcon={<LocalMallOutlinedIcon />} sx={{fontWeight:{xs:700,md:500},textTransform: 'none', color: '#2B3445', width: 253, height: 40, border: ' 1px solid #E0E0E0', borderRadius: '20px' }} size="small" >Add To Cart</Button>
             </Grid>
         </Card>
     );

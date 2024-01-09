@@ -1,4 +1,4 @@
-import Box from '@mui/material/Box';
+import {Box,Grid,Typography} from '@mui/material/Box';
 import List from '@mui/material/List';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
@@ -12,7 +12,11 @@ import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
 import SpaceDashboardOutlinedIcon from '@mui/icons-material/SpaceDashboardOutlined';
 import { useRouter } from 'next/router'
 import { useState } from 'react';
+import { useQuery } from '@apollo/client';
+import { Get_Customer } from '@/graphql/Query';
 const Menu = () => {
+    const [name, setName] = useState()
+    const { data } = useQuery(Get_Customer)
     const [selectedIndex, setSelectedIndex] = useState(1);
     const router = useRouter()
     const [textColor, setTextColor] = useState("#2B3445")
@@ -31,6 +35,10 @@ const Menu = () => {
         console.log(textColor);
     };
     return (
+        <Grid xs={12} md={12} lg={3} order={{ md: 2, xs: 3 }}>
+        <Grid sx={{ display: { md: 'inline', xs: 'none' } }} xs={12} md={12} order={{ md: 1, xs: 1 }}>
+            <Typography fontSize={20} fontWeight={700}>Hi, {data?.customer.firstname}!</Typography>
+        </Grid>
         <Box mt={{ xs: 4, md: '15px' }} mb={8} pr={{ md: 2, xs: 0 }}>
             <ListItemButton
                 sx={{
@@ -128,6 +136,8 @@ const Menu = () => {
                 <ListItemText sx={{ margin: '10px 0' }} primary="Logout" />
             </ListItemButton>
         </Box>
+        </Grid>
+        
     );
 }
 

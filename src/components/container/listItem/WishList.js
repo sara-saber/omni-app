@@ -14,7 +14,7 @@ const WishList = () => {
     const products = ['Casino', 'MONOPRIX BIO', 'Casino'];
     return (
         <Grid >
-         <PageName position={'center'}  name={'WishList'} url={'/my-account/dashboard'}>
+            <PageName position={'center'} name={'WishList'} url={'/my-account/dashboard'}>
             </PageName>
             <Grid>
                 {wishlistLoading ?
@@ -24,7 +24,7 @@ const WishList = () => {
                         <Skeleton maxWidth='520px' height={20} />
                     </Grid>
                     :
-                    <Grid md={12} gap={{ md: 2, xs: 1 }} container>
+                    <Grid md={12} gap={{ md: 3, xs: 1, lg: 2 }} container>
                         {data?.customer && data?.customer.wishlist?.items?.map((item) => (
 
                             <ProductCard product={item?.product} />
