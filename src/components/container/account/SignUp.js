@@ -20,8 +20,8 @@ const SignUp = () => {
     })
     const { vertical, horizontal, open } = snackbarState
     const { data: countries, loading: isLoading, error: countries_error } = useQuery(Get_Countries)
-    const [createCustomer, { data: CustomerData }] = useMutation(Post_Create_Cutomer)
-    const [createCustomerAddress, { data: addressData }] = useMutation(Post_create_Addresses)
+    const [createCustomer, { data: CustomerData,error:CustomerError }] = useMutation(Post_Create_Cutomer)
+    const [createCustomerAddress, { data: addressData ,error:AddressError}] = useMutation(Post_create_Addresses)
     useEffect(() => {
         if (countries) {
             setRegion(countries?.countries[0].available_regions)
@@ -70,6 +70,12 @@ const SignUp = () => {
             )
             
         })
+        if(CustomerError){
+
+        }
+        if(AddressError){
+
+        }
     }
 
     return (

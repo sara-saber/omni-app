@@ -28,8 +28,8 @@ const Dashboard = () => {
                     From your Profile Dashboard you have the ability to view a snapshot of your Profile and update your account information. Select a link below to view or edit information.
                 </Typography>
                 </Grid>
-                <Grid container justifyContent={{ xs: "center", md: 'space-between' }} gap={1} md={11} >
-                    <Grid md={5.5} minWidth={{ md: 321, xs: '100%' }} backgroundColor='#F8FAFD' py={'18px'} px={'23px'}  border='1px solid #E0E0E0' borderRadius={2}>
+                <Grid container justifyContent={{ xs: "center", md: 'space-between' }} gap={{md:1,xs:3}} md={11} >
+                    <Grid md={5.5} maxWidth={157} minWidth={{ md: 321, xs: '100%' }} backgroundColor='#F8FAFD' py={'18px'} px={'23px'}  border='1px solid #E0E0E0' borderRadius={2}>
                         <Grid container alignItems={'center'} justifyContent={'space-between'} >
                             <Typography level="title-md" fontSize={16}>My Orders</Typography>
                             <ShoppingBagOutlinedIcon sx={{ width: 37, height: 35, color: '#17468F' }} />

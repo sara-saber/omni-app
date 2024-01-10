@@ -48,7 +48,7 @@ const ProductCard = (props) => {
                 <Grid order={{ md: 1, xs: 2 }} xs={12} md={1}>
                     <Typography fontWeight={600} color={"#17468F"}>{props?.product.categories[2].name}</Typography>
                 </Grid>
-                <Grid order={{ md: 2, xs: 1 }} xs={12} md={4}>
+                <Grid order={{ md: 2, xs: 1 }} xs={12} md={4.4}>
                     <Stack>
                         <Rating
                             name="size-small"

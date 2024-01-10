@@ -49,10 +49,10 @@ const Header = (props) => {
             </Box>
             <Grid px={{ md: '20px',lg:'69px', xs: 0 }} alignItems={"center"} mt={{ md: 2,lg:4, xs: '12px' }} container columnGap={0.2} justifyContent={'space-between'}>
                 <Button sx={{
-                    '.css-1waxiuw-MuiButtonBase-root-MuiButton-root': {
+                    '.MuiButtonBase-root-MuiButton-root': {
                         minWidth: 42
                     },
-                    '.css-tzssek-MuiSvgIcon-root': {
+                    '.MuiSvgIcon-root': {
                         color: '#2B3445'
                     },
                     display: { xs: 'block', md: 'block',lg:'none' }
@@ -117,14 +117,14 @@ const Header = (props) => {
 
                 </Grid>
                 <Box alignItems='center' justifyContent='space-between' sx={{
-                    '.css-1e6y48t-MuiButtonBase-root-MuiButton-root': {
+                    '.MuiButtonBase-root-MuiButton-root': {
                         minWidth: 22
                     },
-                    '.css-i4bv87-MuiSvgIcon-root': {
+                    '.MuiSvgIcon-root': {
                         color: '#2B3445'
                     },
                     display: { xs: 'flex', md: 'none' },
-                    '.css-1e6y48t-MuiButtonBase-root-MuiButton-root': {
+                    '.MuiButton-root': {
                         padding: '5%',
                         minWidth: 28
                     }

@@ -1,7 +1,7 @@
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 
 import Grid from '@mui/material/Grid';
-import { useEffect, useState } from 'react';
+import { use, useEffect, useState } from 'react';
 import { Avatar, Divider, Button, Snackbar, Alert, Typography, Switch, FormControlLabel, TextField, MenuItem, Box, useMediaQuery } from '@mui/material';
 import { useMutation, useQuery } from '@apollo/client';
 
@@ -9,12 +9,15 @@ import { Get_Customer_Info } from '@/graphql/Query';
 import { Post_Update_Customer } from '@/graphql/Mutations';
 import { useRouter } from 'next/router';
 import PageName from './PageName/PageName';
+import CenterDrawer from './Drawer/CenterDrawer';
+import ChangeEmail from './ChangeEmail';
 
 const Profile = () => {
     const [loading, setLoading] = useState(true)
     const [openSnackbar, setOpen] = useState(false)
+    const [drawer, setDrawer] = useState()
     const { data, error: InfoError, loading: dataLoading } = useQuery(Get_Customer_Info)
-    const screenSize=useMediaQuery('(max-width:768px)')
+    const screenSize = useMediaQuery('(max-width:768px)')
     const router = useRouter()
     const handleClose = () => {
         setTimeout(() => {
@@ -150,7 +153,11 @@ const Profile = () => {
                                 onChange={() => setLoading(!loading)}
                             />
                         </Grid>
-                        <Grid container g justifyContent={{ md: "space-between", sx: 'flex-start' }}>
+                        <Grid sx={{
+                            '.MuiButton-root':{
+                                height:{xs:50,md:43}
+                            }
+                        }} container gap={{md:0,xs:3}} justifyContent={{ md: "space-between", sx: 'flex-start' }}>
                             <Grid md={3} xs={12}>
                                 <Button variant='contained' type='submit' sx={{
                                     '&:hover': {
@@ -178,7 +185,7 @@ const Profile = () => {
                                         borderRadius: "22px", border: 'solid 1px black', backgroundColor: "white", color: "black"
                                     }}
                                 >Change Password</Button>
-                                <Button onClick={() => screenSize?router.push("change-email"):''} sx={{
+                                <Button  onClick={() => screenSize ? router.push("change-email") : setDrawer(true)} sx={{
                                     '&:hover': {
                                         backgroundColor: '#143E7D',
                                         color: '#FFFFFF'
@@ -188,9 +195,21 @@ const Profile = () => {
                                     height: '40px',
                                     fontSize: 14, borderRadius: "22px", border: 'solid 1px black', backgroundColor: "white", color: "black"
                                 }}>Change email</Button>
-
-
                             </Grid>
+                            {
+                                drawer &&
+                                <CenterDrawer 
+                                mt='10%'
+                                mx='35%'
+                                pb={5}
+                                position='center' display='none' name='Change Email' drawer={drawer} setDrawer={setDrawer}>
+                                    <Box p={5} alignItems={'center'} display={'flex'} justifyContent={'center'}>
+                                        <ChangeEmail></ChangeEmail>
+                                    </Box>
+                                </CenterDrawer>
+
+                            }
+
                             {/* <Grid md={3} xs={12}>
                                 <Button onClick={() => router.push("change-email")} sx={{
                                     '&:hover': {

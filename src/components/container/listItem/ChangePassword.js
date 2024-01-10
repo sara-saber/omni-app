@@ -14,12 +14,14 @@ const ChangePassword = () => {
     const [passwordError, setError] = useState(false)
     const [showPassword, setShowPassword] = useState(false)
     const [openSnackbar, setOpen] = useState(false)
+    const [message, setMessage] = useState('')
+    const [severity, setSeverity] = useState('error')
     const screenWidth = useMediaQuery('(max-width:768px)')
     const [txtId, settxtId] = useState()
     const router = useRouter()
     const handleConfirm = () => {
         confirmPassword !== newPassword ?
-            setError(false) :
+            (setError(false)) :
             setError(true)
     }
     const handlePasswordIcon = (e, value) => {
@@ -35,15 +37,25 @@ const ChangePassword = () => {
     const changePassword = (e) => {
         e.preventDefault()
         console.log(currentPassword + " " + newPassword);
-        confirmPassword === newPassword ?
-            password({
-                variables: {
-                    currentPassword: currentPassword, newPassword: newPassword
-                },
-                onCompleted: (setOpen(true))
-            }).then(router.push("profile-information"))
+
+        !confirmPassword && !newPassword ?
+            (setOpen(true), setMessage('You must fill the required fileds'), setSeverity('error'))
             :
-            setError(true)
+            confirmPassword === newPassword ?
+                (
+                    password({
+                        variables: {
+                            currentPassword: currentPassword, newPassword: newPassword
+                        },
+                        onCompleted: (setOpen(true), setMessage('your Information was updated!'), setSeverity('success'))
+                    })
+
+                )
+                :
+                (setError(true), setMessage('Passwords do NOT match'), setSeverity('warning'))
+        if (passError) {
+            setError(true), setMessage('You Current Password is Wrong'), setSeverity('error')
+        }
     }
     return (
         <form onSubmit={(e) => changePassword(e)}>
@@ -144,11 +156,14 @@ const ChangePassword = () => {
 
 
             </Grid>
+
+
             <Snackbar onClose={handleClose} anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }} open={openSnackbar} autoHideDuration={1000} >
-                <Alert severity="success" sx={{ width: '100%' }}>
-                    your Information was updated!
+                <Alert severity={severity} sx={{ width: '100%' }}>
+                    {message}
                 </Alert>
             </Snackbar>
+
         </form>
 
     );

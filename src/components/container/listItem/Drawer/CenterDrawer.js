@@ -6,29 +6,29 @@ const CenterDrawer = (Props) => {
         <Drawer
             sx={{
                 ".MuiDrawer-paper": {
-                    mx: { md: '25%', xs: '16px' },
-                    mt: { md: '2%', xs: '100px' },
+                    mx: { md: Props?.mx, xs: '16px' },
+                    mt: { md: Props?.mt, xs: '100px' },
                     borderRadius: "12px",
-                    pb: { md: 25, xs: 1 }
+                    pb: { md: Props?.pb, xs: 1 }
                 },
             }}
             anchor="top"
             open={Props.drawer}
             onClose={e => Props.setDrawer(false)}
         >
-            <Grid alignItems={'center'} pl={{ xs: 2, md: 4 }} pt={2} container gap={1} >
-                <Grid xs={5} md={5}>
-                    <Typography fontSize={20} fontWeight={600}>
+            <Grid alignItems={'center'} px={{ xs: 2, md: 4 }} pt={2} container justifyContent={'space-between'} >
+                <Grid display={Props?.display} xs={5} md={5}>
+                    <Typography fontSize={20} fontWeight={700}>
                         {Props?.name}
                     </Typography>
                 </Grid>
-                <Grid xs={6.2} textAlign={"right"} md={6}>
-                    <IconButton onClick={(e) => props.setDrawer(false)}>
-                        <CloseIcon fontSize="large"></CloseIcon>
+                <Grid display={Props?.display} xs={6.2} textAlign={"right"} md={6}>
+                    <IconButton onClick={(e) => Props.setDrawer(false)}>
+                        <CloseIcon color="black" fontSize="large"></CloseIcon>
                     </IconButton>
                 </Grid>
             </Grid>
-            <Grid xs={12}>
+            <Grid pt={2} display={Props?.display} xs={12}>
                 <Divider>
                 </Divider>
             </Grid>

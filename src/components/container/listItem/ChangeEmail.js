@@ -29,7 +29,7 @@ const ChangeEmail = () => {
     return (
 
         <form onSubmit={(e) => changeEmail(e)}>
-            <Grid container gap={3} md={5}>
+            <Grid container gap={3} md={12}>
                 <PageName url='/my-account/profile-information' name='Change email' position={'center'} >
                 </PageName>
                 <TextField

@@ -107,7 +107,11 @@ const OrderDetails = (props) => {
                             {/* <Drawer anchor='top' open={open} onClose={close}>
 
                             </Drawer> */}
-                            <CenterDrawer name={drawerId === '1' ? 'Shipments' : 'Invoices'} drawer={drawer} setDrawer={setDrawer} >
+                            <CenterDrawer 
+                            mx='20%'
+                            mt='5%'
+                            pb={50}
+                            name={drawerId === '1' ? 'Shipments' : 'Invoices'} drawer={drawer} setDrawer={setDrawer} >
                                 {drawerId === '1' ?
                                     <ShipmentDetails shipments={props?.DataDetails.shipments} >
                                     </ShipmentDetails>

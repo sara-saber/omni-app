@@ -24,7 +24,7 @@ const WishList = () => {
                         <Skeleton maxWidth='520px' height={20} />
                     </Grid>
                     :
-                    <Grid md={12} gap={{ md: 3, xs: 1, lg: 2 }} container>
+                    <Grid md={12} gap={{ md: 3, xs: 1, lg: '26px'}} container>
                         {data?.customer && data?.customer.wishlist?.items?.map((item) => (
 
                             <ProductCard product={item?.product} />

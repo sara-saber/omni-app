@@ -150,7 +150,7 @@ const SignIn = () => {
                     </Grid>
 
                     <Button disabled={loadingIcon} fullWidth type='submit' endIcon={
-                        loadingIcon && loginLoading ?
+                       loginLoading ?
                             <InputAdornment position="end">
                                 <CircularProgress sx={{ color: '#FFF' }} size={20} />
                             </InputAdornment> : null
