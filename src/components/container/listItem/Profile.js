@@ -8,8 +8,8 @@ import { useMutation, useQuery } from '@apollo/client';
 import { Get_Customer_Info } from '@/graphql/Query';
 import { Post_Update_Customer } from '@/graphql/Mutations';
 import { useRouter } from 'next/router';
-import PageName from './PageName/PageName';
-import CenterDrawer from './Drawer/CenterDrawer';
+import PageName from './shared/PageName/PageName';
+import CenterDrawer from './shared/Drawer/CenterDrawer';
 import ChangeEmail from './ChangeEmail';
 
 const Profile = () => {

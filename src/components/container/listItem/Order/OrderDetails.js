@@ -4,7 +4,7 @@ import LocalShippingOutlinedIcon from '@mui/icons-material/LocalShippingOutlined
 import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined';
 import PictureAsPdfOutlinedIcon from '@mui/icons-material/PictureAsPdfOutlined';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import CenterDrawer from '../Drawer/CenterDrawer';
+import CenterDrawer from '../shared/Drawer/CenterDrawer';
 import ShipmentDetails from './ShipmentDetails';
 import { useState } from 'react';
 import InvoiceDetails from './InvoiceDetails';

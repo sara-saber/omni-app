@@ -3,7 +3,7 @@ import { Typography, Grid } from '@mui/material';
 import { useRouter } from "next/router";
 import Dashboard from "@/components/container/listItem/Dashboard";
 import Order from "@/components/container/listItem/Orders";
-import Addresses from "@/components/container/listItem/Addresses";
+import Addresses from "@/components/container/listItem/Addresses/Addresses";
 import WishList from "@/components/container/listItem/WishList";
 import Profile from "@/components/container/listItem/Profile";
 import Box from '@mui/material/Box';
@@ -12,6 +12,7 @@ import ChangePassword from "@/components/container/listItem/ChangePassword";
 import ChangeEmail from "@/components/container/listItem/ChangeEmail";
 import OrderDetails from "@/components/container/listItem/Order/OrderDetails";
 import Menu from '@/components/container/listItem/Menu';
+import EditAddresses from '@/components/container/listItem/Addresses/EditAddress';
 const ContainerPage = () => {
     const [customer, setCustomer] = useState()
     const router = useRouter()
@@ -46,6 +47,9 @@ const ContainerPage = () => {
             break;
         case 'order/':
             contentToRender = <OrderDetails />
+        case 'addresses/edit/':
+            contentToRender = <EditAddresses />
+            break;
         default:
             contentToRender = <Dashboard />;
             break;

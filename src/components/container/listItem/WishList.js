@@ -1,10 +1,10 @@
 import { Avatar, Skeleton } from "@mui/material";
 import { Grid, Divider, Typography } from '@mui/material';
 import { useMutation, useQuery } from "@apollo/client";
-import ProductCard from "./Card/ProductCard";
+import ProductCard from "./shared/Card/ProductCard";
 import { Get_Cutomer_Wishlist } from "@/graphql/Query";
 import { useState } from "react";
-import PageName from "./PageName/PageName";
+import PageName from "./shared/PageName/PageName";
 
 
 const WishList = () => {

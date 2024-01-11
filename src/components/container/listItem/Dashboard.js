@@ -5,7 +5,7 @@ import NavigateNextOutlinedIcon from '@mui/icons-material/NavigateNextOutlined';
 import { useRouter } from 'next/router';
 import { useQuery } from '@apollo/client';
 import { GET_DASHBOARD, Get_Customer } from '@/graphql/Query';
-import PageName from './PageName/PageName';
+import PageName from './shared/PageName/PageName';
 
 const Dashboard = () => {
     const router = useRouter()

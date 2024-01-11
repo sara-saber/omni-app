@@ -72,7 +72,7 @@ const ProductCard = (props) => {
                                 width: '36px',
                                 height: '36px'
                             }
-                        }} container gap={0.5} md={2} >
+                        }} container gap={1.5} md={2} >
                         <IconButton onClick={() => removeFromProduct(props?.id)} sx={{ border: '1px solid var(--light-gray)', padding: 1 }}>
                             {loading ?
                                 <FavoriteBorderIcon></FavoriteBorderIcon>
@@ -84,7 +84,6 @@ const ProductCard = (props) => {
                     </Grid>
 
                 </Box>
-
                 <img className='productImg'
                     style={{ objectFit: 'contain' }}
                     width="254px"

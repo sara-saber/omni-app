@@ -5,25 +5,30 @@ import { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { CHANGE_EMAILL } from "@/graphql/Mutations";
 import { useRouter } from "next/router";
-import PageName from "./PageName/PageName";
+import PageName from "./shared/PageName/PageName";
+import SnackBar from "./shared/Snackbar";
 
 const ChangeEmail = () => {
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()
     const [showPassword, setShowPassword] = useState(false)
-    const [updateEmail, { data }] = useMutation(CHANGE_EMAILL)
+    const [updateEmail, { data, error: emailError }] = useMutation(CHANGE_EMAILL, { errorPolicy: "all" })
     const [openSnackbar, setOpen] = useState(false)
+    const [message, setMessage] = useState('')
     const screenSize = useMediaQuery('(max-width:768px)')
     const router = useRouter()
     const changeEmail = (e) => {
         e.preventDefault()
         updateEmail({
             variables: { Email: email, Password: password }
-        }).then(
+        })
+
+        if (emailError) {
             setTimeout(() => {
                 setOpen(true)
             }, 100),
-            router.push("profile-information"))
+                setMessage('your password failed please write again!!')
+        }
         // console.log(email + password);
     }
     return (
@@ -60,7 +65,7 @@ const ChangeEmail = () => {
                     }}
                 />
                 <Grid justifyContent={'center'} container mt={1} gap={2}>
-                    <Button sx={{
+                    <Button disabled={emailError} sx={{
                         '&:hover': {
                             backgroundColor: '#143E7D',
                             color: '#FFFFFF',
@@ -71,7 +76,7 @@ const ChangeEmail = () => {
                     }} type="submit" variant="contained">
                         {{ screenSize } ? 'Save' : 'Update'}
                     </Button>
-                    <Button  type="button" onClick={() => router.push("/my-account/profile-information")} sx={{
+                    <Button type="button" onClick={() => router.push("/my-account/profile-information")} sx={{
                         '&:hover': {
                             backgroundColor: '#143E7D',
                             color: '#FFFFFF'
@@ -86,15 +91,10 @@ const ChangeEmail = () => {
 
 
             </Grid>
-            <Snackbar onClose={() => {
-                setTimeout(() => {
-                    setOpen(false)
-                }, 100)
-            }} anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }} open={openSnackbar} autoHideDuration={1000} >
-                <Alert severity="success" sx={{ width: '100%' }}>
-                    your Information was updated!
-                </Alert>
-            </Snackbar>
+
+
+            <SnackBar message={message} setOpen={setOpen} openSnackbar={openSnackbar}></SnackBar>
+
         </form >
 
     );

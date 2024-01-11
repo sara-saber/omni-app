@@ -1,13 +1,16 @@
-import { Snackbar, Alert, Button, Grid, InputAdornment, TextField, Typography, useMediaQuery } from "@mui/material";
+import {  Alert, Button, Grid, InputAdornment, TextField, Typography, useMediaQuery } from "@mui/material";
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import { useMutation } from "@apollo/client";
 import { useState } from "react";
 import { CHANGE_PASSWORD } from "@/graphql/Mutations";
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined'
 import { useRouter } from "next/router";
-import PageName from "./PageName/PageName";
+import PageName from "./shared/PageName/PageName";
+import SnackBar from "./shared/Snackbar";
+
+
 const ChangePassword = () => {
-    const [password, { data, error: passError }] = useMutation(CHANGE_PASSWORD)
+    const [password, { data, error: passError }] = useMutation(CHANGE_PASSWORD, { errorPolicy: "all" })
     const [currentPassword, setCurrentPassword] = useState()
     const [newPassword, setNewPassword] = useState()
     const [confirmPassword, setConfirmPassword] = useState()
@@ -26,18 +29,12 @@ const ChangePassword = () => {
     }
     const handlePasswordIcon = (e, value) => {
         settxtId(e.target.id)
-        setShowPassword(value)
+        setShowPassword(value ? showPassword : false)
     }
-    const handleClose = () => {
-        setTimeout(() => {
-            setOpen(false)
-        }, 100)
 
-    }
     const changePassword = (e) => {
         e.preventDefault()
         console.log(currentPassword + " " + newPassword);
-
         !confirmPassword && !newPassword ?
             (setOpen(true), setMessage('You must fill the required fileds'), setSeverity('error'))
             :
@@ -46,15 +43,19 @@ const ChangePassword = () => {
                     password({
                         variables: {
                             currentPassword: currentPassword, newPassword: newPassword
-                        },
-                        onCompleted: (setOpen(true), setMessage('your Information was updated!'), setSeverity('success'))
+                        }
                     })
 
                 )
                 :
                 (setError(true), setMessage('Passwords do NOT match'), setSeverity('warning'))
         if (passError) {
-            setError(true), setMessage('You Current Password is Wrong'), setSeverity('error')
+            setOpen(true)
+            setMessage('Your Current Password is Wrong')
+            setSeverity('error')
+        }
+        if (data) {
+            console.log(data);
         }
     }
     return (
@@ -68,18 +69,19 @@ const ChangePassword = () => {
                 </PageName>
                 <TextField
                     fullWidth
+                    id="item1"
                     label="Current password"
                     value={currentPassword}
-                    type={(showPassword && (txtId === 'item1')) ? 'text' : 'password'}
+                    type={(showPassword && txtId === "item1") ? 'text' : 'password'}
                     onChange={(e) => (setCurrentPassword(e.target.value))}
                     InputProps={{
                         endAdornment: (
                             <InputAdornment position="start">
                                 {
-                                    (showPassword && (txtId === "item1")) ?
-                                        <VisibilityOutlinedIcon id="item1" onClick={(e) => (handlePasswordIcon(e, false))} />
+                                    showPassword === false && txtId === "item1" ?
+                                        <VisibilityOutlinedIcon onClick={() => (settxtId('item1'), setShowPassword(true))} />
                                         :
-                                        <VisibilityOffIcon id="item1" onClick={(e) => (handlePasswordIcon(e, true))} />
+                                        <VisibilityOffIcon onClick={() => (settxtId('item1'), setShowPassword(false))} />
                                 }
 
                             </InputAdornment>
@@ -90,16 +92,16 @@ const ChangePassword = () => {
                     fullWidth
                     error={passwordError}
                     label="New password"
-                    type={(showPassword && (txtId === 'item2')) ? 'text' : 'password'}
+                    type={(showPassword && txtId === "item2") ? 'text' : 'password'}
                     onChange={(e) => (setNewPassword(e.target.value), handleConfirm())}
                     InputProps={{
                         endAdornment: (
                             <InputAdornment position="start">
                                 {
-                                    (showPassword && (txtId === "item2")) ?
-                                        <VisibilityOutlinedIcon id='item2' onClick={(e) => (handlePasswordIcon(e, false))} />
+                                    showPassword === false && txtId === "item2" ?
+                                        <VisibilityOutlinedIcon onClick={() => (settxtId('item2'), setShowPassword(true))} />
                                         :
-                                        <VisibilityOffIcon id='item2' onClick={(e) => (handlePasswordIcon(e, true))} />
+                                        <VisibilityOffIcon onClick={(e) => (settxtId('item2'), setShowPassword(!showPassword))} />
                                 }
 
                             </InputAdornment>
@@ -110,7 +112,7 @@ const ChangePassword = () => {
                     fullWidth
                     error={passwordError}
                     label="Confirm new password"
-                    type={(showPassword && (txtId === 'item3')) ? 'text' : 'password'}
+                    type={(showPassword && txtId === "item3") ? 'text' : 'password'}
                     // color={passwordError ? 'success' : ''}
                     onChange={(e) => (setConfirmPassword(e.target.value), handleConfirm())}
 
@@ -118,10 +120,10 @@ const ChangePassword = () => {
                         endAdornment: (
                             <InputAdornment position="start">
                                 {
-                                    (showPassword && (txtId === "item3")) ?
-                                        <VisibilityOutlinedIcon id='item3' onClick={(e) => (handlePasswordIcon(e, false))} />
+                                    showPassword === false && txtId === "item3" ?
+                                        <VisibilityOutlinedIcon onClick={() => (settxtId('item3'), setShowPassword(true))} />
                                         :
-                                        <VisibilityOffIcon id='item3' onClick={(e) => (handlePasswordIcon(e, true))} />
+                                        <VisibilityOffIcon onClick={() => (settxtId('item3'), setShowPassword(!showPassword))} />
                                 }
 
                             </InputAdornment>
@@ -157,12 +159,12 @@ const ChangePassword = () => {
 
             </Grid>
 
-
-            <Snackbar onClose={handleClose} anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }} open={openSnackbar} autoHideDuration={1000} >
-                <Alert severity={severity} sx={{ width: '100%' }}>
+            {/* <Snackbar onClose={handleClose} anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }} open={openSnackbar} autoHideDuration={1000} >
+                <Alert severity={severity} sx={{ width: '100%' }} sd={console.log(message)}>
                     {message}
                 </Alert>
-            </Snackbar>
+            </Snackbar> */}
+            <SnackBar severity={severity} message={message} setOpen={setOpen} openSnackbar={openSnackbar}></SnackBar>
 
         </form>
 

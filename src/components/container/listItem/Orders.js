@@ -7,7 +7,7 @@ import { useQuery } from '@apollo/client';
 import { Get_Customer_Orders, Get_Order_Details } from '@/graphql/Query';
 import OrderDetails from './Order/OrderDetails';
 import { useRouter } from 'next/router';
-import PageName from './PageName/PageName';
+import PageName from './shared/PageName/PageName';
 
 
 const Orders = () => {

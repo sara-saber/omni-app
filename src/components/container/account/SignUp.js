@@ -20,8 +20,8 @@ const SignUp = () => {
     })
     const { vertical, horizontal, open } = snackbarState
     const { data: countries, loading: isLoading, error: countries_error } = useQuery(Get_Countries)
-    const [createCustomer, { data: CustomerData,error:CustomerError }] = useMutation(Post_Create_Cutomer)
-    const [createCustomerAddress, { data: addressData ,error:AddressError}] = useMutation(Post_create_Addresses)
+    const [createCustomer, { data: CustomerData, error: CustomerError }] = useMutation(Post_Create_Cutomer)
+    const [createCustomerAddress, { data: addressData, error: AddressError }] = useMutation(Post_create_Addresses)
     useEffect(() => {
         if (countries) {
             setRegion(countries?.countries[0].available_regions)
@@ -68,12 +68,12 @@ const SignUp = () => {
             variables: { Customer: customerInput }, onCompleted: (
                 createCustomerAddress({ variables: { CustomerAddress: addressInput, onCompleted: (router.push("/account/login")) } })
             )
-            
+
         })
-        if(CustomerError){
+        if (CustomerError) {
 
         }
-        if(AddressError){
+        if (AddressError) {
 
         }
     }
@@ -181,7 +181,7 @@ const SignUp = () => {
                 />
 
                 <Grid container justifyContent={'space-between'} >
-                    <Grid  md={5.8} xs={5.8}>
+                    <Grid md={5.8} xs={5.8}>
                         <TextField
                             fullWidth
                             required
@@ -191,7 +191,7 @@ const SignUp = () => {
                             label="City"
                         />
                     </Grid>
-                    <Grid  md={5.8} xs={5.8}>
+                    <Grid md={5.8} xs={5.8}>
                         <TextField
                             fullWidth
                             required
@@ -300,7 +300,7 @@ const SignUp = () => {
                 </Grid>
 
                 <Grid pt={2} md={12} xs={12} >
-                    <Button variant="contained" fullWidth type='submit' sx={{
+                    <Button disabled={CustomerError && AddressError} variant="contained" fullWidth type='submit' sx={{
                         '&:hover': {
                             backgroundColor: '#17468F'
                         },
