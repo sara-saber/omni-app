@@ -1,7 +1,6 @@
 import { Avatar, Skeleton } from "@mui/material";
 import { Grid, Divider, Typography } from '@mui/material';
-import { useQuery } from "@apollo/client";
-import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
+import { useMutation, useQuery } from "@apollo/client";
 import ProductCard from "./Card/ProductCard";
 import { Get_Cutomer_Wishlist } from "@/graphql/Query";
 import { useState } from "react";
@@ -25,9 +24,9 @@ const WishList = () => {
                     </Grid>
                     :
                     <Grid md={12} gap={{ md: 3, xs: 1, lg: '26px'}} container>
-                        {data?.customer && data?.customer.wishlist?.items?.map((item) => (
+                        {data?.customer && data?.customer.wishlist.items_v2.items.map((item) => (
 
-                            <ProductCard product={item?.product} />
+                            <ProductCard  wishlistId={data?.customer.wishlist.id} id={item?.id} product={item?.product} />
                         ))}
                     </Grid>
 

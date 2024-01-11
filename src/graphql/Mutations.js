@@ -95,6 +95,22 @@ mutation {
 }
 
 `
+export const REMOVE_FROM_WISHLIST=gql`
+mutation removeProduct($wishlistId:ID!,$itemId:[ID!]!) {
+  removeProductsFromWishlist(wishlistId:$wishlistId , wishlistItemsIds: $itemId) {
+    user_errors {
+      code
+      message
+    }
+    wishlist {
+      id
+      items_count
+      sharing_code
+      updated_at
+    }
+  }
+}
+`
 export const RESET_EMAIL = gql`
 mutation requestPassword ($email:String!){
   requestPasswordResetEmail(email: $email)

@@ -195,21 +195,26 @@ query getCustomer{
 export const Get_Cutomer_Wishlist = gql`
 query GetWishList{
   customer{
-  wishlist {
-      items {
-        product{
-          categories{name}
-          name
-          stock_status
-          image{url}
-          display_tax{price_currency}
-          
+    wishlist {
+      items_v2{
+        items{
+          id
+          product{
+           is_new
+           best_seller
+           categories{name}
+           name
+           stock_status
+           image{url}
+           display_tax{price_currency}
+          }
         }
-      }
-      updated_at
-    }
+        }
+       id
+       updated_at
+     }
+   }
   }
-}
 `
 
 export const GET_DASHBOARD = gql`
