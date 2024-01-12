@@ -80,31 +80,33 @@ const SignIn = () => {
             <Grid md={12} xs={12}>
                 <Typography fontWeight={400}>Sign in with email & password!</Typography>
             </Grid>
-            <form  fullWidth onSubmit={e =>
+            <form fullWidth onSubmit={e =>
                 Signin(e)
             }>
                 <Grid container gap={1}>
                     <Grid container md={12} xs={12} gap={2}
 
                         sx={{
-                            '.css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input': {
+                            '.MuiOutlinedInput-input': {
                                 padding: 1.5
                             },
-                            '.css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root': {
-                                width: '100'
+                            '.MuiInputLabel-root': {
+                                width: '100px'
                             },
-                            '.css-nxo287-MuiInputBase-input-MuiOutlinedInput-input': {
+                            '.MuiInputBase-input-MuiOutlinedInput-input': {
                                 padding: 1.5
                             },
                             '.MuiOutlinedInput-root': {
                                 borderRadius: '6px'
                             },
-                            '.css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root': {
-                                fontSize: '0.9rem'
+                            '.MuiInputLabel-root': {
+                                fontSize: '16px',
+                                fontWeight:'500',
+                                color:'#4C4C4C'
                             }
                         }}
                     >
-                        <Grid container  pt={2}>
+                        <Grid container pt={2}>
 
                             <TextField
                                 fullWidth
@@ -150,7 +152,7 @@ const SignIn = () => {
                     </Grid>
 
                     <Button disabled={loadingIcon} fullWidth type='submit' endIcon={
-                       loginLoading ?
+                        loginLoading ?
                             <InputAdornment position="end">
                                 <CircularProgress sx={{ color: '#FFF' }} size={20} />
                             </InputAdornment> : null
@@ -161,11 +163,11 @@ const SignIn = () => {
                         '&:hover': {
                             backgroundColor: '#17468F'
                         },
-                        mt: 2 /* margin top */, height: "50px", borderRadius: "25px", backgroundColor: "#143E7D", color: '#FFFF', textTransform: 'none', fontWeight:'200',fontSize:'16px'
+                        mt: '20px' /* margin top */, height: "50px", borderRadius: "25px", backgroundColor: "#143E7D", color: '#FFFF', textTransform: 'none', fontWeight: '200', fontSize: '16px'
                     }}>Sign in</Button>
                     <Grid container justifyContent='space-between' pt={1} alignItems={'center'}>
                         <Box display={'flex'} alignItems={'center'}>
-                            <Checkbox sx={{ borderColor: "#B7B7B7" ,p:0}}></Checkbox>
+                            <Checkbox sx={{ borderColor: "#B7B7B7", p: 0 }}></Checkbox>
                             <Typography pl={1} fontSize={14} fontWeight={400}> Remember me</Typography>
                         </Box>
                         <Link

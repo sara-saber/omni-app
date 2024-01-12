@@ -1,4 +1,4 @@
-import EditAddresses from "@/components/container/listItem/Addresses/EditAddress";
+import EditAddresses from "@/components/container/listItem/Addresses/EditAddAddress";
 
 const EditAddressPage = () => {
     return ( 

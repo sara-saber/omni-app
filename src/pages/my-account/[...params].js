@@ -12,7 +12,7 @@ import ChangePassword from "@/components/container/listItem/ChangePassword";
 import ChangeEmail from "@/components/container/listItem/ChangeEmail";
 import OrderDetails from "@/components/container/listItem/Order/OrderDetails";
 import Menu from '@/components/container/listItem/Menu';
-import EditAddresses from '@/components/container/listItem/Addresses/EditAddress';
+import EditAddresses from '@/components/container/listItem/Addresses/EditAddAddress';
 const ContainerPage = () => {
     const [customer, setCustomer] = useState()
     const router = useRouter()

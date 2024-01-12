@@ -9,27 +9,19 @@ import ShipmentDetails from './ShipmentDetails';
 import { useState } from 'react';
 import InvoiceDetails from './InvoiceDetails';
 import { useRouter } from 'next/router';
+import PageName from '../shared/PageName/PageName';
 const OrderDetails = (props) => {
-    const router=useRouter()
+    const router = useRouter()
     const [drawer, setDrawer] = useState()
     const [drawerId, setId] = useState()
     return (
-        <Box>
-            {<Grid  sx={{ display: { md: 'none', xs: 'flex' } }} mt={2} md={12} xs={12} container alignItemst={"center"}>
-                <Grid xs={1}>
-                    <Avatar sx={{ backgroundColor: '#F8FAFD' }}>
-                        <ArrowBackIcon onClick={()=>router.push('/my-account/orders')} sx={{ color: '#2B3445' }} />
-                    </Avatar>
-                </Grid>
-                <Grid textAlign={'center'} xs={11}>
-                    <Typography fontSize={20} fontWeight={550} justifyContent={{ xs: 'center', md: 'flex-start' }} pb={2}  >
-                        #{props?.DataDetails?.number}
-                    </Typography>
-                </Grid>
-            </Grid>}
+        <Grid>
+            <Grid display={{md:'none',xs:'block'}} >
+            <PageName name={'#' + (props?.DataDetails?.number)} position='center' url={'my-account/order'}>
+            </PageName>
+            </Grid>
+     
             <Grid container gap={{ xs: 0, md: 0 }}>
-
-
                 {props.DataDetails &&
                     <Grid m={1} container gap={{ md: 5, xs: 2 }}>
                         <Grid order={{ xs: 2, md: 1 }} xs={12} md={7.6}>
@@ -107,11 +99,11 @@ const OrderDetails = (props) => {
                             {/* <Drawer anchor='top' open={open} onClose={close}>
 
                             </Drawer> */}
-                            <CenterDrawer 
-                            mx='20%'
-                            mt='5%'
-                            pb={50}
-                            name={drawerId === '1' ? 'Shipments' : 'Invoices'} drawer={drawer} setDrawer={setDrawer} >
+                            <CenterDrawer
+                                mx='20%'
+                                mt='5%'
+                                pb={50}
+                                name={drawerId === '1' ? 'Shipments' : 'Invoices'} drawer={drawer} setDrawer={setDrawer} >
                                 {drawerId === '1' ?
                                     <ShipmentDetails shipments={props?.DataDetails.shipments} >
                                     </ShipmentDetails>
@@ -204,7 +196,7 @@ const OrderDetails = (props) => {
                 }
 
             </Grid >
-        </Box>
+        </Grid>
     );
 }
 

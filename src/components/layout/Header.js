@@ -47,7 +47,7 @@ const Header = (props) => {
                     WITH PURCHASE OVER CHF 35 BEFORE TAXES; CONNECT TO SEE YOUR PERSONAL BENEFITS
                 </Typography>
             </Box>
-            <Grid px={{ md: '20px',lg:'69px', xs: 0 }} alignItems={"center"} mt={{ md: 2,lg:4, xs: '12px' }} container columnGap={0.2} justifyContent={'space-between'}>
+            <Grid px={{xl:'69px', md: '20px',lg:3, xs: 0 }} alignItems={"center"} mt={{ md: 2,lg:4, xs: '12px' }} container columnGap={0.2} justifyContent={'space-between'}>
                 <Button sx={{
                     '.MuiButtonBase-root-MuiButton-root': {
                         minWidth: 42
@@ -55,14 +55,14 @@ const Header = (props) => {
                     '.MuiSvgIcon-root': {
                         color: '#2B3445'
                     },
-                    display: { xs: 'block', md: 'block',lg:'none' }
+                    display: { xs: 'block', md: 'none',lg:'none' }
                 }} >
                     <MenuIcon fontSize='large' />
                 </Button>
                 <Grid md={3} xl={2}>
                     <Image onClick={() => { router.push('dashboard') }} className='img' width={200} height={40} src={logoImage} />
                 </Grid>
-                <Grid md={5} xl={6}>
+                <Grid md={4} xl={6}>
                     <TextField label="search" size='small' sx={{ display: { xs: 'none', md: 'flex' } }}
                         InputProps={{
                             endAdornment: (
@@ -74,7 +74,7 @@ const Header = (props) => {
                     >
                     </TextField>
                 </Grid>
-                <Grid md={3} xl={3} textAlign={'end'} justifyContent='space-between' sx={{ display: { xs: 'none', md: 'block' } }}>
+                <Grid md={4} xl={3} textAlign={'end'} justifyContent='space-between' sx={{ display: { xs: 'none', md: 'block' } }}>
                     <Button sx={{
                         '&:hover': {
                             backgroundColor: '#fff',
@@ -109,7 +109,7 @@ const Header = (props) => {
                             }, ml: '10px', color: '#2B3445', textTransform: 'none',
                             fontSize: 15,
                         }}
-                        onMouseDown={(e) => handleClose(e)}
+                        onMouseUp={(e) => handleClose(e)}
                         onMouseOver={(e) => handleClick(e)} startIcon={<PermIdentityOutlinedIcon />}>
                         {data?.customer ? data?.customer.firstname : "Sign In"
                         }
@@ -198,7 +198,7 @@ const Header = (props) => {
                 <></>
             }
 
-            <Stack px={{ lg: '69px', xs: 0 }} sx={{ mt: '31px', mb: '22px', display: { xs: 'none', md: 'none',lg:'flex' } }}
+            <Stack px={{ xl:'69px',lg:3, xs: 0 }} sx={{ mt: '31px', mb: '22px', display: { xs: 'none', md: 'none',lg:'flex' } }}
                 direction='row'
                 divider={<Divider orientation="vertical" flexItem />}
                 spacing={2}>

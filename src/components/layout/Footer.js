@@ -7,7 +7,7 @@ import Image from "next/image";
 const Footer = () => {
     return (
         <Grid>
-            <Grid container mt={5} py={{ md: 2, lg: 3, xs: 2 }} px={{ md: 3, xs: 3, lg: 22 }} gap={{ lg: 3, md: 3, xs: 4 }} alignItems={"center"}
+            <Grid container mt={5} py={{ md: 2, lg: 3, xs: 2 }} px={{ md: 3, xs: 3, lg: 4 ,xl:22}} gap={{ lg: 3, md: 3, xs: 4 }} alignItems={"center"}
                 justifyContent={{ lg: 'space-between', md: 'space-between', xs: 'center' }} backgroundColor='#F8FAFD' >
                 <Grid xl={3} lg={3} xs={12} md={12}>
                     <Typography minWidth={{ md: '274px' }} height={{ md: 30, lg: 87, xs: 20 }} textAlign={{ xs: 'center', md: 'center', lg: 'start' }} fontSize={{ md: 30, xs: 23 }}
@@ -47,7 +47,7 @@ const Footer = () => {
                 </Grid>
             </Grid>
             <Grid
-                backgroundColor={'#27325E'} container mt={2} pb={{ md: 3, xs: 1 }} pt={{ md: 12, xs: 5 }} px={{ md: 22, xs: 2 }} rowGap={{ md: 2, xs: 3 }} columnGap={{ md: 11 }} >
+                backgroundColor={'#27325E'} container mt={2} pb={{ md: 3, xs: 1 }} pt={{ md: 12, xs: 5 }} px={{  md: 3, xs: 3, lg: 4 ,xl:22 }} rowGap={{ md: 2, xs: 3 }} columnGap={{ md: 11 }} >
                 <Grid lg={12} md={12}>
                     <Image width={205} height={40} src={logoImage} />
                 </Grid>
@@ -139,7 +139,7 @@ const Footer = () => {
                         Career
                     </Link>
                 </Grid>
-                <Grid mb={{ md: 0, xs: 3.1 }} textAlign={"center"} md={12} xs={12} >
+                <Grid mt={2} mb={{ md: 2, xs: 3.1 }} textAlign={"center"} md={12} xs={12} >
                     <Typography fullwidth color={'#fff'} sx={{ fontSize: "12px" }} textAlign="center">
                         Copyright 2023 © Omniadis. Inc. All rights reserved.
                     </Typography>

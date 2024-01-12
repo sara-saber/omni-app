@@ -8,45 +8,53 @@ import { useRouter } from "next/router";
 import PageName from "./shared/PageName/PageName";
 import SnackBar from "./shared/Snackbar";
 
-const ChangeEmail = () => {
+const ChangeEmail = (props) => {
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()
     const [showPassword, setShowPassword] = useState(false)
-    const [updateEmail, { data, error: emailError }] = useMutation(CHANGE_EMAILL, { errorPolicy: "all" })
+    const [updateEmail, { data, error: emailError, loading }] = useMutation(CHANGE_EMAILL, { errorPolicy: "all" })
     const [openSnackbar, setOpen] = useState(false)
+    const [severity, setSeverity] = useState('error')
     const [message, setMessage] = useState('')
     const screenSize = useMediaQuery('(max-width:768px)')
     const router = useRouter()
     const changeEmail = (e) => {
         e.preventDefault()
-        updateEmail({
-            variables: { Email: email, Password: password }
-        })
+        !email && !password ?
+            (setOpen(true),
+                setMessage('must fill the email and password fields'),
+                setSeverity('warning'))
+            :
+            updateEmail({
+                variables: { Email: email, Password: password }
+            })
 
         if (emailError) {
-            setTimeout(() => {
-                setOpen(true)
-            }, 100),
-                setMessage('your password failed please write again!!')
+            setOpen(true)
+            setMessage('your password is Wrong check again!!')
+            setSeverity('error')
         }
-        // console.log(email + password);
+        if (data) {
+            setOpen(true)
+            setMessage('Your Email was updated')
+            setSeverity('success')
+        }
+        console.log(data)
     }
     return (
 
-        <form onSubmit={(e) => changeEmail(e)}>
+        <form>
             <Grid container gap={3} md={12}>
                 <PageName url='/my-account/profile-information' name='Change email' position={'center'} >
                 </PageName>
                 <TextField
                     fullWidth
                     label="Email"
-                    value={email}
                     type='email'
                     onChange={(e) => (setEmail(e.target.value))}
                 />
                 <TextField
                     fullWidth
-                    value={password}
                     label="password"
                     type={showPassword ? 'text' : 'password'}
                     onChange={(e) => setPassword(e.target.value)}
@@ -65,7 +73,7 @@ const ChangeEmail = () => {
                     }}
                 />
                 <Grid justifyContent={'center'} container mt={1} gap={2}>
-                    <Button disabled={emailError} sx={{
+                    <Button onClick={(e) => changeEmail(e)} sx={{
                         '&:hover': {
                             backgroundColor: '#143E7D',
                             color: '#FFFFFF',
@@ -73,10 +81,11 @@ const ChangeEmail = () => {
                         textTransform: 'none',
                         width: screenSize ? '100%' : '113px',
                         borderRadius: 22, backgroundColor: "#17468F"
-                    }} type="submit" variant="contained">
+                    }} variant="contained">
                         {{ screenSize } ? 'Save' : 'Update'}
                     </Button>
-                    <Button type="button" onClick={() => router.push("/my-account/profile-information")} sx={{
+                    {/* router.push("/my-account/profile-information") */}
+                    <Button type="button" onClick={() => props?.setDrawer(false)} sx={{
                         '&:hover': {
                             backgroundColor: '#143E7D',
                             color: '#FFFFFF'
@@ -93,7 +102,7 @@ const ChangeEmail = () => {
             </Grid>
 
 
-            <SnackBar message={message} setOpen={setOpen} openSnackbar={openSnackbar}></SnackBar>
+            <SnackBar message={message} setOpen={setOpen} openSnackbar={openSnackbar} severity={severity}></SnackBar>
 
         </form >
 

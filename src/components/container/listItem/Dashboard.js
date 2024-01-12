@@ -13,7 +13,7 @@ const Dashboard = () => {
     const { data: customer } = useQuery(Get_Customer)
     return (
         <>
-            <Grid display={{md:'none',xs:'flex'}}>
+            <Grid display={{ md: 'none', xs: 'flex' }}>
 
                 <PageName show={'none'} name={'Hi ,' + customer?.customer.firstname}>
                 </PageName>
@@ -24,20 +24,22 @@ const Dashboard = () => {
                     <Typography fontWeight={600}>My dashboard</Typography>
                 </Grid>
                 <Grid md={11.4} >
-                <Typography sx={{ letterSpacing: '0px', color: '#2B3445', opacity: 1 }}>
-                    From your Profile Dashboard you have the ability to view a snapshot of your Profile and update your account information. Select a link below to view or edit information.
-                </Typography>
+                    <Typography sx={{ letterSpacing: '0px', color: '#2B3445', opacity: 1 }}>
+                        From your Profile Dashboard you have the ability to view a snapshot of your Profile and update your account information. Select a link below to view or edit information.
+                    </Typography>
                 </Grid>
-                <Grid container justifyContent={{ xs: "center", md: 'space-between' }} gap={{md:1,xs:3}} md={11} >
-                    <Grid md={5.5} maxWidth={157} minWidth={{ md: 321, xs: '100%' }} backgroundColor='#F8FAFD' py={'18px'} px={'23px'}  border='1px solid #E0E0E0' borderRadius={2}>
-                        <Grid container alignItems={'center'} justifyContent={'space-between'} >
+                <Grid container justifyContent={{ xs: "center", md: 'space-between' }} gap={{ md: 1, xs: 3 }} md={11} >
+                    <Grid md={5.5} maxWidth={157} minWidth={{ md: 321, xs: '100%' }} backgroundColor='#F8FAFD' py={'18px'} px={'24px'} border='1px solid #E0E0E0' borderRadius={2}>
+                        <Grid container alignItems={'flex-start'} justifyContent={'space-between'} >
                             <Typography level="title-md" fontSize={16}>My Orders</Typography>
                             <ShoppingBagOutlinedIcon sx={{ width: 37, height: 35, color: '#17468F' }} />
                         </Grid>
-                        <Typography level="title-lg" fontSize={40}>{data?.customer.orders.total_count}</Typography>
-                        <Grid pt={'18px'} container alignItems={'center'} justifyContent={'space-between'} >
+                        <Typography fontSize={40}>{data?.customer.orders.total_count}</Typography>
+                        <Grid pt={2} container alignItems={'flex-end'} justifyContent={'space-between'} >
                             <Typography fontSize={16} >Check your Orders</Typography>
-                            <IconButton
+                            <IconButton sx={{
+                                padding: 0
+                            }}
                                 aria-label="bookmark Bahamas Islands"
                                 variant="plain"
                                 size="sm"
@@ -48,17 +50,20 @@ const Dashboard = () => {
                         </Grid>
 
                     </Grid>
-                    <Grid md={5.5}  minWidth={{ md: 321, xs: '100%' }} backgroundColor='#F8FAFD' py={'18px'} px={3} border='1px solid #E0E0E0' borderRadius={2}>
-                        <Grid container alignItems={'center'} justifyContent={'space-between'} >
+                    <Grid md={5.5} minWidth={{ md: 321, xs: '100%' }} backgroundColor='#F8FAFD' py={'18px'} px={3} border='1px solid #E0E0E0' borderRadius={2}>
+                        <Grid container aalignItems={'flex-start'} justifyContent={'space-between'} >
                             <Typography level="title-md" fontSize={16}>Wishlist</Typography>
 
                             <FavoriteBorderIcon sx={{ width: 37.91, height: 37.91, color: '#17468F' }} />
 
                         </Grid>
-                        <Typography level="title-lg" fontSize={40}>{data?.customer?.wishlist?.items_count}</Typography>
-                        <Grid pt={'18px'}  container alignItems={'center'} justifyContent={'space-between'} >
+                        <Typography fontSize={40}>{data?.customer?.wishlist?.items_count}</Typography>
+                        <Grid pt={2} container alignItems={'flex-end'} justifyContent={'space-between'} >
                             <Typography fontSize={16} >Check your wishlist </Typography>
                             <IconButton
+                                sx={{
+                                    padding: 0
+                                }}
                                 aria-label="bookmark Bahamas Islands"
                                 variant="plain"
                                 size="sm"

@@ -11,11 +11,14 @@ import { useRouter } from 'next/router';
 import PageName from './shared/PageName/PageName';
 import CenterDrawer from './shared/Drawer/CenterDrawer';
 import ChangeEmail from './ChangeEmail';
+import SnackBar from './shared/Snackbar';
 
 const Profile = () => {
     const [loading, setLoading] = useState(true)
     const [openSnackbar, setOpen] = useState(false)
     const [drawer, setDrawer] = useState()
+    const [severity, setSeverity] = useState('error')
+    const [message, setMessage] = useState('')
     const { data, error: InfoError, loading: dataLoading } = useQuery(Get_Customer_Info)
     const screenSize = useMediaQuery('(max-width:768px)')
     const router = useRouter()
@@ -50,12 +53,16 @@ const Profile = () => {
     }
     const updateCustomerInfo = () => {
         // console.log(customerInfo);
-        createCustomerInfo({ variables: { Customerinfo: customerInfo }, onCompleted: (setOpen(true)) })
-        setTimeout(() => {
-            router.push('profile-information')
-        }, 500)
+        createCustomerInfo({ variables: { Customerinfo: customerInfo } })
+        if(updatedData){
+            setOpen(true)
+            setMessage('your information was updated')
+            setSeverity('success')
+        }
         if (InfoError) {
-
+            setOpen(true)
+            setMessage('have error!!')
+            setSeverity('error')
         }
     }
     function handleClick() {
@@ -204,33 +211,14 @@ const Profile = () => {
                                 pb={5}
                                 position='center' display='none' name='Change Email' drawer={drawer} setDrawer={setDrawer}>
                                     <Box p={5} alignItems={'center'} display={'flex'} justifyContent={'center'}>
-                                        <ChangeEmail></ChangeEmail>
+                                        <ChangeEmail setDrawer={setDrawer}></ChangeEmail>
                                     </Box>
                                 </CenterDrawer>
 
                             }
-
-                            {/* <Grid md={3} xs={12}>
-                                <Button onClick={() => router.push("change-email")} sx={{
-                                    '&:hover': {
-                                        backgroundColor: '#143E7D',
-                                        color: '#FFFFFF'
-                                    },
-                                    textTransform: 'none',
-                                    minWidth: { md: '125px', xs: '100%' },
-                                    height: '40px',
-                                    fontSize: 14, borderRadius: "22px", border: 'solid 1px black', backgroundColor: "white", color: "black"
-                                }}>Change email</Button>
-                            </Grid> */}
                         </Grid>
-                        {
-                            !InfoError &&
-                            <Snackbar onClose={handleClose} anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }} open={openSnackbar} autoHideDuration={1000} >
-                                <Alert severity="success" sx={{ width: '100%' }}>
-                                    your Information was updated!
-                                </Alert>
-                            </Snackbar>
-                        }
+                        <SnackBar message={message} setOpen={setOpen} openSnackbar={openSnackbar} severity={severity}></SnackBar>
+
 
                     </Grid>
                 }

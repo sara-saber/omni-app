@@ -1,4 +1,4 @@
-import {  Alert, Button, Grid, InputAdornment, TextField, Typography, useMediaQuery } from "@mui/material";
+import { Alert, Button, Grid, InputAdornment, TextField, Typography, useMediaQuery } from "@mui/material";
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import { useMutation } from "@apollo/client";
 import { useState } from "react";
@@ -55,7 +55,13 @@ const ChangePassword = () => {
             setSeverity('error')
         }
         if (data) {
-            console.log(data);
+            setOpen(true)
+            setMessage('Your Password was updated')
+            setSeverity('success')
+            // console.log(data);
+            localStorage.clear(),
+                deleteToken(),
+                router.push('/account/login')
         }
     }
     return (
@@ -130,8 +136,8 @@ const ChangePassword = () => {
                         ),
                     }}
                 />
-                <Grid mt={'18px'} container gap={2}>
-                    <Grid xs={12} md={3} container justifyContent={'space-between'}>
+                <Grid mt={'18px'} container gap={1}>
+                    <Grid xs={12} md={2.5} container justifyContent={'space-between'}>
                         <Button sx={{
                             fontWeight: 300,
                             textTransform: 'none',
@@ -141,7 +147,7 @@ const ChangePassword = () => {
                         </Button>
 
                     </Grid>
-                    <Grid>
+                    <Grid xs={12} md={2.5}>
                         <Button type="button" onClick={() => router.push("/my-account/profile-information")} sx={{
                             '&:hover': {
                                 backgroundColor: '#143E7D',
@@ -153,7 +159,8 @@ const ChangePassword = () => {
                             borderRadius: 22, borderColor: "#2B3445", color: '#2B3445'
                         }} variant="outlined">
                             Cancel
-                        </Button></Grid>
+                        </Button>
+                    </Grid>
                 </Grid>
 
 

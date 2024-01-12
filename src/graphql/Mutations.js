@@ -34,6 +34,48 @@ mutation {
     }
   }
 `
+export const Create_Customer_Address = gql`
+
+mutation AddAddress($InputAdress:CustomerAddressInput) {
+  createCustomerAddress(input: $InputAdress) {
+    city
+    company
+    country_code
+    country_id
+    custom_attributes {
+      attribute_code
+      value
+    }
+    customer_id
+    default_billing
+    default_shipping
+    extension_attributes {
+      attribute_code
+      value
+    }
+    fax
+    firstname
+    id
+    itm_address_id
+    lastname
+    middlename
+    postcode
+    prefix
+    region {
+      region
+      region_code
+      region_id
+    }
+    region_id
+    street
+    suffix
+    telephone
+    vat_id
+  }
+}
+
+
+`
 export const Post_create_Addresses = gql`
 mutation createCustomerAddress($CustomerAddress:CustomerAddressInput!) {
     createCustomerAddress(input:$CustomerAddress) {
@@ -95,7 +137,7 @@ mutation {
 }
 
 `
-export const REMOVE_FROM_WISHLIST=gql`
+export const REMOVE_FROM_WISHLIST = gql`
 mutation removeProduct($wishlistId:ID!,$itemId:[ID!]!) {
   removeProductsFromWishlist(wishlistId:$wishlistId , wishlistItemsIds: $itemId) {
     user_errors {
@@ -124,11 +166,12 @@ mutation changePassword($currentPassword:String!,$newPassword:String!){
    }
  }
 `
-export const CHANGE_EMAILL=gql`
+export const CHANGE_EMAILL = gql`
 mutation changeEmail($Email:String!,$Password:String!){
   updateCustomerEmail(email: $Email, password: $Password) {
      customer {
      id
+     email
       }
   }
 }

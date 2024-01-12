@@ -1,8 +1,10 @@
 import { Checkbox, Typography, Grid, MenuItem, TextField, Button } from '@mui/material';
 import InputAdornment from '@mui/material/InputAdornment';
+import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import { use, useEffect, useState } from 'react';
 import { useMutation, useQuery } from '@apollo/client';
+
 
 import { useRouter } from 'next/router';
 import { Get_Countries } from '@/graphql/Query';
@@ -22,6 +24,10 @@ const SignUp = () => {
     const { data: countries, loading: isLoading, error: countries_error } = useQuery(Get_Countries)
     const [createCustomer, { data: CustomerData, error: CustomerError }] = useMutation(Post_Create_Cutomer)
     const [createCustomerAddress, { data: addressData, error: AddressError }] = useMutation(Post_create_Addresses)
+    const handlePasswordIcon = () => {
+        setShowPassword(!showPassword)
+
+    }
     useEffect(() => {
         if (countries) {
             setRegion(countries?.countries[0].available_regions)
@@ -86,21 +92,21 @@ const SignUp = () => {
 
             <Grid container md={12} xs={12} gap={2}
                 sx={{
-                    '.css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input': {
-                        padding: 1.5
+                    '.MuiFormLabel-root-MuiInputLabel-root': {
+                        width: '100px'
                     },
-                    '.css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root': {
-                        width: '100'
-                    },
-                    '.css-nxo287-MuiInputBase-input-MuiOutlinedInput-input': {
+                    '.MuiOutlinedInput-input': {
                         padding: 1.5
                     },
                     '.MuiOutlinedInput-root': {
                         borderRadius: '6px'
                     },
-                    '.css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root': {
-                        fontSize: '0.9rem'
+                    '.MuiInputLabel-root': {
+                        fontSize: '16px',
+                        fontWeight:'400',
+                        color:'#4C4C4C'
                     }
+                    
                 }}
             >
                 <Grid fullWidth>
@@ -245,17 +251,17 @@ const SignUp = () => {
                     label="Password"
                     name='password'
                     onChange={handleChange}
-                    type='password'
+                    type={showPassword ? "text" : "password"}
                     InputProps={{
                         endAdornment: (
                             <InputAdornment position="start">
-                                {/* {
+                                {
                                     showPassword ?
-                                        <VisibilityOutlinedIcon onClick={setShowPassword(!showPassword)} />
+                                        <VisibilityOutlinedIcon onClick={handlePasswordIcon} />
                                         :
-                                        <VisibilityOffIcon onClick={setShowPassword(!showPassword)} />
+                                        <VisibilityOffIcon onClick={handlePasswordIcon} />
 
-                                } */}
+                                }
                             </InputAdornment>
                         ),
                     }}
@@ -266,10 +272,6 @@ const SignUp = () => {
                     '.css-1fi1jt2-MuiButtonBase-root-MuiCheckbox-root': {
                         padding: 0
                     },
-                    '.css-i4bv87-MuiSvgIcon-root': {
-                        color: '#B7B7B7',
-                        fill: '#17468F'
-                    }
 
                 }}>
                     <Grid md={1} xs={1}>
@@ -286,9 +288,7 @@ const SignUp = () => {
                     '.css-1fi1jt2-MuiButtonBase-root-MuiCheckbox-root': {
                         padding: 0
                     },
-                    '.css-i4bv87-MuiSvgIcon-root': {
-                        color: '#B7B7B7'
-                    }
+
                 }}>
                     <Grid md={1} xs={1}>
                         <Checkbox p={0} sx={{ alignItems: "start" }} ></Checkbox>

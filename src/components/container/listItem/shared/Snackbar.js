@@ -10,7 +10,7 @@ const SnackBar = (props) => {
     }
     return (
         <Snackbar onClose={handleClose} anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }} open={props?.openSnackbar} autoHideDuration={1000} >
-            <Alert severity={props?.severity ?props?.severity:'error'} sx={{ width: '100%' }} sd={console.log(props?.message)}>
+            <Alert severity={props?.severity ? props?.severity : 'error'} sx={{ width: '100%' }} sd={console.log(props?.message)}>
                 {props?.message}
             </Alert>
         </Snackbar>

@@ -72,21 +72,6 @@ export default function App({ Component, pageProps }) {
           </style>
           {console.log(category)}
           <Header category={category} />
-          {/* <Grid md={6} xs={12} container gap={2} alignItemst={"center"}>
-          <Grid sx={{ display: { md: 'none', xs: 'flex' } }} xs={3}>
-            <Avatar>
-              <KeyboardBackspaceIcon onClick={() => router.push('my-account')} />
-            </Avatar>
-          </Grid>
-          <Grid xs={6}>
-            <Typography fontSize={20} fontWeight={500} justifyContent={{ xs: 'center', md: 'flex-start' }} pb={2}  >
-
-            </Typography>
-          </Grid>
-          <Grid display={{ md: 'none', xs: 'block' }} xs={12}>
-            <Divider />
-          </Grid>
-        </Grid> */}
           <Container maxWidth={{xl:"lg",md:'xl'}}>
             <Component {...pageProps} />
           </Container>

@@ -1,8 +1,7 @@
 import { IconButton, Button, Divider, Grid, Typography, Box } from "@mui/material";
 import PictureAsPdfOutlinedIcon from '@mui/icons-material/PictureAsPdfOutlined';
 import Link from "next/link";
-
-
+// import file from '../../../../Files/file.pdf'
 const ShipmentDetails = (props) => {
     return (
         <>
@@ -16,9 +15,9 @@ const ShipmentDetails = (props) => {
                             <Typography color={'#17468F'}>33 {props?.shipments.number}</Typography>
                         </Grid>
                         <Grid textAlign={'right'} xs={6.6} md={6}>
-                            {/* <Link download='Example-pdf' target="_blank"
-                                to={'...'}
-                                rel="noreferrer" sx={{ fontWeight: 700, color: '#2B3445', textTransform: 'none', fontSize: 14 }}
+                            {/* <Link  target="_blank"
+                                to={file}
+                                sx={{ fontWeight: 700, color: '#2B3445', textTransform: 'none', fontSize: 14 }}
                                 variant="text" startIcon={<PictureAsPdfOutlinedIcon />}>Download PDF</Link> */}
                         </Grid>
                     </Grid>
